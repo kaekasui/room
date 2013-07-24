@@ -30,6 +30,19 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use cucumber as the test tool
+gem 'cucumber-rails'
+gem 'cucumber-rails-training-wheels'
+
+# Use capybara as the test tool
+gem 'capybara'
+
+# Use rspec as the test tool
+gem 'rspec-rails'
+
+gem 'webrat'
+gem 'database_cleaner'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -40,6 +53,20 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+# Use i18n for internationalize
+gem 'rails-i18n'
+
+# Use kaminari for paginate
+gem 'kaminari'
+
+# Use OmniAuth for twitter user authenticate
+gem 'twitter'
+gem 'omniauth-twitter'
+
+# Use OmniAuth for facebook user authenticate
+gem 'fb_graph'
+gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
