@@ -13,3 +13,6 @@
 
 # Ignore database config.
 /config/database.yml
+
+# Ignore scaffold stylesheet.
+/assets/stylesheets/scaffolds.css.scss
