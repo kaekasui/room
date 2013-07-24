@@ -3,11 +3,20 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use Mysql2
+# Use mysql2 as the database for Active Record
 gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
+# Use Twitter Bootstrap
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
+
+# Use Haml for views
+gem 'haml-rails'
+gem 'erb2haml'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -44,4 +53,3 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'twitter-bootstrap-rails'
