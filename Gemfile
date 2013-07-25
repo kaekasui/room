@@ -31,7 +31,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 # Use cucumber as the test tool
-gem 'cucumber-rails'
+gem 'cucumber-rails', require: false
 gem 'cucumber-rails-training-wheels'
 
 # Use capybara as the test tool
