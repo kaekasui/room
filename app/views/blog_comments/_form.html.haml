@@ -1,0 +1,49 @@
+= form_for @blog_comment do |f|
+  - if @blog_comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@blog_comment.errors.count, "error")} prohibited this blog_comment from being saved:"
+      %ul
+        - @blog_comment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :blog_id
+    = f.number_field :blog_id
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :author
+    = f.text_field :author
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :mail
+    = f.text_field :mail
+  .field
+    = f.label :ip
+    = f.text_field :ip
+  .field
+    = f.label :host
+    = f.text_field :host
+  .field
+    = f.label :password
+    = f.text_field :password
+  .field
+    = f.label :salt
+    = f.text_field :salt
+  .field
+    = f.label :admin
+    = f.check_box :admin
+  .field
+    = f.label :mixi
+    = f.check_box :mixi
+  .field
+    = f.label :draft
+    = f.check_box :draft
+  .actions
+    = f.submit 'Save'

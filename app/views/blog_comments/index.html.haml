@@ -1,0 +1,43 @@
+%h1 Listing blog_comments
+
+%table
+  %tr
+    %th Blog
+    %th Title
+    %th Author
+    %th Content
+    %th Url
+    %th Mail
+    %th Ip
+    %th Host
+    %th Password
+    %th Salt
+    %th Admin
+    %th Mixi
+    %th Draft
+    %th
+    %th
+    %th
+
+  - @blog_comments.each do |blog_comment|
+    %tr
+      %td= blog_comment.blog_id
+      %td= blog_comment.title
+      %td= blog_comment.author
+      %td= blog_comment.content
+      %td= blog_comment.url
+      %td= blog_comment.mail
+      %td= blog_comment.ip
+      %td= blog_comment.host
+      %td= blog_comment.password
+      %td= blog_comment.salt
+      %td= blog_comment.admin
+      %td= blog_comment.mixi
+      %td= blog_comment.draft
+      %td= link_to 'Show', blog_comment
+      %td= link_to 'Edit', edit_blog_comment_path(blog_comment)
+      %td= link_to 'Destroy', blog_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Blog comment', new_blog_comment_path
