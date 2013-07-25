@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @blog.title
+%p
+  %b Blog category code:
+  = @blog.blog_category_code
+%p
+  %b Contents1:
+  = @blog.contents1
+%p
+  %b Contents2:
+  = @blog.contents2
+%p
+  %b Draft:
+  = @blog.draft
+%p
+  %b Deleted at:
+  = @blog.deleted_at
+
+= link_to 'Edit', edit_blog_path(@blog)
+\|
+= link_to 'Back', blogs_path
