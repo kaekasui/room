@@ -11,9 +11,9 @@ class CreateBlogComments < ActiveRecord::Migration
       t.string :host
       t.string :password
       t.string :salt
-      t.boolean :admin
-      t.boolean :mixi
-      t.boolean :draft
+      t.boolean :admin, default: false
+      t.boolean :mixi, default: false
+      t.boolean :draft, default: false
 
       t.timestamps
     end

@@ -5,7 +5,7 @@ class CreateBlogs < ActiveRecord::Migration
       t.string :blog_category_code
       t.text :contents1
       t.text :contents2
-      t.boolean :draft
+      t.boolean :draft, default: false
       t.datetime :deleted_at
 
       t.timestamps
