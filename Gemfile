@@ -40,6 +40,9 @@ gem 'capybara'
 # Use rspec as the test tool
 gem 'rspec-rails'
 
+gem 'guard-rspec'
+gem 'growl'
+
 gem 'webrat'
 gem 'database_cleaner'
 
