@@ -1,5 +1,8 @@
 require 'spec_helper'
 
-describe "home/index.html.haml" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "home/index" do
+  it "紹介文が表示されること" do
+    render
+    expect(rendered).to have_selector("div.introduction", content: I18n.t("home.introduction").gsub("\n", ""))
+  end
 end
