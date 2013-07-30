@@ -1,0 +1,9 @@
+.well.sidebar-nav
+  %h4.sidebar_title
+    = image_tag icon, class: "icon"
+    = t("side_menu.menu")
+  %ul.nav.nav-list.sidebar_menu
+    %li= link_to t("menu.home"), root_path
+    %li= t("menu.home_text")
+    %li= link_to t("menu.blog"), blogs_path
+    %li= t("menu.blog_text")

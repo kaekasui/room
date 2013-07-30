@@ -14,12 +14,10 @@ describe "layouts/application" do
   end
 
   it "メインメニューにTOPが表示されること" do
-    render
     assert_select("ul.nav > li > a", "HOME")
   end
 
   it "メインメニューにBLOGが表示されること" do
-    render
     assert_select("ul.nav > li > a", "BLOG")
   end
 end

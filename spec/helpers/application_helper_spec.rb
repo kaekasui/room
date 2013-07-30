@@ -6,4 +6,10 @@ describe ApplicationHelper do
       expect(helper.to_skip("to skip\nto skip")).to eq("to skip<br />to skip")
     end
   end
+
+  describe "#icon" do
+    it "アイコンが表示されること" do
+      expect(helper.icon).to eq("icon_images/clover.gif")
+    end
+  end
 end

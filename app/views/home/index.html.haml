@@ -1,2 +1,6 @@
 .introduction
   = to_skip(t("home.introduction")).html_safe
+
+- content_for :sidebar do
+  = render "home/profile"
+  = render "home/menu"

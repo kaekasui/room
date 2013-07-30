@@ -4,4 +4,8 @@ module ApplicationHelper
   def to_skip(text)
     text.gsub(/\r\n|\r|\n/, "<br />")
   end
+
+  def icon
+    "icon_images/clover.gif"
+  end
 end

@@ -15,24 +15,17 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
 
-
   %body
-    = render "layouts/header"
+    .header
+      = render "layouts/header"
 
     .container
-
       .row
-        .span9
+        .span8
           = bootstrap_flash
           = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-    
-      %footer
-        %p &copy; Company 2013
+        .span4
+          = yield :sidebar
+
+    .footer
+      = render "layouts/footer"
