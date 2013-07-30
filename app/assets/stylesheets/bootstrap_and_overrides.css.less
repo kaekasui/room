@@ -28,3 +28,92 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+@linkColor:  #336633;
+
+@media (min-width: 980px) {
+  body {
+    background-image: url("background_images/clover.jpg");
+    padding-top: 60px;
+
+    li.inline a {
+      display: inline;
+    }
+
+    .icon {
+      margin-right: 7px;
+    } 
+
+    .well {
+      background-color: rgba(240,255,240,0.7);
+      border: 1px solid #f0fff0;
+      .h4 {
+        color: #336633;
+      }
+      h4 {
+        margin-bottom: 10px;
+        color: #1a331a;
+      }
+      .well-comment {
+        background-color: rgba(225,245,225,0.4);
+        border: 1px solid #f0fff0;
+      }
+    }
+    .table {
+      th, td {
+        border-top: 0 none;
+      }
+    }
+
+    span.asterisk {
+      color: red;
+      float: left;
+    }
+  }
+}
+
+.navbar-inner {
+  background-image: linear-gradient(to bottom, #000000, #003300)
+}
+
+.navbar {
+  .nav > li > a {
+    text-shadow: none;
+  }
+
+  .nav > li > a:focus, .nav > li > a:hover {
+    background-color: transparent;
+    color: #336633;
+  }
+
+  .nav li.dropdown.open > .dropdown-toggle, .nav li.dropdown.active > .dropdown-toggle, .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: transparent;
+    color: #336633;
+  }
+
+  .brand {
+    color: #f0fff0;
+    text-shadow: none;
+  }
+}
+
+.nav > li > a:hover {
+  background-color: transparent;
+}
+
+td.align_right {
+  text-align: right;
+}
+
+th.post_at {
+  font-weight: normal;
+  text-align: right;
+}
+
+.pagination ul {
+  li > a:hover, li > a:focus, .active > a, .active > span {
+    color: #339933;
+    background-color: #f0fff0;
+  }
+}
+
