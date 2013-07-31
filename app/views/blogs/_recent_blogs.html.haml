@@ -1,0 +1,7 @@
+.well.sidebar-nav
+  %h4.sidebar_title
+    = image_tag icon, class: "icon"
+    = t("side_menu.recent_blogs")
+  %ul.nav.nav-list.sidebar_blogs
+    - @recent_blogs.each do |blog|
+      %li= link_to blog.title + "(" + l(blog.created_at, format: :very_short) + ")", blog

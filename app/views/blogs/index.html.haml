@@ -1,29 +1,9 @@
-%h1 Listing blogs
+.well
+  = paginate @blogs
+  %table.table
+    = render partial: @blogs, spacer_template: "separator"
 
-%table
-  %tr
-    %th Title
-    %th Blog category code
-    %th Contents1
-    %th Contents2
-    %th Draft
-    %th Deleted at
-    %th
-    %th
-    %th
+- content_for :sidebar do
+  = render "home/profile"
+  = render "blogs/recent_blogs"
 
-  - @blogs.each do |blog|
-    %tr
-      %td= blog.title
-      %td= blog.blog_category_code
-      %td= blog.contents1
-      %td= blog.contents2
-      %td= blog.draft
-      %td= blog.deleted_at
-      %td= link_to 'Show', blog
-      %td= link_to 'Edit', edit_blog_path(blog)
-      %td= link_to 'Destroy', blog, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Blog', new_blog_path

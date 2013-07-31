@@ -1,8 +1,8 @@
 Room::Application.routes.draw do
 
-  resources :blog_comments
-
-  resources :blogs
-
   root 'home#index'
+
+  resources :blogs, only: [:index, :show] do
+    resources :blog_comments
+  end
 end

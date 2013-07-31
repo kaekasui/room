@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "TOP" do
+describe "HOME" do
   describe "routing" do
 
     it "トップページが表示されること" do

@@ -1,0 +1,7 @@
+= render partial: "exordium", locals: {blog: blog}
+
+%tr
+  %td{:colspan => 2}= link_to_unless(blog.contents2.blank?, t("blog.continue"), blog)
+
+%tr
+  %td.align_right{:colspan => 2}= link_to "Comments(" + blog.blog_comments.count.to_s + ")", blog_path(id: blog.id, anchor: "blog_comments")
