@@ -14,3 +14,7 @@ end
 ならば(/^ブログの記事が"(.*?)"件表示される$/) do |display_count|
   page.should have_selector(".table tr > th > a", count: display_count)
 end
+
+ならば(/^最近の記事が"(.*?)"件表示される$/) do |display_count|
+  page.should have_selector(".sidebar-nav > ul.sidebar_blogs > li", count: display_count)
+end

@@ -1,0 +1,12 @@
+.well.sidebar-nav
+  %h4.sidebar_title
+    = image_tag icon, class: "icon"
+    = t("side_menu.recent_blog_comments")
+  %ul.nav.nav-list.sidebar_blog_comments
+    - @recent_blog_comments.each do |comment|
+      - if comment.admin
+        %li= link_to comment.blog_title + "：*** (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+      - elsif !comment.author.blank?
+        %li= link_to comment.blog_title + "：(" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+      - else
+        %li= link_to comment.blog_title + "：" + comment.author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
