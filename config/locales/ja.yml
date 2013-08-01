@@ -21,6 +21,7 @@ ja:
     recent_blogs: "最近の記事"
     recent_blog_comments: "最近のコメント"
     blog_links: "リンク"
+    mail_form: "メールフォーム"
   home:
     introduction: "サイトがさらにリニューアルオープンしました！ヾ(〃´∇｀)ﾉ\n\n2011年3月11日の地震以来、節電対策と致しまし>てサーバーをしばらく停止させて頂いておりましたが、今回heroku上で再開をさせて頂くこととなりました。長い間お待たせし、申し訳
 ありませんでした。m(__*)m\n\n 
@@ -43,3 +44,11 @@ ja:
     introduce: "WEBプログラマ、に憧れるSI業界SIer。お花咲いております。みかん食いちらかしております。絵を描いたり、音楽作>ったり、プログラミングしたり、工作した
 り、ゲーム作ったり。多趣味だよ☆（ゝω・）vｷｬﾋﾟこんな自己満サイトも全部手作り。ぽへー。"
 
+  helpers:
+    submit:
+      mail_form:
+        submit: "送信する"
+
+  flash:
+    create_mail_form: "メールが送信されました。"
+    cannot_create_mail_form: "メールの送信に失敗しました。"
