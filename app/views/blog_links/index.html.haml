@@ -1,0 +1,31 @@
+%h1 Listing blog_links
+
+%table
+  %tr
+    %th Title
+    %th Author
+    %th Introduction
+    %th Url
+    %th Position
+    %th Draft
+    %th Deleted at
+    %th
+    %th
+    %th
+
+  - @blog_links.each do |blog_link|
+    %tr
+      %td= blog_link.title
+      %td= blog_link.author
+      %td= blog_link.introduction
+      %td= blog_link.url
+      %td= blog_link.position
+      %td= blog_link.draft
+      %td= blog_link.deleted_at
+      %td= link_to 'Show', blog_link
+      %td= link_to 'Edit', edit_blog_link_path(blog_link)
+      %td= link_to 'Destroy', blog_link, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Blog link', new_blog_link_path
