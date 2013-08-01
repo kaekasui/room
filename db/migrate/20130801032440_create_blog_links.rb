@@ -6,7 +6,7 @@ class CreateBlogLinks < ActiveRecord::Migration
       t.string :introduction
       t.string :url
       t.integer :position
-      t.boolean :draft
+      t.boolean :draft, default: false
       t.timestamp :deleted_at
 
       t.timestamps

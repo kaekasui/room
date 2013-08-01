@@ -5,6 +5,7 @@ describe "blogs/index" do
     @blogs = Blog.all.page(params[:page]).per(10)
     @recent_blogs = Blog.recent_blogs
     @recent_blog_comments = BlogComment.recent_blog_comments
+    @blog_links = Blog.all
   end
 
   describe "サイドメニュー" do
@@ -22,6 +23,11 @@ describe "blogs/index" do
     it "最近のコメントが表示されること" do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blog_comments"))
+    end
+
+    it "リンクが表示されること" do
+      render
+      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.blog_links"))
     end
   end
 end

@@ -18,6 +18,7 @@ class BlogsController < ApplicationController
   def set_menu
     @recent_blogs = Blog.recent_blogs
     @recent_blog_comments = BlogComment.recent_blog_comments
+    @blog_links = BlogLink.all
   end
 
   def blog_params
