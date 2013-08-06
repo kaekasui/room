@@ -30,21 +30,28 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Use cucumber as the test tool
-gem 'cucumber-rails', require: false
-gem 'cucumber-rails-training-wheels'
+group :development, :test do
+  # Use cucumber as the test tool
+  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails-training-wheels'
 
-# Use capybara as the test tool
-gem 'capybara'
+  # Use capybara as the test tool
+  gem 'capybara'
 
-# Use rspec as the test tool
-gem 'rspec-rails'
+  # Use rspec as the test tool
+  gem 'rspec-rails'
 
-gem 'guard-rspec'
-gem 'growl'
+  # Use spork for speed of server (no using)
+  gem 'spork'
 
-gem 'webrat'
-gem 'database_cleaner'
+  # Use guard
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'growl'
+
+  gem 'webrat'
+  gem 'database_cleaner'
+end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
