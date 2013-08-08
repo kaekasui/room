@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      blog_comment:
+        title: "タイトル"
+        author: "名前"
+        url: "URL"
+        mail: "Mail"
+        content: "内容"
+        password: "パスワード"
+        admin: "管理者のみ閲覧"

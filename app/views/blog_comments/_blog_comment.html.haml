@@ -1,0 +1,18 @@
+.blog_comment
+  %table.table.well-comment
+    - if blog_comment.admin
+      %tr
+        %td= t("blog_comment.admin")
+        %td.align_right= l blog_comment.created_at
+    - else
+      - unless blog_comment.title.blank?
+        %tr
+          %th{colspan: "2"}= blog_comment.title
+      %tr
+        %td= blog_comment.author
+        %td.align_right= l blog_comment.created_at
+      %tr
+        %td{colspan: "2"}= blog_comment.content
+      %tr
+        %td.align_right{colspan: "2"}= link_to_unless(blog_comment.url.blank?, I18n.t("blog_comment.url"), blog_comment.url, target: "_blank")
+

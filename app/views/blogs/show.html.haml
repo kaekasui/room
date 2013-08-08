@@ -1,24 +1,20 @@
-%p#notice= notice
+.well
+  %table.table
+    = render partial: "exordium", locals: {blog: @blog}
+    %tr
+      %td.contents2{colspan: "2"}= @blog.contents2
+    %tr
+      %td.align_right{:colspan => 2}= link_to "Comments(" + @blog.blog_comments.count.to_s + ")", blog_path(id: @blog.id, anchor: "blog_comments")
 
-%p
-  %b Title:
-  = @blog.title
-%p
-  %b Blog category code:
-  = @blog.blog_category_code
-%p
-  %b Contents1:
-  = @blog.contents1
-%p
-  %b Contents2:
-  = @blog.contents2
-%p
-  %b Draft:
-  = @blog.draft
-%p
-  %b Deleted at:
-  = @blog.deleted_at
+.well
+  = bootstrap_flash
+  = form_for @blog_comment, html: {class: "form-horizontal"}, url: blog_blog_comments_path(blog_id: @blog.id), remote: true do |f|
+    = render partial: "blog_comments/form", locals: {f: f}
 
-= link_to 'Edit', edit_blog_path(@blog)
-\|
-= link_to 'Back', blogs_path
+  %hr
+
+  #blog_comments
+    = render partial: @blog_comments, spacer_template: "blog_comments/separator"
+
+- content_for :sidebar do
+  = render "blogs/sidebar"
