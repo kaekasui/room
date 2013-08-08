@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe "blogs/index" do
-
   describe "ブログの記事" do
     before do
       3.times { FactoryGirl.create(:blog) }
-
       @blogs = Blog.all.page(params[:page]).per(10)
       @recent_blogs = Blog.recent_blogs
       @recent_blog_comments = BlogComment.recent_blog_comments
@@ -77,6 +75,7 @@ describe "blogs/index" do
  
   describe "サイドメニュー" do
     before do
+      3.times { FactoryGirl.create(:blog) }
       @blogs = Blog.all.page(params[:page]).per(10)
       @recent_blogs = Blog.recent_blogs
       @recent_blog_comments = BlogComment.recent_blog_comments
