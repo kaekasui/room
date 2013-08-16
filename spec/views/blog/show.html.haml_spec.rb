@@ -95,4 +95,28 @@ describe "blogs/show" do
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.mail_form"))
     end
   end
+
+  describe "ブログコメント" do
+    context "コメントが3件登録されている場合" do
+      before do
+        @blog = FactoryGirl.create(:blog)
+        3.times do
+          blog_comment = FactoryGirl.build(:blog_comment)
+          blog_comment.blog_id = @blog.id
+          blog_comment.save
+        end
+        @blog_comments = @blog.blog_comments
+      end
+
+      it "一覧にコメントが3件表示されること" do
+        render
+        expect(rendered).to have_selector("#blog_comments > div.blog_comment", count: 3)
+      end
+
+      it "「最近のコメント」に3件表示されること" do
+        render
+        expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog_comment", count: 3)
+      end
+    end
+  end
 end

@@ -34,5 +34,4 @@ FactoryGirl.define do
     created_at "2013/08/05 08:00:00"
     draft false
   end
-
 end

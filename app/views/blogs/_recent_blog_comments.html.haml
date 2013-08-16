@@ -5,8 +5,8 @@
   %ul.nav.nav-list.sidebar_blog_comments
     - @recent_blog_comments.each do |comment|
       - if comment.admin
-        %li= link_to comment.blog_title + "：*** (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+        %li= link_to comment.blog_title + "：*** (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"
       - elsif !comment.author.blank?
-        %li= link_to comment.blog_title + "：(" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+        %li= link_to comment.blog_title + "：(" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"
       - else
-        %li= link_to comment.blog_title + "：" + comment.author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+        %li= link_to comment.blog_title + "：" + comment.author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"

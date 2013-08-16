@@ -10,6 +10,7 @@ class BlogCommentsController < ApplicationController
       if @blog_comment.save
         format.html { redirect_to @blog, notice: 'Blog comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @blog }
+        format.js
       else
         format.html { render @blog }
         format.json { render json: @blog_comment.errors, status: :unprocessable_entity }

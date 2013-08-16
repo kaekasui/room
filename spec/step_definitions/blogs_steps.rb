@@ -14,6 +14,10 @@ step 'ブログの記事が :count 件表示される' do |count|
   expect(page).to have_selector("table.table > tr > th.post_at", count: count)
 end
 
+step 'ブログの記事の詳細画面が表示されている' do
+  visit blog_path(Blog.first)
+end
+
 =begin 
 step 'ブログ詳細ページを表示する' do
   visit blog_path(@blog)
