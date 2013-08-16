@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :set_menu, only: [:index, :show]
 
   def index
-    @blogs = Blog.all.page(params[:page]).per(10)
+    @blogs = Blog.with_no_draft.page(params[:page]).per(10)
   end
 
   def show
@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
   end
 
   def set_menu
-    @recent_blogs = Blog.recent_blogs
+    @recent_blogs = Blog.with_no_draft.recent_blogs
     @recent_blog_comments = BlogComment.recent_blog_comments
     @blog_links = BlogLink.all
   end

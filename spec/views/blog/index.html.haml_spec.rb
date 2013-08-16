@@ -4,7 +4,7 @@ describe "blogs/index" do
   describe "ブログの記事" do
     before do
       3.times { FactoryGirl.create(:blog) }
-      @blogs = Blog.all.page(params[:page]).per(10)
+      @blogs = Blog.with_no_draft.page(params[:page]).per(10)
       @recent_blogs = Blog.recent_blogs
       @recent_blog_comments = BlogComment.recent_blog_comments
       @blog_links = BlogLink.all
@@ -50,7 +50,7 @@ describe "blogs/index" do
       end
 
       it "一覧の2ページ目に2件表示されること" do
-        @blogs = Blog.all.page(2).per(10)
+        @blogs = Blog.with_no_draft.page(2).per(10)
         render
         expect(rendered).to have_selector("table.table > tr > th.post_at", count: 2)
       end
@@ -76,7 +76,7 @@ describe "blogs/index" do
   describe "サイドメニュー" do
     before do
       3.times { FactoryGirl.create(:blog) }
-      @blogs = Blog.all.page(params[:page]).per(10)
+      @blogs = Blog.with_no_draft.page(params[:page]).per(10)
       @recent_blogs = Blog.recent_blogs
       @recent_blog_comments = BlogComment.recent_blog_comments
       @blog_links = BlogLink.all

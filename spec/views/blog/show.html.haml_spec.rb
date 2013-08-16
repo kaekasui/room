@@ -6,7 +6,7 @@ describe "blogs/show" do
     @blog_comment = BlogComment.new
     @blog_comments = @blog.blog_comments
 
-    @blogs = Blog.all.page(params[:page]).per(10)
+    @blogs = Blog.with_no_draft.page(params[:page]).per(10)
     @recent_blogs = Blog.recent_blogs
     @recent_blog_comments = BlogComment.recent_blog_comments
     @blog_links = BlogLink.all
