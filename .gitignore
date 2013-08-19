@@ -16,3 +16,6 @@
 
 # Ignore scaffold stylesheet.
 /assets/stylesheets/scaffolds.css.scss
+
+# Ignore the folder of 'simplecov'
+/coverage
