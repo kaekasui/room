@@ -55,6 +55,8 @@ group :development, :test do
   gem 'turnip'
 
   gem 'factory_girl_rails'
+
+  gem 'simplecov', :require => false
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
