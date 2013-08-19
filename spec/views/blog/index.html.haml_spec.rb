@@ -5,7 +5,7 @@ describe "blogs/index" do
     before do
       3.times { FactoryGirl.create(:blog) }
       @blogs = Blog.with_no_draft.page(params[:page]).per(10)
-      @recent_blogs = Blog.recent_blogs
+      @recent_blogs = Blog.with_no_draft.recent_blogs
       @recent_blog_comments = BlogComment.recent_blog_comments
       @blog_links = BlogLink.all
     end
