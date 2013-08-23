@@ -1,0 +1,6 @@
+.alert.alert-error
+  %button.close{"data-dismiss" => "alert"}
+  = t("activerecord.errors.template.header.other", count: errors.count)
+  %ul
+    - errors.full_messages.each do |message|
+      %li= message

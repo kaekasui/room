@@ -51,9 +51,12 @@ ja:
 
   helpers:
     submit:
+      blog:
+        create: "投稿する"
       mail_form:
         submit: "送信する"
 
   flash:
+    create_blog: "ブログが作成されました。"
     create_mail_form: "メールが送信されました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"

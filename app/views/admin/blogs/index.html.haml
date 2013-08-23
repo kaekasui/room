@@ -1,0 +1,14 @@
+- model_class = Blog.new.class
+%table.table
+  %tr
+    %th= model_class.human_attribute_name(:created_at)
+    %th= model_class.human_attribute_name(:title)
+    %th= model_class.human_attribute_name(:draft)
+    %th= t "helpers.actions"
+  - @blogs.each do |blog|
+    %tr
+      %td.post_at= l blog.created_at
+      %td= blog.title
+      %td= blog.draft
+      %td= link_to t(".edit", default: t("helpers.links.edit")), edit_admin_blog_path(blog), class: "btn btn-mini"
+      %td= link_to t(".destroy", default: t("helpers.links.destroy")), admin_blog_path(blog), class: "btn btn-mini", method: :delete

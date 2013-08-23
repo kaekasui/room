@@ -1,6 +1,11 @@
 ja:
   activerecord:
     attributes:
+      blog:
+        created_at: "投稿日時"
+        title: "タイトル"
+        contents1: "内容1"
+        contents2: "内容2"
       blog_comment:
         title: "タイトル"
         author: "名前"
@@ -9,3 +14,10 @@ ja:
         content: "内容"
         password: "パスワード"
         admin: "管理者のみ閲覧"
+    errors:
+      template:
+        header:
+          other: "%{count}個のエラーが発生しました。"
+      messages:
+        blank: "を入力してください。"
+        too_long: "は、%{size}文字以内で入力してください。"

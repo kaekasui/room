@@ -7,4 +7,8 @@ Room::Application.routes.draw do
   end
   resources :blog_links
   resources :mail_forms, only: [:create]
+
+  namespace :admin do
+    resources :blogs
+  end
 end
