@@ -6,6 +6,8 @@ class BlogComment < ActiveRecord::Base
   default_scope { where(draft: false) }
   scope :recent_blog_comments, -> { limit(5) }
 
+  validates :author, :content, presence: true
+
   def blog_title
     Blog.find(self.blog_id).title
   end
