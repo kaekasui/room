@@ -6,3 +6,16 @@
         %ul.nav
           %li= link_to t("menu.home"), root_path
           %li= link_to t("menu.blog"), blogs_path
+
+        %ul.nav.pull-right
+          - if current_user and current_user.twitter_user
+            %li= link_to "@#{current_user.twitter_user.screen_name}", "https://twitter.com/#{current_user.twitter_user.screen_name}", target: "_blank"
+          %li.dropdown#dropdown_menu
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#dropdown_menu"}
+              = I18n.t("account.my_account")
+              %span.caret
+            %ul.dropdown-menu
+              - if (current_user and current_user.twitter_user.blank?) or current_user.blank?
+                %li= link_to I18n.t("account.twitter"), "/auth/twitter"
+              - if current_user
+                %li= link_to I18n.t("account.logout"), logout_path

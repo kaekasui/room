@@ -10,6 +10,10 @@ ja:
       very_short: "%m/%d"
 
   brand: "ヵェの部屋♪"
+  account:
+    my_account: "My Account"
+    twitter: "Twitterでログイン"
+    logout: "ログアウト"
   menu:
     home: "HOME"
     home_text: "このページです。"
@@ -61,3 +65,4 @@ ja:
     create_mail_form: "メールが送信されました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"
     logged_in: "ログインに成功しました。"
+    logged_out: "ログアウトしました。"

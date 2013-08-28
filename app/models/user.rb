@@ -1,31 +1,23 @@
 class User < ActiveRecord::Base
+  # Userのサブクラスは、
+  # それぞれ、find_user、update_user、create_userのメソッドを保持している。
+
+  has_one :twitter_user, foreign_key: "parent_id"
 
   # omniauthの認証情報からユーザー情報を検索する
-  def self.find_for_oauth(auth)
-    case auth["provider"]
-    when "twitter" then find_twitter_user(auth) && update_twitter_user(auth)
-    end 
+  def User.find_for_oauth(auth)
+    provider_class = eval("#{auth["provider"].capitalize}User")
+
+    user = provider_class.find_user(auth)
+    user.update_user(auth) unless user.blank?
+    user
   end 
 
   # omniauthで接続したユーザー情報を作成する
-  def self.create_with_oauth(auth)
-    case auth["provider"]
-    when "twitter" then create_twitter_user(auth)
-    end 
-  end 
+  def User.create_with_oauth(auth)
+    provider_class = eval("#{auth["provider"].capitalize}User")
 
-  private
-
-  def self.create_twitter_user(auth)
-    @user = User.create(provider: auth["provider"], uid: auth["uid"],
-      name: auth["info"]["name"], screen_name: auth["info"]["nickname"], image: auth["info"]["image"])
-  end 
-
-  def self.find_twitter_user(auth)
-    @user = User.where(:uid => auth.uid).first
-  end 
-
-  def self.update_twitter_user(auth)
-    @user.update_attributes(name: auth["info"]["name"], screen_name: auth["info"]["nickname"], image: auth["info"]["image"])
+    user = provider_class.create_user(auth, @current_user)
+    user
   end 
 end
