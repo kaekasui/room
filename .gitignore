@@ -19,3 +19,6 @@
 
 # Ignore the folder of 'simplecov'
 /coverage
+
+# Ignore the file to write the password.
+/config/initializers/local_setting.rb

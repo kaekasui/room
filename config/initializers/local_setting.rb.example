@@ -1,0 +1,7 @@
+# Use for 'Twitter Developers': https://dev.twitter.com/
+ENV['TWITTER_KEY'] = ""
+ENV['TWITTER_SECRET'] = ""
+
+# Use for 'SendGrid': http://sendgrid.com/
+ENV['SENDGRID_USERNAME'] = ""
+ENV['SENDGRID_PASSWORD'] = ""

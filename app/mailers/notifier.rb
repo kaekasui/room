@@ -1,14 +1,10 @@
 class Notifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "noreply@example.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier.create_blog.subject
-  #
+  # ブログ作成時に、作成した管理者のメールアドレスに通知する。
   def create_blog
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: "aquariuslake@gmail.com"
   end
 end
