@@ -6,6 +6,7 @@ ja:
         title: "タイトル"
         contents1: "内容1"
         contents2: "内容2"
+        draft: "下書き"
       blog_comment:
         title: "タイトル"
         author: "名前"

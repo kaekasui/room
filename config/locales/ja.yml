@@ -19,6 +19,8 @@ ja:
     home_text: "このページです。"
     blog: "BLOG"
     blog_text: "ヵェのブログです。日々のクダらない日常や、ホームページ運用、絵の進行状況、そしてオンラインゲームでの出来事などヵェの人生を綴っています。"
+    admin: "管理"
+    admin_blog: "ブログ"
   side_menu:
     profile: "プロフィール"
     menu: "メニュー"
