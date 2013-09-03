@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828063146) do
+ActiveRecord::Schema.define(version: 20130903071350) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20130828063146) do
     t.integer  "parent_id"
     t.string   "type"
     t.boolean  "admin"
+    t.string   "email"
   end
 
 end
