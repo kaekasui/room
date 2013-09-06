@@ -63,6 +63,7 @@ ja:
         submit: "送信する"
 
   flash:
+    add_email: "メールアドレスを入力してください。入力されたメールアドレス宛にユーザー登録リンクを送信します。"
     create_blog: "ブログが作成されました。"
     create_mail_form: "メールが送信されました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"

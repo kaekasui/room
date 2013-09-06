@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
     @user = User.find_for_oauth(auth) || User.create_with_oauth(auth)
     session[:user_id] = @user.parent_user.id
 
-    redirect_to :root, notice: I18n.t("flash.logged_in")
+    if current_user and current_user.email.nil?
+      redirect_to edit_user_path(@user), notice: I18n.t("flash.add_email")
+    else
+      redirect_to :root, notice: I18n.t("flash.logged_in")
+    end
   end 
 
   def destroy

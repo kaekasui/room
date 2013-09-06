@@ -15,14 +15,14 @@
                 %li= link_to t("menu.admin_blog"), new_admin_blog_path
 
         %ul.nav.pull-right
-          - if current_user and current_user.twitter_user
+          - if current_user and current_user.twitter_user and !current_user.email.nil?
             %li= link_to "@#{current_user.twitter_user.screen_name}", "https://twitter.com/#{current_user.twitter_user.screen_name}", target: "_blank"
           %li.dropdown#dropdown_menu
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#dropdown_menu"}
               = I18n.t("account.my_account")
               %span.caret
             %ul.dropdown-menu
-              - if (current_user and current_user.twitter_user.blank?) or current_user.blank?
+              - if (current_user and current_user.twitter_user.blank?) or current_user.blank? or current_user.email.nil?
                 %li= link_to I18n.t("account.twitter"), "/auth/twitter"
               - if current_user
                 %li= link_to I18n.t("account.logout"), logout_path

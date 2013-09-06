@@ -8,6 +8,7 @@ Room::Application.routes.draw do
     resources :blog_comments
   end
   resources :mail_forms, only: [:create]
+  resources :users, only: [:edit, :update]
 
   namespace :admin do
     resources :blogs

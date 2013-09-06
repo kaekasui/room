@@ -6,18 +6,18 @@ class User < ActiveRecord::Base
 
   # omniauthの認証情報からユーザー情報を検索する
   def User.find_for_oauth(auth)
-    provider_class = eval("#{auth["provider"].capitalize}User")
-
-    user = provider_class.find_user(auth)
+    user = provider_class(auth["provider"]).find_user(auth)
     user.update_user(auth) unless user.blank?
     user
   end 
 
   # omniauthで接続したユーザー情報を作成する
   def User.create_with_oauth(auth)
-    provider_class = eval("#{auth["provider"].capitalize}User")
-
-    user = provider_class.create_user(auth, @current_user)
-    user
+    provider_class(auth["provider"]).create_user(auth, @current_user)
   end 
+
+  private
+  def self.provider_class(provider)
+    eval("#{provider.capitalize}User")
+  end
 end
