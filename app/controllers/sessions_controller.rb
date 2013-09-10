@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.parent_user.id
 
     if current_user and current_user.email.nil?
-      redirect_to edit_user_path(@user), notice: I18n.t("flash.add_email")
+      redirect_to edit_user_path(@user.parent_user)
     else
       redirect_to :root, notice: I18n.t("flash.logged_in")
     end
@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-
     redirect_to :root, notice: I18n.t("flash.logged_out")
   end
 end
