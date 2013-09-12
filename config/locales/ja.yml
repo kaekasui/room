@@ -62,7 +62,9 @@ ja:
       mail_form:
         submit: "送信する"
   actions:
+    edit: "編集する"
     update: "更新する"
+    destroy: "削除する"
     cancel: "戻る"
 
   flash:

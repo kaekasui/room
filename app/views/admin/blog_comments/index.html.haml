@@ -1,0 +1,12 @@
+- model_class = BlogComment.new.class
+%table.table
+  %tr
+    %th= model_class.human_attribute_name(:created_at)
+    %th= model_class.human_attribute_name(:title)
+    %th= t "helpers.actions"
+  - @blog_comments.each do |blog_comment|
+    %tr
+      %td.post_at= l blog_comment.created_at
+      %td= blog_comment.title
+      %td= link_to I18n.t("actions.edit"), edit_admin_blog_path(blog_comment), class: "btn"
+      %td= link_to I18n.t("actions.destroy"), admin_blog_path(blog_comment), class: "btn", method: :delete

@@ -15,6 +15,7 @@ ja:
         content: "内容"
         password: "パスワード"
         admin: "管理者のみ閲覧"
+        created_at: "投稿日"
     errors:
       template:
         header:
