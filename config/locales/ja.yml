@@ -61,6 +61,9 @@ ja:
         create: "投稿する"
       mail_form:
         submit: "送信する"
+  actions:
+    update: "更新する"
+    cancel: "戻る"
 
   flash:
 #    add_email: "メールアドレスを入力してください。入力されたメールアドレス宛にユーザー登録リンクを送信します。"

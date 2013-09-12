@@ -1,0 +1,13 @@
+- model_class = Version.new.class
+- unless @versions.blank?
+  = form_tag action: :update_all do
+    %table.table
+      %tr
+        %th= model_class.human_attribute_name(:current)
+        %th= model_class.human_attribute_name(:name)
+      - @versions.each_with_index do |version, i|
+        %tr
+          %td= radio_button :current, "current_version", version.id, checked: version.current
+          = fields_for "version[]", version do |f|
+            %td= f.text_field :name
+    = submit_tag I18n.t("actions.update"), class: "btn"
