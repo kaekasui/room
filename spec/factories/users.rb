@@ -7,5 +7,6 @@ FactoryGirl.define do
     name "MyString"
     screen_name "MyString"
     image "MyString"
+    email "test@sample.com"
   end
 end
