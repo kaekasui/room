@@ -13,7 +13,7 @@ Room::Application.routes.draw do
   namespace :admin do
     resources :blogs
     resources :blog_comments
-    resources :versions, only: [:index] do
+    resources :versions, only: [:index, :destroy] do
       post "/update_all" => "versions#update_all", on: :collection
     end
   end

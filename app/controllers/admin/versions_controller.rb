@@ -24,6 +24,13 @@ class Admin::VersionsController < ApplicationController
     redirect_to admin_versions_path
   end
 
+  def destroy
+    record = Version.find(version_id_param)
+    record.destroy
+
+    redirect_to admin_versions_path
+  end
+
   private
   def version_params
     params.require(:version)
@@ -31,6 +38,10 @@ class Admin::VersionsController < ApplicationController
 
   def current_version_params
     params.require(:version).permit(:current)[:current]
+  end
+
+  def version_id_param
+    params.require(:id)
   end
 
   def find_versions

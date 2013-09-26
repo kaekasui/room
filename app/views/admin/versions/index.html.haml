@@ -10,6 +10,7 @@
           %td= radio_button :version, "current", version.id, checked: version.current
           = fields_for "version[]", version do |f|
             %td= f.text_field :name
+            %td.delete_version= link_to I18n.t("actions.destroy"), admin_version_path(version.id), method: :delete, class: "btn"
   %table
     %tr
       %td.add_version= I18n.t("actions.add")
