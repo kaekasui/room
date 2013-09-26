@@ -97,3 +97,6 @@ gem 'omniauth-facebook'
 # gem 'debugger', group: [:development, :test]
 
 gem 'heroku'
+
+# Use the plugin which hides records of deleting them, being to recover them.
+gem 'paranoia', '~> 2.0.0'
