@@ -13,11 +13,13 @@ class Admin::VersionsController < ApplicationController
     end
 
     # 新規バージョン情報の作成
-    version_params["new"].each do |param_id, value|
-      version = Version.create(name: value)
-      if current_version_params.to_i == 0
-        current_id = current_version_params.slice(4..-1)
-        param_id == current_id ? version.update_attributes(current:true) : version.update_attributes(current: false)
+    unless version_params["new"].blank?
+      version_params["new"].each do |param_id, value|
+        version = Version.create(name: value)
+        if !current_version_params.blank? and current_version_params.to_i == 0 
+          current_id = current_version_params.slice(4..-1)
+          param_id == current_id ? version.update_attributes(current:true) : version.update_attributes(current: false)
+        end
       end
     end
 
