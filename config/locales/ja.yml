@@ -21,6 +21,13 @@ ja:
     blog_text: "ヵェのブログです。日々のクダらない日常や、ホームページ運用、絵の進行状況、そしてオンラインゲームでの出来事などヵェの人生を綴っています。"
     admin: "管理"
     admin_blog: "ブログ"
+  admin_menu:
+    blogs: "ブログ一覧"
+    blog_comments: "コメント一覧"
+    blog_links: "リンク一覧"
+    mail: "メール一覧"
+    new_blog: "ブログ作成"
+    operation_histories: "操作履歴"
   side_menu:
     profile: "プロフィール"
     menu: "メニュー"
@@ -63,10 +70,10 @@ ja:
         submit: "送信する"
   actions:
     add: "追加する"
+    cancel: "戻る"
+    destroy: "削除する"
     edit: "編集する"
     update: "更新する"
-    destroy: "削除する"
-    cancel: "戻る"
 
   flash:
 #    add_email: "メールアドレスを入力してください。入力されたメールアドレス宛にユーザー登録リンクを送信します。"
