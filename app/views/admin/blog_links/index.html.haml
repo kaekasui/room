@@ -1,2 +1,19 @@
-%h1 Admin::BlogLinks#index
-%p Find me in app/views/admin/blog_links/index.html.haml
+- model_class = BlogLink.new.class
+= form_tag action: :update_all do
+  %table.table
+    - unless @blog_links.blank?
+      %tr
+        %th= model_class.human_attribute_name(:title)
+        %th= model_class.human_attribute_name(:url)
+      - @blog_links.each do |blog_link|
+        %tr
+          = fields_for "blog_link[]", blog_link do |f|
+            %td= f.text_field :title
+            %td= f.text_field :url
+            %td.update_blog_link=# link_to I18n.t("actions.edit_detail"), admin_blog_link_path(blog_link.id), class: "btn"
+            %td.delete_blog_link= link_to I18n.t("actions.destroy"), admin_blog_link_path(blog_link.id), method: :delete, class: "btn"
+  %table
+    %tr
+      %td.add_blog_link= I18n.t("actions.add")
+
+  = submit_tag I18n.t("actions.update"), class: "btn"
