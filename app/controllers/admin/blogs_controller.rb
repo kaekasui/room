@@ -43,6 +43,15 @@ class Admin::BlogsController < ApplicationController
     end
   end
 
+  def destroy
+p blog_id_param
+    blog = Blog.find(blog_id_param)
+p blog
+    blog.destroy
+
+    redirect_to admin_blogs_path
+  end
+
   private
 
   def set_blog
@@ -51,6 +60,10 @@ class Admin::BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :contents1, :contents2)
+  end
+
+  def blog_id_param
+    params.require(:id)
   end
 
   def commit_param

@@ -10,5 +10,5 @@
       %td.post_at= l blog.created_at
       %td= blog.title
       %td= blog.draft
-      %td= link_to t(".edit", default: t("helpers.links.edit")), edit_admin_blog_path(blog), class: "btn btn-mini"
-      %td= link_to t(".destroy", default: t("helpers.links.destroy")), admin_blog_path(blog), class: "btn btn-mini", method: :delete
+      %td= link_to t("actions.edit"), edit_admin_blog_path(blog), class: "btn btn-mini"
+      %td= link_to t("actions.destroy"), admin_blog_path(blog.id), class: "btn btn-mini", method: :delete
