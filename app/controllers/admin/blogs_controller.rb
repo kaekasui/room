@@ -32,6 +32,8 @@ class Admin::BlogsController < ApplicationController
   end
 
   def update
+    @blog.draft = I18n.t("actions.draft") == commit_param ? true : false
+
     respond_to do |format|
       if @blog.update_attributes(blog_params)
         format.html { redirect_to admin_blogs_path, notice: I18n.t("flash.update_blog") }
@@ -44,9 +46,7 @@ class Admin::BlogsController < ApplicationController
   end
 
   def destroy
-p blog_id_param
     blog = Blog.find(blog_id_param)
-p blog
     blog.destroy
 
     redirect_to admin_blogs_path

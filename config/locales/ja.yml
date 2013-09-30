@@ -86,3 +86,4 @@ ja:
     cannot_create_mail_form: "メールの送信に失敗しました。"
     logged_in: "ログインに成功しました。"
     logged_out: "ログアウトしました。"
+    update_blog: "ブログを更新しました。"
