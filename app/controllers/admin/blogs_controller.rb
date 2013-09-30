@@ -1,5 +1,5 @@
 class Admin::BlogsController < ApplicationController
-  before_action :set_blog, only: [:edit, :update]
+  before_action :set_blog, only: [:edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
@@ -46,8 +46,7 @@ class Admin::BlogsController < ApplicationController
   end
 
   def destroy
-    blog = Blog.find(blog_id_param)
-    blog.destroy
+    @blog.destroy
 
     redirect_to admin_blogs_path
   end
@@ -60,10 +59,6 @@ class Admin::BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :contents1, :contents2)
-  end
-
-  def blog_id_param
-    params.require(:id)
   end
 
   def commit_param
