@@ -14,9 +14,15 @@ class Admin::BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    if I18n.t("actions.draft") == commit_param
+      @blog.draft = true
+      message = I18n.t("flash.create_draft_blog")
+    else
+      message = I18n.t("flash.create_blog")
+    end
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to admin_blogs_path, notice: I18n.t("flash.create_blog") }
+        format.html { redirect_to admin_blogs_path, notice: message }
         format.json { render json: @blog, status: :created, location: @blog }
       else
         format.html { render action: "new" }
@@ -45,5 +51,9 @@ class Admin::BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :contents1, :contents2)
+  end
+
+  def commit_param
+    params.require(:commit)
   end
 end

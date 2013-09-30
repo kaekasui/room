@@ -72,14 +72,16 @@ ja:
     add: "追加する"
     cancel: "戻る"
     destroy: "削除する"
+    draft: "下書きする"
     edit: "編集する"
     update: "更新する"
 
   flash:
 #    add_email: "メールアドレスを入力してください。入力されたメールアドレス宛にユーザー登録リンクを送信します。"
     add_email: "メールアドレスを入力して登録を完了してください。"
-    create_blog: "ブログが作成されました。"
-    create_mail_form: "メールが送信されました。"
+    create_blog: "ブログを作成しました。"
+    create_draft_blog: "下書きのブログを作成しました。"
+    create_mail_form: "メールを送信しました。"
     create_user: "ユーザー登録が完了しました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"
     logged_in: "ログインに成功しました。"
