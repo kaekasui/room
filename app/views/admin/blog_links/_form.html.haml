@@ -1,0 +1,23 @@
+= render partial: "error_messages", locals: {errors: @blog_link.errors} if @blog_link.errors.any?
+
+= form_for ['admin', @blog_link], html: {class: "form-horizontal"} do |f|
+  .control-group
+    = f.label :title, class: "control-label"
+    .controls
+      = f.text_field :title
+  .control-group
+    = f.label :url, class: "control-label"
+    .controls
+      = f.text_field :url
+  .control-group
+    = f.label :author, class: "control-label"
+    .controls
+      = f.text_field :author
+  .control-group
+    = f.label :introduction, class: "control-label"
+    .controls
+      = f.text_area :introduction, class: "span5", rows: "4"
+  .control-group
+    .controls
+      = f.submit class: "btn"
+      = f.submit I18n.t("actions.draft"), class: "btn"

@@ -20,6 +20,6 @@ class BlogsController < ApplicationController
   def set_menu
     @recent_blogs = Blog.with_no_draft.recent_blogs
     @recent_blog_comments = BlogComment.recent_blog_comments
-    @blog_links = BlogLink.all
+    @blog_links = BlogLink.with_no_draft
   end
 end

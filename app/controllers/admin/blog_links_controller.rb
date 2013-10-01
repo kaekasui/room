@@ -1,8 +1,18 @@
 class Admin::BlogLinksController < ApplicationController
   before_action :set_blog_links, only: [:index, :update_all]
-  before_action :set_blog_link, only: [:destroy]
+  before_action :set_blog_link, only: [:edit, :update, :destroy]
 
   def index
+  end
+
+  def edit
+  end
+
+  def update
+    @blog_link.update_attributes(blog_link_params.symbolize_keys)
+    @blog_link.draft = I18n.t("actions.draft") == commit_param ? true : false
+    @blog_link.save
+    redirect_to admin_blog_links_path
   end
 
   def update_all
@@ -39,5 +49,9 @@ class Admin::BlogLinksController < ApplicationController
 
   def blog_link_params
     params.require(:blog_link)
+  end
+
+  def commit_param
+    params.require(:commit)
   end
 end
