@@ -13,6 +13,7 @@
                 %span.caret
               %ul.dropdown-menu
                 %li= link_to t("menu.admin_blog"), new_admin_blog_path
+                %li= link_to t("menu.admin_setting"), admin_versions_path
 
         %ul.nav.pull-right
           - if current_user and current_user.twitter_user and !current_user.email.nil?

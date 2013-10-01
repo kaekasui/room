@@ -47,7 +47,6 @@ class Admin::BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-
     redirect_to admin_blogs_path
   end
 

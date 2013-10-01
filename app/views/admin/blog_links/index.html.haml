@@ -10,7 +10,7 @@
           = fields_for "blog_link[]", blog_link do |f|
             %td= f.text_field :title
             %td= f.text_field :url
-            %td.update_blog_link=# link_to I18n.t("actions.edit_detail"), admin_blog_link_path(blog_link.id), class: "btn"
+            %td.update_blog_link= link_to I18n.t("actions.edit_detail"), edit_admin_blog_link_path(blog_link.id), class: "btn"
             %td.delete_blog_link= link_to I18n.t("actions.destroy"), admin_blog_link_path(blog_link.id), method: :delete, class: "btn"
   %table
     %tr

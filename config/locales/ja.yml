@@ -21,11 +21,12 @@ ja:
     blog_text: "ヵェのブログです。日々のクダらない日常や、ホームページ運用、絵の進行状況、そしてオンラインゲームでの出来事などヵェの人生を綴っています。"
     admin: "管理"
     admin_blog: "ブログ"
+    admin_setting: "設定"
   admin_menu:
     blogs: "ブログ一覧"
     blog_comments: "コメント一覧"
     blog_links: "リンク一覧"
-    mail: "メール一覧"
+    mail_forms: "メール一覧"
     new_blog: "ブログ作成"
     operation_histories: "操作履歴"
   side_menu:
@@ -74,6 +75,7 @@ ja:
     destroy: "削除する"
     draft: "下書きする"
     edit: "編集する"
+    edit_detail: "詳細編集"
     update: "更新する"
 
   flash:
