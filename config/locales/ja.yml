@@ -26,7 +26,7 @@ ja:
     blogs: "ブログ一覧"
     blog_comments: "コメント一覧"
     blog_links: "リンク一覧"
-    mail: "メール一覧"
+    mail_forms: "メール一覧"
     new_blog: "ブログ作成"
     operation_histories: "操作履歴"
   side_menu:
