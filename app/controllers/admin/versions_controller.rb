@@ -1,4 +1,5 @@
 class Admin::VersionsController < ApplicationController
+  before_action :set_menu
   before_action :find_versions, only: [:index, :update_all]
 
   def index
@@ -48,5 +49,9 @@ class Admin::VersionsController < ApplicationController
 
   def find_versions
     @versions = Version.all
+  end
+
+  def set_menu
+    @admin_menu = "setting"
   end
 end

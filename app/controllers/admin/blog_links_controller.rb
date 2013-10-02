@@ -1,4 +1,5 @@
 class Admin::BlogLinksController < ApplicationController
+  before_action :set_menu
   before_action :set_blog_links, only: [:index, :update_all]
   before_action :set_blog_link, only: [:edit, :update, :destroy]
 
@@ -53,5 +54,9 @@ class Admin::BlogLinksController < ApplicationController
 
   def commit_param
     params.require(:commit)
+  end
+
+  def set_menu
+    @admin_menu = "blog"
   end
 end

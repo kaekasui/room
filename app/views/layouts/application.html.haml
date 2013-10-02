@@ -20,7 +20,9 @@
       = render "layouts/header"
 
     .container
-      = render "admin_menu"
+      - menus  = admin_menu_list(@admin_menu)
+      - menus.each do |menu|
+        = render partial: "admin_menu", locals: { name: menu }
       .row
         .span8
           = yield
