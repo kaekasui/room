@@ -1,6 +1,5 @@
 Room::Application.routes.draw do
 
-  get "users/index"
   root "home#index"
   get "/auth/:provider/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy", as: "logout"
@@ -18,6 +17,9 @@ Room::Application.routes.draw do
       post "/update_all" => "blog_links#update_all", on: :collection
     end
     resources :mail_forms
+    resources :users do
+      post "/update_all" => "users#update_all", on: :collection
+    end
     resources :versions, only: [:index, :destroy] do
       post "/update_all" => "versions#update_all", on: :collection
     end

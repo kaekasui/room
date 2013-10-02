@@ -1,4 +1,5 @@
 class Admin::BlogsController < ApplicationController
+  before_action :set_menu
   before_action :set_blog, only: [:edit, :update, :destroy]
 
   def index
@@ -62,5 +63,9 @@ class Admin::BlogsController < ApplicationController
 
   def commit_param
     params.require(:commit)
+  end
+
+  def set_menu
+    @admin_menu = "blog"
   end
 end

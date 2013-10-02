@@ -29,7 +29,8 @@ ja:
     mail_forms: "メール一覧"
     new_blog: "ブログ作成"
     operation_histories: "操作履歴"
-    versions: "バージョン一覧"
+    versions: "バージョン"
+    users: "ユーザー"
   side_menu:
     profile: "プロフィール"
     menu: "メニュー"

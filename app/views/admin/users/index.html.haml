@@ -1,2 +1,19 @@
-%h1 Admin::Users#index
-%p Find me in app/views/admin/users/index.html.haml
+- model_class = User.new.class
+= form_tag action: :update_all do
+  %table.table
+    - unless @users.blank?
+      %tr
+        %th= model_class.human_attribute_name(:screen_name)
+        %th= model_class.human_attribute_name(:provider)
+      - @users.each do |user|
+        %tr
+          = fields_for "user[]", user do |f|
+            %td= f.text_field :screen_name
+            %td= f.text_field :provider
+            %td.update_user=# link_to I18n.t("actions.edit_detail"), edit_admin_user_path(user.id), class: "btn"
+            %td.delete_user= link_to I18n.t("actions.destroy"), admin_user_path(user.id), method: :delete, class: "btn"
+  %table
+    %tr
+      %td.add_user= I18n.t("actions.add")
+
+  = submit_tag I18n.t("actions.update"), class: "btn"
