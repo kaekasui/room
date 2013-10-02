@@ -18,17 +18,17 @@ module ApplicationHelper
   def admin_menu_list(menu)
     case menu
       when "blog" then
-        [
-          I18n.t("admin_menu.blogs"),
-          I18n.t("admin_menu.blog_comments"),
-          I18n.t("admin_menu.blog_links"),
-          I18n.t("admin_menu.mail_forms")
-        ]
+        {
+          I18n.t('admin_menu.blogs') => "new_admin_blog_path",
+          I18n.t('admin_menu.blog_comments') => "admin_blog_comments_path",
+          I18n.t('admin_menu.blog_links') => "admin_blog_links_path",
+          I18n.t('admin_menu.mail_forms') => "admin_mail_forms_path"
+        }
       when "setting" then
-        [
-          I18n.t("admin_menu.versions"),
-          I18n.t("admin_menu.users")
-        ]
+        {
+          I18n.t('admin_menu.versions') => "admin_versions_path",
+          I18n.t('admin_menu.users') => "admin_users_path"
+        }
     end
   end
 end
