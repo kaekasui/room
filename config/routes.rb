@@ -17,7 +17,7 @@ Room::Application.routes.draw do
     resources :blog_links do
       post "/update_all" => "blog_links#update_all", on: :collection
     end
-    resources :mail_forms, only: [:index]
+    resources :mail_forms
     resources :versions, only: [:index, :destroy] do
       post "/update_all" => "versions#update_all", on: :collection
     end
