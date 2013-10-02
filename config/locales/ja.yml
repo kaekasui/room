@@ -84,6 +84,7 @@ ja:
 #    add_email: "メールアドレスを入力してください。入力されたメールアドレス宛にユーザー登録リンクを送信します。"
     add_email: "メールアドレスを入力して登録を完了してください。"
     create_blog: "ブログを作成しました。"
+    create_blog_comment: "コメントを投稿しました。"
     create_draft_blog: "下書きのブログを作成しました。"
     create_mail_form: "メールを送信しました。"
     create_user: "ユーザー登録が完了しました。"
