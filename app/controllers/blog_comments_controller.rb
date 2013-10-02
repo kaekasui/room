@@ -12,7 +12,7 @@ class BlogCommentsController < ApplicationController
         format.js
       else
         format.html { render @blog }
-        format.js { render json: @blog_comment.errors }
+        format.js { render action: "failure" }
       end
     end
   end
