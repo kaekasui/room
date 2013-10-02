@@ -1,3 +1,3 @@
 class MailForm < ActiveRecord::Base
-  validates_presence_of :content
+  validates :content, presence: true, length: { maximum: MAX_TEXT_AREA_LENGTH }
 end
