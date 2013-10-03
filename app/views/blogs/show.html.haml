@@ -2,7 +2,7 @@
   %table.table
     = render partial: "exordium", locals: {blog: @blog}
     %tr
-      %td.contents2{colspan: "2"}= @blog.contents2
+      %td.contents2{colspan: 2}= to_skip(@blog.contents2).html_safe
     %tr
       %td.align_right{:colspan => 2}= link_to "Comments(" + @blog.blog_comments.count.to_s + ")", blog_path(id: @blog.id, anchor: "blog_comments")
 
