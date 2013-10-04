@@ -31,4 +31,9 @@ module ApplicationHelper
         }
     end
   end
+
+  def current_version
+    version = Version.where(current: true).first
+    version.name unless version.blank?
+  end
 end
