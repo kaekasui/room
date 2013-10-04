@@ -37,4 +37,29 @@ module ApplicationHelper
     version = Version.where(current: true).first
     version.name unless version.blank?
   end
+
+  def markdown(text)
+    html = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(hard_wrap: true),
+      tables: true,
+      autolink: true,
+      superscript: true,
+      strikethrough: true,
+      no_intra_emphasis: true,
+      fenced_code_blocks: true,
+      space_after_headers: true
+    ).render(text)
+    syntax_highlighter(html).html_safe
+  end
+
+  def syntax_highlighter(html)
+    doc = Nokogiri::HTML(html)
+    doc.search("pre").each do |pre|
+      pre.replace(Pygments.highlight(
+        pre.text.rstrip,
+        lexer: pre.children.attribute("class").value
+      ))
+    end
+    doc.to_s
+  end
 end
