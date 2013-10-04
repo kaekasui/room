@@ -103,3 +103,8 @@ gem 'heroku'
 
 # Use the plugin which hides records of deleting them, being to recover them.
 gem 'paranoia', '~> 2.0.0'
+
+# Use the plugin which for the syntax highlight
+gem "redcarpet"
+gem "pygments.rb"
+gem "nokogiri"
