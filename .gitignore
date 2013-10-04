@@ -22,3 +22,6 @@
 
 # Ignore the file to write the password.
 /config/initializers/local_setting.rb
+
+# Ignore assets directory: images, css and javascript
+/public/assets/*
