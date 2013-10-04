@@ -12,7 +12,7 @@
         %td= blog_comment.author
         %td.align_right= l blog_comment.created_at
       %tr
-        %td{colspan: "2"}= blog_comment.content
+        %td{colspan: "2"}= to_skip(blog_comment.content).html_safe
       %tr
         %td.align_right{colspan: "2"}= link_to_unless(blog_comment.url.blank?, I18n.t("blog_comment.url"), blog_comment.url, target: "_blank")
 
