@@ -60,6 +60,8 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'simplecov', :require => false
+
+  gem "better_errors"
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -108,3 +110,5 @@ gem 'paranoia', '~> 2.0.0'
 gem "redcarpet"
 gem "pygments.rb"
 gem "nokogiri"
+
+
