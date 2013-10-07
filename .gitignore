@@ -24,4 +24,8 @@
 /config/initializers/local_setting.rb
 
 # Ignore assets directory: images, css and javascript
-/public/assets/*/*
+/public/assets/*.*
+/public/assets/admin/*
+/public/assets/icon_images/*
+/public/assets/twitter/*
+/public/assets/background_images/*-*.*
