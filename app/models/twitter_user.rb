@@ -1,4 +1,5 @@
 class TwitterUser < User
+  acts_as_paranoid
 
   belongs_to :parent_user, class_name: "User", foreign_key: "parent_id"
 
