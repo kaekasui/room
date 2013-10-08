@@ -65,6 +65,14 @@ ja:
     admin: "管理者のみが閲覧可能なコメントです。"
     url: "URL"
 
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<" 
+      next: ">" 
+      truncate: "..."
+
   helpers:
     submit:
       blog:
