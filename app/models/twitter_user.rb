@@ -8,7 +8,7 @@ class TwitterUser < User
   end 
 
   def self.create_user(auth, current_user)
-    @parent_user = current_user || User.create(uid: auth["uid"], name: auth["info"]["name"])
+    @parent_user = current_user || User.create
 
     self.create(provider: auth["provider"], uid: auth["uid"],
       name: auth["info"]["name"], screen_name: auth["info"]["nickname"], image: auth["info"]["image"], parent_id: @parent_user.id)
