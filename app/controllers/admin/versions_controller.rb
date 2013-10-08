@@ -1,4 +1,4 @@
-class Admin::VersionsController < ApplicationController
+class Admin::VersionsController < Admin::AdminBaseController
   before_action :set_menu
   before_action :find_versions, only: [:index, :update_all]
 

@@ -1,4 +1,4 @@
-class Admin::BlogCommentsController < ApplicationController
+class Admin::BlogCommentsController < Admin::AdminBaseController
   before_action :set_menu
 
   def index

@@ -1,4 +1,4 @@
-class Admin::BlogLinksController < ApplicationController
+class Admin::BlogLinksController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_blog_links, only: [:index, :update_all]
   before_action :set_blog_link, only: [:edit, :update, :destroy]

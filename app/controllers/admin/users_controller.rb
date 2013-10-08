@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_parent_users, only: [:index, :update_all]
   before_action :set_parent_user, only: [:destroy]

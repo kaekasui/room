@@ -1,4 +1,4 @@
-class Admin::BlogsController < ApplicationController
+class Admin::BlogsController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_blog, only: [:edit, :update, :destroy]
 

@@ -1,4 +1,4 @@
-class Admin::MailFormsController < ApplicationController
+class Admin::MailFormsController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_mail_form, only: [:destroy]
 
