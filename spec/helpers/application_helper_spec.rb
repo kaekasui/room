@@ -8,7 +8,7 @@ describe ApplicationHelper do
   end
 
   describe "#icon" do
-    it "アイコンが表示されること" do
+    it "アイコンのURLが生成されること" do
       expect(helper.icon).to eq("icon_images/clover.gif")
     end
   end
