@@ -1,6 +1,7 @@
 $("#blog_comments").prepend("<%= j render partial: 'blog_comment', locals: { blog_comment: @blog_comment } %>");
 
 $("#messages").html("<%= j render partial: 'message', locals: { notice: I18n.t('flash.create_blog_comment') } %>");
+
 $("#blog_comment_title").val("");
 $("#blog_comment_url").val("");
 $("#blog_comment_mail").val("");

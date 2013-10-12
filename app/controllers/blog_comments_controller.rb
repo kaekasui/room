@@ -8,7 +8,7 @@ class BlogCommentsController < ApplicationController
 
     respond_to do |format|
       if @blog_comment.save
-        format.html { redirect_to @blog, notice: 'Blog comment was successfully created.' }
+        format.html { redirect_to @blog }
         format.js
       else
         format.html { render @blog }
