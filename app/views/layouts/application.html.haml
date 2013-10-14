@@ -20,9 +20,10 @@
       = render "layouts/header"
 
     .container
-      - if @admin_menu
-        - admin_menu_list(@admin_menu).each do |name, path|
-          = render partial: "admin_menu", locals: { name: name, path: path }
+      %ul.nav.nav-pills
+        - if @admin_menu
+          - admin_menu_list(@admin_menu).each do |name, path|
+            = render partial: "admin_menu", locals: { name: name, path: path }
       .row
         .span8
           = yield
