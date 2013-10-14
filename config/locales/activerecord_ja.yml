@@ -16,6 +16,12 @@ ja:
         password: "パスワード"
         admin: "管理者のみ閲覧"
         created_at: "投稿日"
+      blog_link:
+        title: "タイトル"
+        url: "URL"
+      mail_form:
+        created_at: "送信日時"
+        content: "内容"
     errors:
       template:
         header:
