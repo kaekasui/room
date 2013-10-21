@@ -1,11 +1,11 @@
 # encoding: utf-8
-# コマンド rake set_data:admin
+# コマンド rake user:set_admin
 
-namespace :set_data do
+namespace :user do
 
   # 指定ユーザに管理者権限を追加する
   desc "Add administrator authority to user."
-  task admin: :environment do
+  task set_admin: :environment do
     begin
       raise "ENV['USER_EMAIL'] is not found." unless ENV['USER_EMAIL']
       email = ENV['USER_EMAIL']

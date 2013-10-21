@@ -18,9 +18,9 @@
         %ul.nav.pull-right
           %li.dropdown#dropdown_menu
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#dropdown_menu"}
-              = I18n.t("account.my_account")
-              %span.caret
+              =# I18n.t("account.my_account")
+              /%span.caret
             %ul.dropdown-menu
-              %li= link_to I18n.t("account.twitter"), "/auth/twitter"
+              %li=# link_to I18n.t("account.twitter"), "/auth/twitter"
               - if current_user
-                %li= link_to I18n.t("account.logout"), logout_path
+                %li=# link_to I18n.t("account.logout"), logout_path
