@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @status.name
+%p
+  %b Position:
+  = @status.position
+%p
+  %b Deleted at:
+  = @status.deleted_at
+
+= link_to 'Edit', edit_status_path(@status)
+\|
+= link_to 'Back', statuses_path
