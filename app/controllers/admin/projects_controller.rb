@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class Admin::ProjectsController < Admin::AdminBaseController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to ['admin', @project], notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to ['admin', @project], notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to ['admin', @project] }
       format.json { head :no_content }
     end
   end
