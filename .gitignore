@@ -14,6 +14,9 @@
 # Ignore database config.
 /config/database.yml
 
+# Ignore database schema
+/db/schema.rb
+
 # Ignore scaffold stylesheet.
 /assets/stylesheets/scaffolds.css.scss
 
