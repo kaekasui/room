@@ -13,13 +13,13 @@
   %tbody
     - @priorities.each do |priority|
       %tr
-        %td= link_to priority.id, priority_path(priority)
+        %td= link_to priority.id, admin_priority_path(priority)
         %td= priority.name
         %td= priority.position
         %td= priority.deleted_at
         %td=l priority.created_at
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_priority_path(priority), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), priority_path(priority), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_priority_path(priority), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_priority_path(priority), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_priority_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_priority_path, :class => 'btn btn-primary'

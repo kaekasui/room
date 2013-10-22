@@ -1,4 +1,4 @@
-class PrioritiesController < ApplicationController
+class Admin::PrioritiesController < Admin::AdminBaseController
   before_action :set_priority, only: [:show, :edit, :update, :destroy]
 
   # GET /priorities
@@ -28,7 +28,7 @@ class PrioritiesController < ApplicationController
 
     respond_to do |format|
       if @priority.save
-        format.html { redirect_to @priority, notice: 'Priority was successfully created.' }
+        format.html { redirect_to ['admin', @priority], notice: 'Priority was successfully created.' }
         format.json { render action: 'show', status: :created, location: @priority }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class PrioritiesController < ApplicationController
   def update
     respond_to do |format|
       if @priority.update(priority_params)
-        format.html { redirect_to @priority, notice: 'Priority was successfully updated.' }
+        format.html { redirect_to ['admin', @priority], notice: 'Priority was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class PrioritiesController < ApplicationController
   def destroy
     @priority.destroy
     respond_to do |format|
-      format.html { redirect_to priorities_url }
+      format.html { redirect_to admin_priorities_path }
       format.json { head :no_content }
     end
   end
