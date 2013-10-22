@@ -1,4 +1,4 @@
-= form_for @ticket, :html => { :class => 'form-horizontal' } do |f|
+= form_for ['admin', @ticket], :html => { :class => 'form-horizontal' } do |f|
   .control-group
     = f.label :code, :class => 'control-label'
     .controls
@@ -41,4 +41,4 @@
       = f.text_field :deleted_at, :class => 'text_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), tickets_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn'
