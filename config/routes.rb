@@ -1,5 +1,7 @@
 Room::Application.routes.draw do
 
+  resources :functions
+
   root "home#index"
   get "/auth/:provider/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy", as: "logout"

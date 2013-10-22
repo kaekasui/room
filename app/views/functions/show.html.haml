@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @function.name
+%p
+  %b Position:
+  = @function.position
+%p
+  %b Deleted at:
+  = @function.deleted_at
+
+= link_to 'Edit', edit_function_path(@function)
+\|
+= link_to 'Back', functions_path
