@@ -2,8 +2,6 @@ Room::Application.routes.draw do
 
   resources :priorities
 
-  resources :statuses
-
   root "home#index"
   get "/auth/:provider/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy", as: "logout"
@@ -22,6 +20,7 @@ Room::Application.routes.draw do
     end
     resources :mail_forms
     resources :projects
+    resources :statuses
     resources :users do
       post "/update_all" => "users#update_all", on: :collection
     end

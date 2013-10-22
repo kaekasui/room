@@ -1,4 +1,4 @@
-class StatusesController < ApplicationController
+class Admin::StatusesController < Admin::AdminBaseController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
@@ -28,7 +28,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to ['admin', @status], notice: 'Status was successfully created.' }
         format.json { render action: 'show', status: :created, location: @status }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class StatusesController < ApplicationController
   def update
     respond_to do |format|
       if @status.update(status_params)
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+        format.html { redirect_to ['admin', @status], notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class StatusesController < ApplicationController
   def destroy
     @status.destroy
     respond_to do |format|
-      format.html { redirect_to statuses_url }
+      format.html { redirect_to admin_statuses_path }
       format.json { head :no_content }
     end
   end
