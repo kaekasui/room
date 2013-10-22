@@ -1,4 +1,4 @@
-class FunctionsController < ApplicationController
+class Admin::FunctionsController < Admin::AdminBaseController
   before_action :set_function, only: [:show, :edit, :update, :destroy]
 
   # GET /functions
@@ -28,7 +28,7 @@ class FunctionsController < ApplicationController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to @function, notice: 'Function was successfully created.' }
+        format.html { redirect_to ['admin', @function], notice: 'Function was successfully created.' }
         format.json { render action: 'show', status: :created, location: @function }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class FunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to @function, notice: 'Function was successfully updated.' }
+        format.html { redirect_to ['admin', @function], notice: 'Function was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class FunctionsController < ApplicationController
   def destroy
     @function.destroy
     respond_to do |format|
-      format.html { redirect_to functions_url }
+      format.html { redirect_to admin_functions_path }
       format.json { head :no_content }
     end
   end
