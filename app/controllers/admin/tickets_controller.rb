@@ -15,6 +15,7 @@ class Admin::TicketsController < Admin::AdminBaseController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @ticket.code = (Ticket.maximum(:code) || 0) + 1
   end
 
   # GET /tickets/1/edit
