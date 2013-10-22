@@ -1,7 +1,4 @@
-%h1 Editing function
-
-= render 'form'
-
-= link_to 'Show', @function
-\|
-= link_to 'Back', functions_path
+- model_class = Function
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"
