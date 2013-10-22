@@ -25,6 +25,13 @@ module ApplicationHelper
           I18n.t('admin_menu.blog_links') => "admin_blog_links_path",
           I18n.t('admin_menu.mail_forms') => "admin_mail_forms_path"
         }
+      when "ticket" then
+        {
+          I18n.t('admin_menu.projects') => "admin_projects_path",
+          I18n.t('admin_menu.tickets') => "admin_tickets_path",
+          I18n.t('admin_menu.priorities') => "admin_priorities_path",
+          I18n.t('admin_menu.statuses') => "admin_statuses_path",
+        }
       when "setting" then
         {
           I18n.t('admin_menu.versions') => "admin_versions_path",

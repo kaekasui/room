@@ -29,6 +29,10 @@ ja:
     mail_forms: "メール一覧"
     new_blog: "ブログ作成"
     operation_histories: "操作履歴"
+    priorities: "優先度一覧"
+    projects: "プロジェクト一覧"
+    statuses: "ステータス一覧"
+    tickets: "チケット一覧"
     versions: "バージョン"
     users: "ユーザー"
   side_menu:
