@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @ticket.code
+%p
+  %b Title:
+  = @ticket.title
+%p
+  %b Content:
+  = @ticket.content
+%p
+  %b Progress:
+  = @ticket.progress
+%p
+  %b Status:
+  = @ticket.status_id
+%p
+  %b Priority:
+  = @ticket.priority_id
+%p
+  %b Version:
+  = @ticket.version_id
+%p
+  %b User:
+  = @ticket.user_id
+%p
+  %b Created by:
+  = @ticket.created_by
+%p
+  %b Deleted at:
+  = @ticket.deleted_at
+
+= link_to 'Edit', edit_ticket_path(@ticket)
+\|
+= link_to 'Back', tickets_path
