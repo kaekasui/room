@@ -1,5 +1,7 @@
 Room::Application.routes.draw do
 
+  resources :priorities
+
   resources :statuses
 
   root "home#index"

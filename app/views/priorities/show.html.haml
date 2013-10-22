@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @priority.name
+%p
+  %b Position:
+  = @priority.position
+%p
+  %b Deleted at:
+  = @priority.deleted_at
+
+= link_to 'Edit', edit_priority_path(@priority)
+\|
+= link_to 'Back', priorities_path
