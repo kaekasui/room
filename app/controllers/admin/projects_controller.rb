@@ -1,4 +1,5 @@
 class Admin::ProjectsController < Admin::AdminBaseController
+  before_action :set_menu
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -71,4 +72,8 @@ class Admin::ProjectsController < Admin::AdminBaseController
     def project_params
       params.require(:project).permit(:title, :content, :deleted_at)
     end
+
+  def set_menu
+    @admin_menu = "ticket"
+  end
 end

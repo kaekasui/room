@@ -1,4 +1,5 @@
 class Admin::TicketsController < Admin::AdminBaseController
+  before_action :set_menu
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   # GET /tickets
@@ -72,4 +73,8 @@ class Admin::TicketsController < Admin::AdminBaseController
     def ticket_params
       params.require(:ticket).permit(:code, :title, :content, :progress, :status_id, :priority_id, :version_id, :user_id, :created_by, :deleted_at)
     end
+
+  def set_menu
+    @admin_menu = "ticket"
+  end
 end

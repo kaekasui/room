@@ -21,6 +21,7 @@ ja:
     blog_text: "ヵェのブログです。日々のクダらない日常や、ホームページ運用、絵の進行状況、そしてオンラインゲームでの出来事などヵェの人生を綴っています。"
     admin: "管理"
     admin_blog: "ブログ"
+    admin_ticket: "チケット"
     admin_setting: "設定"
   admin_menu:
     blogs: "ブログ一覧"

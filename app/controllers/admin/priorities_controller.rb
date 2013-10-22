@@ -1,4 +1,5 @@
 class Admin::PrioritiesController < Admin::AdminBaseController
+  before_action :set_menu
   before_action :set_priority, only: [:show, :edit, :update, :destroy]
 
   # GET /priorities
@@ -71,4 +72,8 @@ class Admin::PrioritiesController < Admin::AdminBaseController
     def priority_params
       params.require(:priority).permit(:name, :position, :deleted_at)
     end
+
+  def set_menu
+    @admin_menu = "ticket"
+  end
 end

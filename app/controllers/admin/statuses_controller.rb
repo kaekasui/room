@@ -1,4 +1,5 @@
 class Admin::StatusesController < Admin::AdminBaseController
+  before_action :set_menu
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
@@ -71,4 +72,8 @@ class Admin::StatusesController < Admin::AdminBaseController
     def status_params
       params.require(:status).permit(:name, :position, :deleted_at)
     end
+
+  def set_menu
+    @admin_menu = "ticket"
+  end
 end
