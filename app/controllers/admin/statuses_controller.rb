@@ -1,11 +1,11 @@
 class Admin::StatusesController < Admin::AdminBaseController
   before_action :set_menu
-  before_action :set_status, only: [:show, :edit, :update, :destroy]
+  before_action :set_status, only: [:show, :destroy]
+  before_action :set_statuses, only: [:index, :update_all]
 
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all
   end
 
   # GET /statuses/1
@@ -68,15 +68,18 @@ class Admin::StatusesController < Admin::AdminBaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_status
-      @status = Status.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def status_params
-      params.require(:status)
-    end
+  def set_status
+    @status = Status.find(params[:id])
+  end
+
+  def set_statuses
+    @statuses = Status.all
+  end
+
+  def status_params
+    params.require(:status)
+  end
 
   def set_menu
     @admin_menu = "ticket"
