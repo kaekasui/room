@@ -38,18 +38,24 @@ class Admin::PrioritiesController < Admin::AdminBaseController
     end
   end
 
-  # PATCH/PUT /priorities/1
-  # PATCH/PUT /priorities/1.json
-  def update
-    respond_to do |format|
-      if @priority.update(priority_params)
-        format.html { redirect_to ['admin', @priority], notice: 'Priority was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @priority.errors, status: :unprocessable_entity }
+  def update_all
+    # 既存情報の更新
+    if @priorities
+      @priorities.each do |priority|
+        priority_param = priority_params[priority.id.to_s]
+        priority.update_attributes(priority_param.symbolize_keys)
       end
     end
+
+p priority_params["new"]
+    # 新規優先度の作成
+    if priority_params["new"]
+      priority_params["new"].each do |param_id, value|
+        Priority.create(name: value["name"])
+      end
+    end
+
+    redirect_to admin_priorities_path
   end
 
   # DELETE /priorities/1
@@ -63,15 +69,13 @@ class Admin::PrioritiesController < Admin::AdminBaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_priority
-      @priority = Priority.find(params[:id])
-    end
+  def set_priority
+    @priority = Priority.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def priority_params
-      params.require(:priority).permit(:name, :position, :deleted_at)
-    end
+  def priority_params
+    params.require(:priority)
+  end
 
   def set_menu
     @admin_menu = "ticket"

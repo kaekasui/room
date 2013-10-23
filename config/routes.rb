@@ -18,7 +18,9 @@ Room::Application.routes.draw do
     end
     resources :functions
     resources :mail_forms
-    resources :priorities
+    resources :priorities do
+      post "/update_all" => "priorities#update_all", on: :collection
+    end
     resources :projects
     resources :statuses
     resources :tickets
