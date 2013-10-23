@@ -38,18 +38,23 @@ class Admin::StatusesController < Admin::AdminBaseController
     end
   end
 
-  # PATCH/PUT /statuses/1
-  # PATCH/PUT /statuses/1.json
-  def update
-    respond_to do |format|
-      if @status.update(status_params)
-        format.html { redirect_to ['admin', @status], notice: 'Status was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
+  def update_all
+    # 既存情報の更新
+    if @statuses
+      @statuses.each do |status|
+        status_param = status_params[status.id.to_s]
+        status.update_attributes(status_param.symbolize_keys)
       end
     end
+
+    # 新規ステータスの作成
+    if status_params["new"]
+      status_params["new"].each do |param_id, value|
+        Status.create(name: value["name"])
+      end
+    end
+
+    redirect_to admin_statuses_path
   end
 
   # DELETE /statuses/1
@@ -70,7 +75,7 @@ class Admin::StatusesController < Admin::AdminBaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:name, :position, :deleted_at)
+      params.require(:status)
     end
 
   def set_menu

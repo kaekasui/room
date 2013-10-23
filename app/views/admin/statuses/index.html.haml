@@ -1,25 +1,15 @@
 - model_class = Status
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:position)
-      %th= model_class.human_attribute_name(:deleted_at)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
+= form_tag action: :update_all do
+  %table.table.table-striped
     - @statuses.each do |status|
       %tr
-        %td= link_to status.id, admin_status_path(status)
-        %td= status.name
-        %td= status.position
-        %td= status.deleted_at
-        %td=l status.created_at
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_status_path(status), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_status_path(status), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+        = fields_for "status[]", status do |f|
+          %td= status.name
+          %td
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_status_path(status), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_admin_status_path, :class => 'btn btn-primary'
+  %table
+    %tr
+      %td.add_status= I18n.t("actions.add")
+
+  = submit_tag I18n.t("actions.update"), class: "btn"

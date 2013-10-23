@@ -47,7 +47,6 @@ class Admin::PrioritiesController < Admin::AdminBaseController
       end
     end
 
-p priority_params["new"]
     # 新規優先度の作成
     if priority_params["new"]
       priority_params["new"].each do |param_id, value|

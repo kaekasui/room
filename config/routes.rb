@@ -22,7 +22,9 @@ Room::Application.routes.draw do
       post "/update_all" => "priorities#update_all", on: :collection
     end
     resources :projects
-    resources :statuses
+    resources :statuses do
+      post "/update_all" => "statuses#update_all", on: :collection
+    end
     resources :tickets
     resources :users do
       post "/update_all" => "users#update_all", on: :collection
