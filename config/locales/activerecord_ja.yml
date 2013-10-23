@@ -25,6 +25,7 @@ ja:
       ticket:
         code: "#"
         content: "説明"
+        created_at: "作成日時"
         priority_id: "優先度"
         progress: "進捗%"
         status_id: "ステータス"

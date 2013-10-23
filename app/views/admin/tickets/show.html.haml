@@ -1,47 +1,28 @@
 - model_class = Ticket
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
 
-%p
-  %strong= model_class.human_attribute_name(:code) + ':'
-  %br
-  = @ticket.code
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @ticket.title
-%p
-  %strong= model_class.human_attribute_name(:content) + ':'
-  %br
-  = @ticket.content
-%p
-  %strong= model_class.human_attribute_name(:progress) + ':'
-  %br
-  = @ticket.progress
-%p
-  %strong= model_class.human_attribute_name(:status_id) + ':'
-  %br
-  = @ticket.status_id
-%p
-  %strong= model_class.human_attribute_name(:priority_id) + ':'
-  %br
-  = @ticket.priority_id
-%p
-  %strong= model_class.human_attribute_name(:version_id) + ':'
-  %br
-  = @ticket.version_id
-%p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @ticket.user_id
-%p
-  %strong= model_class.human_attribute_name(:created_by) + ':'
-  %br
-  = @ticket.created_by
-%p
-  %strong= model_class.human_attribute_name(:deleted_at) + ':'
-  %br
-  = @ticket.deleted_at
+%table.table
+  %tr
+    %th{colspan: "4"}
+      = @ticket.code
+      = @ticket.title
+  %tr
+    %th= model_class.human_attribute_name(:status_id)
+    %td= @ticket.status_id
+    %th= model_class.human_attribute_name(:progress)
+    %td= @ticket.progress
+  %tr
+    %th= model_class.human_attribute_name(:priority_id)
+    %td= @ticket.priority_id
+    %th= model_class.human_attribute_name(:user_id)
+    %td= @ticket.user_id
+  %tr
+    %th= model_class.human_attribute_name(:version_id)
+    %td= @ticket.version_id
+    %th= model_class.human_attribute_name(:created_at)
+    %td= l @ticket.created_at
+  %tr
+    %th{colspan: "4"}
+      = @ticket.content
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_tickets_path, :class => 'btn'
