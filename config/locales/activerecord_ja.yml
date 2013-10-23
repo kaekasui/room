@@ -22,6 +22,15 @@ ja:
       mail_form:
         created_at: "送信日時"
         content: "内容"
+      ticket:
+        code: "#"
+        content: "説明"
+        priority_id: "優先度"
+        progress: "進捗%"
+        status_id: "ステータス"
+        title: "タイトル"
+        user_id: "担当者"
+        version_id: "バージョン"
     errors:
       template:
         header:
