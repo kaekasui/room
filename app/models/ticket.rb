@@ -3,4 +3,5 @@ class Ticket < ActiveRecord::Base
 
   belongs_to :priority
   belongs_to :status
+  belongs_to :version
 end

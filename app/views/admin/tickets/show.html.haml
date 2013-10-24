@@ -17,7 +17,7 @@
     %td= @ticket.user_id
   %tr
     %th= model_class.human_attribute_name(:version_id)
-    %td= @ticket.version_id
+    %td= @ticket.version.name
     %th= model_class.human_attribute_name(:created_at)
     %td= l @ticket.created_at
   %tr

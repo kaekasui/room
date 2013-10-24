@@ -26,7 +26,7 @@
   .control-group
     = f.label :version_id, :class => 'control-label'
     .controls
-      = f.text_field :version_id, :class => 'text_field'
+      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}
   .control-group
     = f.label :user_id, :class => 'control-label'
     .controls

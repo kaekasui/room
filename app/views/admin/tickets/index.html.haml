@@ -12,9 +12,9 @@
     - @tickets.each do |ticket|
       %tr
         %td= link_to ticket.code, admin_ticket_path(ticket)
-        %td= ticket.priority_id
-        %td= ticket.status_id
-        %td= ticket.version_id
+        %td= ticket.priority.name
+        %td= ticket.status.name
+        %td= ticket.version.name
         %td= link_to ticket.title, admin_ticket_path(ticket)
         %td= ticket.progress
 
