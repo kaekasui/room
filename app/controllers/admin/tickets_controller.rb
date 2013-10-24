@@ -15,6 +15,7 @@ class Admin::TicketsController < Admin::AdminBaseController
 
   # GET /tickets/new
   def new
+    redirect_to admin_priorities_path if Priority.all.blank?
     @ticket = Ticket.new
     @ticket.code = (Ticket.maximum(:code) || 0) + 1
   end

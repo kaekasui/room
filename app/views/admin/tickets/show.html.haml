@@ -7,7 +7,7 @@
       = @ticket.title
   %tr
     %th= model_class.human_attribute_name(:status_id)
-    %td= @ticket.status_id
+    %td= @ticket.status.name
     %th= model_class.human_attribute_name(:progress)
     %td= @ticket.progress
   %tr
