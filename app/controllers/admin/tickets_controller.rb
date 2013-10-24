@@ -71,7 +71,7 @@ class Admin::TicketsController < Admin::AdminBaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:code, :title, :content, :progress, :status_id, :priority_id, :version_id, :user_id, :created_by, :deleted_at)
+      params.require(:ticket).permit(:code, :project_id, :title, :content, :progress, :status_id, :priority_id, :version_id, :user_id, :created_by, :deleted_at)
     end
 
   def set_menu
