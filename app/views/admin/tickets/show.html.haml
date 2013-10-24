@@ -12,7 +12,7 @@
     %td= @ticket.progress
   %tr
     %th= model_class.human_attribute_name(:priority_id)
-    %td= @ticket.priority_id
+    %td= @ticket.priority.name
     %th= model_class.human_attribute_name(:user_id)
     %td= @ticket.user_id
   %tr
