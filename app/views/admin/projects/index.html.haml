@@ -1,22 +1,16 @@
 - model_class = Project
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:content)
-      %th= model_class.human_attribute_name(:deleted_at)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @projects.each do |project|
       %tr
-        %td= link_to project.id, admin_project_path(project)
-        %td= project.title
+        %td= link_to project.title, admin_project_path(project)
         %td= project.content
-        %td= project.deleted_at
         %td=l project.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_project_path(project), :class => 'btn btn-mini'

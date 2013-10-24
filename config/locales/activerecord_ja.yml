@@ -22,6 +22,10 @@ ja:
       mail_form:
         created_at: "送信日時"
         content: "内容"
+      project:
+        title: "タイトル"
+        content: "説明"
+        created_at: "作成日時"
       ticket:
         code: "#"
         content: "説明"

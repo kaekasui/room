@@ -1,6 +1,4 @@
 - model_class = Project
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
@@ -10,10 +8,6 @@
   %strong= model_class.human_attribute_name(:content) + ':'
   %br
   = @project.content
-%p
-  %strong= model_class.human_attribute_name(:deleted_at) + ':'
-  %br
-  = @project.deleted_at
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_projects_path, :class => 'btn'
