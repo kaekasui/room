@@ -34,6 +34,7 @@ ja:
     projects: "プロジェクト一覧"
     statuses: "ステータス一覧"
     tickets: "チケット一覧"
+    trackers: "トラッカー一覧"
     versions: "バージョン"
     users: "ユーザー"
   side_menu:

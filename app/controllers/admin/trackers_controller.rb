@@ -1,4 +1,5 @@
 class Admin::TrackersController < Admin::AdminBaseController
+  before_action :set_menu
   before_action :set_tracker, only: [:destroy]
   before_action :set_trackers, only: [:index, :update_all]
 
@@ -44,5 +45,9 @@ class Admin::TrackersController < Admin::AdminBaseController
 
   def tracker_params
     params.require(:tracker)
+  end
+
+  def set_menu
+    @admin_menu = "ticket"
   end
 end
