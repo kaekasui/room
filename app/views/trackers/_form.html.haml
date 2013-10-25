@@ -1,0 +1,19 @@
+= form_for @tracker do |f|
+  - if @tracker.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tracker.errors.count, "error")} prohibited this tracker from being saved:"
+      %ul
+        - @tracker.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :position
+    = f.number_field :position
+  .field
+    = f.label :deleted_at
+    = f.datetime_select :deleted_at
+  .actions
+    = f.submit 'Save'

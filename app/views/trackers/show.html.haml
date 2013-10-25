@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tracker.name
+%p
+  %b Position:
+  = @tracker.position
+%p
+  %b Deleted at:
+  = @tracker.deleted_at
+
+= link_to 'Edit', edit_tracker_path(@tracker)
+\|
+= link_to 'Back', trackers_path
