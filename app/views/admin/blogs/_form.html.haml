@@ -2,9 +2,9 @@
 
 = form_for ['admin', @blog], html: {class: "form-horizontal"} do |f|
   .control-group
-    = f.label :created_at, class: "control-label"
+    = f.label :posted_at, class: "control-label"
     .controls
-      = f.datetime_select :created_at, datetime_separator: "  ", include_seconds: true, use_month_numbers: true, class: "date_time"
+      = f.datetime_select :posted_at, datetime_separator: "  ", include_seconds: true, use_month_numbers: true, class: "date_time"
   .control-group
     = f.label :title, class: "control-label"
     .controls

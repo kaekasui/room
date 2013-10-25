@@ -2,11 +2,12 @@ ja:
   activerecord:
     attributes:
       blog:
-        created_at: "投稿日時"
-        title: "タイトル"
         contents1: "内容1"
         contents2: "内容2"
+        created_at: "作成日時"
         draft: "下書き"
+        posted_at: "投稿日時"
+        title: "タイトル"
       blog_comment:
         title: "タイトル"
         author: "名前"

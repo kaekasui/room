@@ -58,7 +58,7 @@ class Admin::BlogsController < Admin::AdminBaseController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :contents1, :contents2)
+    params.require(:blog).permit(:posted_at, :title, :contents1, :contents2)
   end
 
   def commit_param
