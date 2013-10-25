@@ -4,6 +4,8 @@
     .controls
       = f.select :project_id, Project.all.map {|p| [p.title, p.id]}
   .control-group
+    = f.label :id, "#" + @ticket.id.to_s, class: 'control-label'
+  .control-group
     = f.label :title, :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'text_field'

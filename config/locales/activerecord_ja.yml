@@ -27,6 +27,7 @@ ja:
         content: "説明"
         created_at: "作成日時"
       ticket:
+        id: "#"
         content: "説明"
         created_at: "作成日時"
         priority_id: "優先度"

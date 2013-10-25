@@ -3,6 +3,7 @@
 %table.table
   %tr
     %th{colspan: "4"}
+      = "#" + @ticket.id.to_s
       = @ticket.title
   %tr
     %th= model_class.human_attribute_name(:project_id)
