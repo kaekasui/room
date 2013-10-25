@@ -1,7 +1,5 @@
 Room::Application.routes.draw do
 
-  resources :trackers
-
   root "home#index"
   get "/auth/:provider/callback" => "sessions#callback"
   get "/logout" => "sessions#destroy", as: "logout"
@@ -28,6 +26,9 @@ Room::Application.routes.draw do
       post "/update_all" => "statuses#update_all", on: :collection
     end
     resources :tickets
+    resources :trackers do
+      post "/update_all" => "trackers#update_all", on: :collection
+    end
     resources :users do
       post "/update_all" => "users#update_all", on: :collection
     end

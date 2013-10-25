@@ -1,0 +1,17 @@
+- model_class = Tracker
+= form_tag action: :update_all do
+  %table.table.table-striped
+    - @trackers.each do |tracker|
+      %tr
+        = fields_for "tracker[]", tracker do |f|
+          %td= f.text_field :name
+          %td
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_tracker_path(tracker), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+  %table
+    %tr
+      %td.add_tracker= I18n.t("actions.add")
+
+  %br
+  %br
+  = submit_tag I18n.t("actions.update"), class: "btn"
