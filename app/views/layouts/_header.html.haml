@@ -4,12 +4,12 @@
       = link_to t("brand"), root_path, class: "brand"
       .container.nav-collapse
         %ul.nav
-          %li= link_to t("menu.home"), root_path
-          %li= link_to t("menu.blog"), blogs_path
+          %li.menu= link_to t("menu.home"), root_path
+          %li.menu= link_to t("menu.blog"), blogs_path
           - if current_user and current_user.admin
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                = I18n.t("menu.admin")
+                .menu= I18n.t("menu.admin")
                 %span.caret
               %ul.dropdown-menu
                 %li= link_to t("menu.admin_blog"), new_admin_blog_path
