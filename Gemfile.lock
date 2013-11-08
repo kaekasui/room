@@ -29,6 +29,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     attr_required (0.0.5)
+    bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -61,6 +62,12 @@ GEM
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
     database_cleaner (1.0.1)
+    devise (3.2.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erb2haml (0.1.5)
       html2haml
@@ -183,6 +190,7 @@ GEM
     omniauth-twitter (1.0.0)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    orm_adapter (0.4.0)
     paranoia (2.0.0)
       activerecord (~> 4.0)
     polyglot (0.3.3)
@@ -301,6 +309,8 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -319,6 +329,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
+  devise
   erb2haml
   factory_girl_rails
   fb_graph
