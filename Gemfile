@@ -81,6 +81,9 @@ gem 'rails-i18n'
 # Use kaminari for paginate
 gem 'kaminari'
 
+# Use devise as the flexible authentication solution
+gem 'devise'
+
 # Use OmniAuth for twitter user authenticate
 gem 'twitter'
 gem 'omniauth-twitter'
