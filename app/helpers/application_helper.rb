@@ -31,6 +31,7 @@ module ApplicationHelper
           I18n.t('admin_menu.tickets') => "admin_tickets_path",
           I18n.t('admin_menu.priorities') => "admin_priorities_path",
           I18n.t('admin_menu.statuses') => "admin_statuses_path",
+          I18n.t('admin_menu.trackers') => "admin_trackers_path",
         }
       when "setting" then
         {
