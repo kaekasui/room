@@ -114,4 +114,5 @@ gem "redcarpet"
 gem "pygments.rb"
 gem "nokogiri"
 
-
+# Use to set environment variables on development machines
+gem 'dotenv-rails'
