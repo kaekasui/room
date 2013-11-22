@@ -2,6 +2,7 @@ require_relative '../../spec_helper'
 require 'rake'
 
 describe "set_data" do
+=begin
   before :all do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -47,4 +48,5 @@ describe "set_data" do
       end
     end
   end
+=end
 end
