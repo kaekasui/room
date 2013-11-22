@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "blogs/show" do
+=begin
   before do
     @blog = stub_model(Blog, title: "Title", contents1: "Contents1", contents2: "Contents2", created_at: Time.now)
     @blog_comment = BlogComment.new
@@ -119,4 +120,5 @@ describe "blogs/show" do
       end
     end
   end
+=end
 end
