@@ -1,15 +1,13 @@
 Room::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+
   root "home#index"
-  get "/auth/:provider/callback" => "sessions#callback"
-  get "/logout" => "sessions#destroy", as: "logout"
 
   resources :blogs, only: [:index, :show] do
     resources :blog_comments
   end
   resources :mail_forms, only: [:create]
-  resources :users, only: [:edit, :update]
 
   namespace :admin do
     resources :blogs

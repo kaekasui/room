@@ -1,20 +1,15 @@
 class TwitterUser < User
   acts_as_paranoid
 
-  belongs_to :parent_user, class_name: "User", foreign_key: "parent_id"
-
-  def self.find_user(auth)
+  def self.find_for_oauth(auth)
     self.where(uid: auth.uid).first
-  end 
+  end
 
-  def self.create_user(auth, current_user)
-    @parent_user = current_user || User.create
+  def self.create_with_oauth(auth)
+    self.create(provider: auth.provider, uid: auth.uid, name: auth.info.name, screen_name: auth.info.nickname, password: Devise.friendly_token[0, 20])
+  end
 
-    self.create(provider: auth["provider"], uid: auth["uid"],
-      name: auth["info"]["name"], screen_name: auth["info"]["nickname"], image: auth["info"]["image"], parent_id: @parent_user.id)
-  end 
-
-  def update_user(auth)
-    self.update_attributes(name: auth["info"]["name"], screen_name: auth["info"]["nickname"], image: auth["info"]["image"])
+  def self.update_with_oauth(auth, user)
+    user.update_attributes(name: auth.info.name, screen_name: auth.info.nickname)
   end
 end
