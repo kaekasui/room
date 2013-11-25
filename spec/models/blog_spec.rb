@@ -18,6 +18,15 @@ describe Blog do
       create(:blog_example)
       expect(Blog).to have(1).records
     end
+
+    context "acts as paranoid" do
+      it "destroy a blog" do
+        blog = create(:blog_example)
+	expect(blog.deleted_at).to be_nil
+        blog.destroy
+	expect(blog.deleted_at).not_to be_nil
+      end
+    end
   end
 
   describe "validation errors" do
