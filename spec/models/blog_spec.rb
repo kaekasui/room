@@ -21,19 +21,38 @@ describe Blog do
   end
 
   describe "validation errors" do
-    it "say that the 'title' is required." do
-      blog = build(:blog_example, title: nil)
-      expect(blog).to have(1).errors_on(:title)
+    context "when the field is blank." do
+      it "say that the 'title' is required." do
+        blog = build(:blog_example, title: nil)
+        expect(blog).to have(1).errors_on(:title)
+      end
+
+      it "say that the 'contents1' is required." do
+        blog = build(:blog_example, contents1: nil)
+        expect(blog).to have(1).errors_on(:contents1)
+      end
+
+      it "say that the 'contents2' is required." do
+        blog = build(:blog_example, contents2: nil)
+        expect(blog).to have(0).errors_on(:contents2)
+      end
     end
 
-    it "say that the 'contents1' is required." do
-      blog = build(:blog_example, contents1: nil)
-      expect(blog).to have(1).errors_on(:contents1)
-    end
+    context "when enter up to above the max characters." do
+      it "say that the 'title' enter up to 'MAX_TEXT_FIELD_LENGTH' characters" do
+        blog = build(:blog_example, title: "a" * (MAX_TEXT_FIELD_LENGTH + 1))
+        expect(blog).to have(1).errors_on(:title)
+      end
 
-    it "say that the 'contents2' is required." do
-      blog = build(:blog_example, contents2: nil)
-      expect(blog).to have(0).errors_on(:contents2)
+      it "say that the 'contents1' enter up to 'MAX_TEXT_AREA_LENGTH' characters" do
+        blog = build(:blog_example, contents1: "a" * (MAX_TEXT_AREA_LENGTH + 1))
+	expect(blog).to have(1).errors_on(:contents1)
+      end
+
+      it "say that the 'contents2' enter up to 'MAX_TEXT_AREA_LENGTH' characters" do
+        blog = build(:blog_example, contents2: "a" * (MAX_TEXT_AREA_LENGTH + 1))
+	expect(blog).to have(1).errors_on(:contents2)
+      end
     end
   end
 

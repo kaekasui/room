@@ -9,4 +9,6 @@ class Blog < ActiveRecord::Base
   scope :recent_blogs, -> { limit(5) }
 
   validates :title, :contents1, presence: true
+  validates :title, length: { maximum: MAX_TEXT_FIELD_LENGTH }
+  validates :contents1, :contents2, length: { maximum: MAX_TEXT_AREA_LENGTH }
 end
