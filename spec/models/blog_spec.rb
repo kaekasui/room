@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Blog do
-  describe "data" do
+  describe "record" do
     it "is not draft." do
       blog = build(:blog_example)
       expect(blog.draft).to eq false
@@ -30,7 +30,7 @@ describe Blog do
   end
 
   describe "validation test" do
-    context "when blank" do
+    context "when blank." do
       it "title is required." do
         blog = build(:blog_example, title: nil)
         expect(blog).to have(1).errors_on(:title)
