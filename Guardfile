@@ -1,4 +1,4 @@
-guard 'rspec' do
+guard 'rspec', cmd: 'spring rake spec' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/features/.+\.feature})
   watch(%r{^spec/step_definitions/.+\_steps.rb})

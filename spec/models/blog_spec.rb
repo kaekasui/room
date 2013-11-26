@@ -77,8 +77,8 @@ describe Blog do
 
     describe ".with_no_draft" do
       it "display the blogs without the draft." do
-        3.times { create(:blog_example) }
-        2.times { create(:blog_example, draft: true) }
+        create(:blog_example)
+        create(:blog_example, draft: true)
 	blogs = Blog.all.with_no_draft.where(draft: true)
 	expect(blogs.count).to eq 0
       end
@@ -88,7 +88,6 @@ describe Blog do
       it "display five blogs." do
 	3.times { create(:blog_example, created_at: "2013-08-01 09:00:00") }
 	3.times { create(:blog_example, created_at: "2013-09-02 09:00:00") }
-        3.times { create(:blog_example, created_at: "2013-09-01 09:00:00") }
 	blogs = Blog.all.recent_blogs
 	expect(blogs.count).to eq 5
       end

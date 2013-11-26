@@ -85,8 +85,8 @@ describe BlogComment do
 
     describe ".with_no_draft" do
       it "display the blog comments without the draft." do
-        3.times { create(:blog_comment_example) }
-        2.times { create(:blog_comment_example, draft: true) }
+        create(:blog_comment_example)
+        create(:blog_comment_example, draft: true)
 	blog_comments = BlogComment.all.with_no_draft.where(draft: true)
 	expect(blog_comments.count).to eq 0
       end
@@ -96,7 +96,6 @@ describe BlogComment do
        it "display five blog comments." do
 	3.times { create(:blog_comment_example, created_at: "2013-08-01 09:00:00") }
 	3.times { create(:blog_comment_example, created_at: "2013-09-02 09:00:00") }
-        3.times { create(:blog_comment_example, created_at: "2013-09-01 09:00:00") }
 	blog_comments = BlogComment.all.recent_blog_comments
 	expect(blog_comments.count).to eq 5
       end
