@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Blog do
-  describe "data" do
+  describe "record" do
     it "is not draft." do
       blog = build(:blog_example)
       expect(blog.draft).to eq false
@@ -30,7 +30,7 @@ describe Blog do
   end
 
   describe "validation test" do
-    context "when blank" do
+    context "when blank." do
       it "title is required." do
         blog = build(:blog_example, title: nil)
         expect(blog).to have(1).errors_on(:title)
@@ -77,8 +77,8 @@ describe Blog do
 
     describe ".with_no_draft" do
       it "display the blogs without the draft." do
-        3.times { create(:blog_example) }
-        2.times { create(:blog_example, draft: true) }
+        create(:blog_example)
+        create(:blog_example, draft: true)
 	blogs = Blog.all.with_no_draft.where(draft: true)
 	expect(blogs.count).to eq 0
       end
@@ -88,7 +88,6 @@ describe Blog do
       it "display five blogs." do
 	3.times { create(:blog_example, created_at: "2013-08-01 09:00:00") }
 	3.times { create(:blog_example, created_at: "2013-09-02 09:00:00") }
-        3.times { create(:blog_example, created_at: "2013-09-01 09:00:00") }
 	blogs = Blog.all.recent_blogs
 	expect(blogs.count).to eq 5
       end
