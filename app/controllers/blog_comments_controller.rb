@@ -1,5 +1,4 @@
 class BlogCommentsController < ApplicationController
-  before_action :set_blog_comment, only: [:show]
 
   def create
     @blog_comment = BlogComment.new(blog_comment_params)
