@@ -4,7 +4,7 @@ describe BlogComment do
   let! (:blog) { create(:blog_example) }
   let! (:blog_comment) { create(:blog_comment_example, blog_id: blog.id) }
 
-  describe "data" do
+  describe "record" do
     it "is not administrator." do
       expect(blog_comment.admin).to eq false
     end
@@ -15,6 +15,10 @@ describe BlogComment do
 
     it "create a blog comment." do
       expect(BlogComment).to have(1).records
+    end
+
+    it "create one record." do
+      expect{ create(:blog_comment_example, blog_id: blog.id) }.to change(BlogComment, :count).by(1)
     end
 
     describe "acts_as_paranoid" do
