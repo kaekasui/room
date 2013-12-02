@@ -7,12 +7,12 @@ namespace :user do
   desc "Add administrator authority to user."
   task set_admin: :environment do
     begin
-      raise "ENV['USER_EMAIL'] is not found." unless ENV['USER_EMAIL']
-      email = ENV['USER_EMAIL']
-      user = User.where(email: email).first
+      raise "ENV['USER_CODE'] is not found." unless ENV['USER_CODE']
+      code = ENV['USER_CODE']
+      user = User.where(access_code: code).first
       raise "user is not found." if user.blank?
       user.admin = true
-      puts "OK, #{user.email} is administrator!#{user.admin}" if user.save
+      puts "OK, #{user.access_code} is administrator!" if user.save
     end
   end
 end

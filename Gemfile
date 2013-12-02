@@ -62,6 +62,7 @@ group :development, :test do
   gem 'simplecov', :require => false
 
   gem "better_errors"
+  gem "binding_of_caller"
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -114,4 +115,5 @@ gem "redcarpet"
 gem "pygments.rb"
 gem "nokogiri"
 
-
+# Use to set environment variables on development machines
+gem 'dotenv-rails'

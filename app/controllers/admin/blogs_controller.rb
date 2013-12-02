@@ -3,7 +3,7 @@ class Admin::BlogsController < Admin::AdminBaseController
   before_action :set_blog, only: [:edit, :update, :destroy]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.page(params[:page]).per(20)
   end
 
   def new

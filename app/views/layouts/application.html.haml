@@ -27,10 +27,14 @@
           - admin_menu_list(@admin_menu).each do |name, path|
             = render partial: "admin_menu", locals: { name: name, path: path }
       .row
-        .span8
-          = yield
-        .span4
-          = yield :sidebar
+        - if current_user and current_user.admin and @admin_menu
+          .span12
+            = yield
+        - else
+          .span8
+            = yield
+          .span4
+            = yield :sidebar
 
     .footer
       = render "layouts/footer"
