@@ -9,7 +9,7 @@
   - @blogs.each do |blog|
     %tr
       %td.post_at= l blog.posted_at
-      %td= blog.title
+      %td= link_to blog.title, blog_path(blog.id)
       %td= blog.draft
       %td= link_to t("actions.edit"), edit_admin_blog_path(blog), class: "btn btn-mini"
       %td= link_to t("actions.destroy"), admin_blog_path(blog.id), class: "btn btn-mini", method: :delete
