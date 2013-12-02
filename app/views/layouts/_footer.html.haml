@@ -1,3 +1,7 @@
 %p
   Copyright &copy; 2006-2013 @kae_kasui All Rights Reserved.
-%p= current_version
+- unless current_version.blank?
+  %p
+    = l(current_version.release_at, format: :short)
+    = "|"
+    = current_version.name
