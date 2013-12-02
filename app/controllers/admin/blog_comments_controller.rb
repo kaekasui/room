@@ -2,7 +2,7 @@ class Admin::BlogCommentsController < Admin::AdminBaseController
   before_action :set_menu
 
   def index
-    @blog_comments = BlogComment.all
+    @blog_comments = BlogComment.page(params[:page]).per(20)
   end
 
   private

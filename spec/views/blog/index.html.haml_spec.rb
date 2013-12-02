@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe "blogs/index" do
-  describe "display blogs list" do
-    before do
-      @blogs = Blog.with_no_draft.page(params[:page]).per(10)
-      @recent_blogs = Blog.with_no_draft.recent_blogs
-      @recent_blog_comments = BlogComment.recent_blog_comments
-      @blog_links = BlogLink.all
-    end
+  before do
+    @blogs = Blog.with_no_draft.page(params[:page]).per(10)
+    @recent_blogs = Blog.with_no_draft.recent_blogs
+    @recent_blog_comments = BlogComment.recent_blog_comments
+    @blog_links = BlogLink.all
+  end
 
+  describe "display blogs list" do
     context "with 3 blogs." do
       before do
         3.times { create(:blog_example) }
@@ -75,40 +75,34 @@ describe "blogs/index" do
     end
   end
 
-=begin
-  describe "サイドメニュー" do
+  describe "side menu" do
     before do
-      3.times { FactoryGirl.create(:blog) }
-      @blogs = Blog.with_no_draft.page(params[:page]).per(10)
-      @recent_blogs = Blog.recent_blogs
-      @recent_blog_comments = BlogComment.recent_blog_comments
-      @blog_links = BlogLink.all
+      #3.times { create(:blog) }
     end
 
-    it "プロフィールが表示されること" do
+    it "display the profile." do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.profile"))
     end
 
-    it "最近の記事が表示されること" do
+    it "display the recent blogs." do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blogs"))
     end
 
-    it "最近のコメントが表示されること" do
+    it "display the recent blog comments." do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blog_comments"))
     end
 
-    it "リンクが表示されること" do
+    it "display the blog links." do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.blog_links"))
     end
 
-    it "メールフォームが表示されること" do
+    it "display the mail form." do
       render
       expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.mail_form"))
     end
   end
-=end
 end
