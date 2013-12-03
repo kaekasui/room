@@ -12,7 +12,7 @@ namespace :user do
       user = User.where(access_code: code).first
       raise "user is not found." if user.blank?
       user.admin = true
-      puts "OK, #{user.access_code} is administrator!" if user.save
+      user.save
     end
   end
 end
