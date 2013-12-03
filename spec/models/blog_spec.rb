@@ -68,8 +68,8 @@ describe Blog do
   describe "scope" do
     describe "default scope" do
       it "display recent blogs." do
-        blog1 = create(:blog_example, created_at: "2013-08-01 09:00:00")
-	blog2 = create(:blog_example, created_at: "2013-09-01 09:00:00")
+        blog1 = create(:blog_example, posted_at: "2013-08-01 09:00:00")
+	blog2 = create(:blog_example, posted_at: "2013-09-01 09:00:00")
 	blogs = Blog.all.recent_blogs
 	expect(blogs).to eq [blog2, blog1]
       end

@@ -3,18 +3,22 @@
 = form_for ['admin', @blog], html: {class: "form-horizontal"} do |f|
   .control-group
     = f.label :posted_at, class: "control-label"
+    = asterisk(@blog, :posted_at)
     .controls
       = f.datetime_select :posted_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
   .control-group
     = f.label :title, class: "control-label"
+    = asterisk(@blog, :title)
     .controls
       = f.text_field :title
   .control-group
     = f.label :contents1, class: "control-label"
+    = asterisk(@blog, :contents1)
     .controls
       = f.text_area :contents1, class: "span5", rows: "4"
   .control-group
     = f.label :contents2, class: "control-label"
+    = asterisk(@blog, :contents2)
     .controls
       = f.text_area :contents2, class: "span5", rows: "8"
   .control-group

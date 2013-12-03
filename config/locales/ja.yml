@@ -7,6 +7,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y.%m.%d"
       very_short: "%m/%d"
 
   brand: "ヵェの部屋♪"
