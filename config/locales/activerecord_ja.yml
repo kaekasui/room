@@ -37,6 +37,10 @@ ja:
         title: "タイトル"
         user_id: "担当者"
         version_id: "バージョン"
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
     errors:
       template:
         header:
