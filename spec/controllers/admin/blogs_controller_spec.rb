@@ -49,7 +49,7 @@ describe Admin::BlogsController do
         end
 
 	it "is not draft." do
-          pending # 下書きではないこと
+          expect((assigns[:blog]).draft).to eq false
 	end
       end
 
