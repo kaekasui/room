@@ -49,21 +49,25 @@ describe Admin::BlogsController do
         end
 
 	it "is not draft." do
-          pending # 下書きではないこと
+          expect((assigns[:blog]).draft).to eq false
 	end
       end
 
       context "with blank title." do
+        before do
+          post :create, { blog: { title: "", contents1: "Contents1", contents2: "Contents2" }, commit: I18n.t("actions.create") }
+	end
+
         it "cannot create a record." do
           expect { post :create, { blog: { title: "", contents1: "Contents1" }, commit: I18n.t("actions.create") }}.to change(Blog, :count).by(0)
         end
 
-	it "display message." do
-          pending
+        it "raise error." do
+          expect((assigns[:blog]).errors.full_messages.first).to eq Blog.human_attribute_name(:title) + I18n.t("activerecord.errors.messages.blank")
 	end
 
-	it "redirect to :new" do
-          pending
+	it "access to :new" do
+          expect(response).to render_template(:new)
 	end
       end
     end
@@ -92,16 +96,20 @@ describe Admin::BlogsController do
       end
 
       context "with blank title." do
+        before do
+          post :create, { blog: { title: "", contents1: "Contents1", contents2: "Contents2" }, commit: I18n.t("actions.draft") }
+	end
+
         it "cannot create a record." do
           expect { post :create, { blog: { title: "", contents1: "Contents1" }, commit: I18n.t("actions.draft") }}.to change(Blog, :count).by(0)
         end
 
-	it "display message." do
-          pending
+	it "raise error." do
+          expect((assigns[:blog]).errors.full_messages.first).to eq Blog.human_attribute_name(:title) + I18n.t("activerecord.errors.messages.blank")
 	end
 
-	it "redirect to :new" do
-          pending
+	it "access :new" do
+          expect(response).to render_template(:new)
 	end
       end
     end
@@ -151,16 +159,12 @@ describe Admin::BlogsController do
           patch :update, { blog: { title: "", contents1: "Contents1", contents2: "Contents2" }, id: blog.id, commit: I18n.t("actions.draft") }
 	end
 
-        it "raise errors." do
-          expect((assigns[:blog]).errors.count).to eq 1
-        end
-
-	it "display message." do
-          pending
+	it "raise errors." do
+          expect((assigns[:blog]).errors.full_messages.first).to eq Blog.human_attribute_name(:title) + I18n.t("activerecord.errors.messages.blank")
 	end
 
-	it "redirect to :new" do
-          pending
+	it "access :edit" do
+          expect(response).to render_template(:edit)
 	end
       end
     end
@@ -196,15 +200,11 @@ describe Admin::BlogsController do
 	end
 
         it "raise error." do
-          expect((assigns[:blog]).errors.count).to eq 1
+          expect((assigns[:blog]).errors.full_messages.first).to eq Blog.human_attribute_name(:title) + I18n.t("activerecord.errors.messages.blank")
         end
 
-	it "display message." do
-          pending
-	end
-
-	it "redirect to :new" do
-          pending
+	it "access :edit" do
+          expect(response).to render_template(:edit)
 	end
       end
     end
@@ -212,16 +212,21 @@ describe Admin::BlogsController do
 
   describe "#destroy" do
     let(:blog) { create(:blog_example) }
+    before do
+      delete :destroy, { id: blog.id }
+    end
 
     it "is success." do
-      delete :destroy, { id: blog.id }
       expect(response.status).to eq 302
       # TODO:正しいステータスコードであるかを確認する必要あり
     end
 
     it "update the 'deleted_at'." do
-      delete :destroy, { id: blog.id }
       expect((assigns[:blog]).deleted_at).not_to be_nil
+    end
+
+    it "redirect to :index" do
+      expect(response).to redirect_to admin_blogs_path
     end
   end
 end
