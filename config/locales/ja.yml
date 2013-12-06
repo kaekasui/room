@@ -71,6 +71,8 @@ ja:
   blog_comment:
     admin: "管理者のみが閲覧可能なコメントです。"
     url: "URL"
+  user:
+    submit: "登録する"
 
   views:
     pagination:
