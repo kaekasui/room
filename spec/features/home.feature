@@ -10,6 +10,8 @@ Feature: display the top page.
     And display the 'profile' on the side menu.
     And display the 'menu' on the side menu.
     And don't display the My Account on the navigation bar.
+    And display the 'HOME' on the navigation bar.
+    And display the 'BLOG' on the navigation bar.
     And don't display the admin menu on the navigation bar.
 
   Scenario:
@@ -19,6 +21,8 @@ Feature: display the top page.
     And display the 'profile' on the side menu.
     And display the 'menu' on the side menu.
     And display the My Account on the navigation bar.
+    And display the 'HOME' on the navigation bar.
+    And display the 'BLOG' on the navigation bar.
     And don't display the admin menu on the navigation bar.
 
   Scenario:
@@ -28,4 +32,6 @@ Feature: display the top page.
     And display the 'profile' on the side menu.
     And display the 'menu' on the side menu.
     And display the My Account on the navigation bar.
+    And display the 'HOME' on the navigation bar.
+    And display the 'BLOG' on the navigation bar.
     And display the admin menu on the navigation bar.

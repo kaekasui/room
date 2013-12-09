@@ -1,13 +1,4 @@
 # encoding: utf-8
-
-step 'メニュー :menu が表示される' do |menu|
-  expect(page).to have_selector("ul.nav > li.menu > a", menu) 
-end
-
-step 'メニュー :menu が表示されない' do |menu|
-  expect(page).to have_selector("ul.nav > li.menu > a", menu) 
-end
-
 step 'ブログの投稿日時の値を選択する' do
   select "2013", from: "blog_created_at_1i"
   select "9", from: "blog_created_at_2i"
