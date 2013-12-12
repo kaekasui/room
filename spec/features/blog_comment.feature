@@ -24,3 +24,25 @@ Feature: display the blog_comments list on the detailed blog page.
     And access to the blog.
     Then display the blog comment form.
 
+  Scenario: user post the blog comment.
+    Given there is non-logged-in user.
+    And there is a blog.
+    When access the 'BLOG' page.
+    And access to the blog.
+    And fill in item to the text field 'title' .
+    And fill in item to the text field 'author' .
+    And fill in item to the text field 'content' .
+    And click the button 'create' .
+    Then post the blog comment.
+    And display a blog comment.
+
+  Scenario: user post the blog comment.
+    Given there is non-logged-in user.
+    And there is a blog.
+    When access the 'BLOG' page.
+    And access to the blog.
+    And fill in item to the text field 'title' .
+    And fill in item to the text field 'content' .
+    And click the button 'create' .
+    Then don't post the blog comment.
+    And don't display a blog comment.

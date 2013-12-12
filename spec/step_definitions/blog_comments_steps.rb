@@ -11,31 +11,38 @@ step 'display the blog comment form.' do
   expect(page).to have_selector("form#new_blog_comment")
 end
 
-step 'コメントフォームのテキストフィールド :item に値を入力する' do |item|
-  fill_in item, with: "Item"
+step 'fill in item to the text field :item .' do |item|
+  fill_in I18n.t("activerecord.attributes.blog_comment.#{item}"), with: "Item"
 end
 
-step 'コメントフォームのテキストフィールド :item に値を入力しない' do |item|
-  # 何もしない
+step 'don\'t fill in item to the text field :item .' do |item|
+  # nothing
 end
 
-step 'コメントフォームのテキストエリア :item に値を入力する' do |item|
-  fill_in item, with: "Item"
+step 'fill in item to the text area :item .' do |item|
+  fill_in I18n.t("activerecord.attributes.blog_comment.#{item}"), with: "Item"
 end
 
-step 'コメントフォームのテキストエリア :item に値を入力しない' do |item|
-  # 何もしない
+step 'don\'t fill in item to the text area :item .' do |item|
+  # nothing
 end
 
-step 'コメントフォームの :button ボタンをクリックする' do |button|
-  click_button button
+step 'click the button :button .' do |button|
+  click_button I18n.t("helpers.submit.#{button}")
 end
 
-step 'コメントが :counts 件表示される' do |counts|
-  expect(page).to have_selector("div.blog_comment", count: counts)
-#  expect(Blog.first.blog_comments.count).to eq 1
+step 'post the blog comment.' do
+  expect(@blog.blog_comments.count).to eq 1
 end
 
-step 'コメントが登録されず表示されない' do
-  expect(page).to have_selector("div.blog_comment", count: 0)
+step 'don\'t post the blog comment.' do
+  expect(@blog.blog_comments.count).to eq 0
+end
+
+step 'display a blog comment.' do
+  expect(page).to have_selector(".blog_comment", count: 1)
+end
+
+step 'don\'t display a blog comment.' do
+  expect(page).to have_selector(".blog_comment", count: 0)
 end
