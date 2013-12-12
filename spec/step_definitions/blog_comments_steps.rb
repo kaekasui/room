@@ -1,11 +1,14 @@
 # encoding: utf-8
+step 'there are :count comments.' do |count|
+  count.to_i.times { create(:blog_comment_example, blog_id: @blog.id) }
+end
 
-step 'ブログのコメントが :comments 件登録されている' do |comments|
-  comments.to_i.times do |c|
-    blog_comment = FactoryGirl.build(:blog_comment)
-    blog_comment.blog_id = Blog.first.id
-    blog_comment.save
-  end
+step 'display :count comments on the blog page.' do |count|
+  expect(page).to have_selector(".blog_comment", count: count)
+end
+
+step 'display the blog comment form.' do
+  expect(page).to have_selector("form#new_blog_comment")
 end
 
 step 'コメントフォームのテキストフィールド :item に値を入力する' do |item|
