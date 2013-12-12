@@ -1,50 +1,33 @@
 # encoding: utf-8
 
-step 'ブログの記事が :blogs 件登録されている' do |blogs|
-  blogs.to_i.times do |c|
-    FactoryGirl.create(:blog)
-  end
+step 'there is a blog.' do
+  @blog = create(:blog_example)
 end
 
-step 'ブログ一覧ページの :page ページ目が表示されている' do |page|
+step 'there are :items_count blogs.' do |items_count|
+  items_count.to_i.times { create(:blog_example) }
+end
+
+step 'display the :page page of blogs list.' do |page|
   visit blogs_path(page: page)
 end
 
-step 'ブログの記事が :count 件表示される' do |count|
-  expect(page).to have_selector("table.table > tr > th.post_at", count: count)
+step 'display the :blogs_count blogs on the list.' do |blogs_count|
+  expect(page).to have_selector("table.table > tr > th.post_at", count: blogs_count)
 end
 
-step 'ブログの記事の詳細画面が表示されている' do
-  visit blog_path(Blog.first)
+step 'access to the blog.' do
+  click_link @blog.title
 end
 
-=begin 
-step 'ブログ詳細ページを表示する' do
-  visit blog_path(@blog)
+step 'display the blog title.' do
+  expect(page).to have_selector(".table tr > th > a", @blog.title)
 end
 
-ならば(/^ブログの記事が"(.*?)"件表示される$/) do |display_count|
-p display_count
-  page.should have_selector("table.table > tr > th.post_at", count: display_count)
+step 'display the blog contents1.' do
+  expect(page).to have_selector(".table tr > td.contents1", @blog.contents1)
 end
 
-ならば(/^最近の記事が"(.*?)"件表示される$/) do |display_count|
-  page.should have_selector("div.well > ul.nav > li > a.recent_blog", count: display_count)
+step 'display the blog contents2.' do
+  expect(page).to have_selector(".table tr > td.contents1", @blog.contents2)
 end
-
-ならば(/^ブログのタイトルが表示される$/) do
-  page.should have_selector(".table tr > th > a", @blog.title)
-end
-
-ならば(/^ブログの投稿日付が表示される$/) do
-  page.should have_selector(".table tr > th.post_at", @blog.created_at)
-end
-
-ならば(/^ブログのコンテンツ1が表示される$/) do
-  page.should have_selector(".table tr > td.contents1", @blog.contents1)
-end
-
-ならば(/^ブログのコンテンツ2が表示される$/) do
-  page.should have_selector(".table tr > td.contents2", @blog.contents2)
-end
-=end
