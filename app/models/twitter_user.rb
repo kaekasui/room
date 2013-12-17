@@ -1,5 +1,5 @@
 class TwitterUser < User
-  acts_as_paranoid
+  validates :uid, :screen_name, presence: true
 
   def self.find_for_oauth(auth)
     self.where(uid: auth.uid).first

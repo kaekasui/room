@@ -41,7 +41,7 @@ describe Blog do
         expect(blog).to have(1).errors_on(:contents1)
       end
 
-      it "contents2 is required." do
+      it "contents2 is not required." do
         blog = build(:blog_example, contents2: nil)
         expect(blog).to have(0).errors_on(:contents2)
       end
