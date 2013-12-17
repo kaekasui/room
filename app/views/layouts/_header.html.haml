@@ -27,5 +27,5 @@
                 = I18n.t("account.my_account")
                 %span.caret
               %ul.dropdown-menu
-                %li= link_to t("helpers.links.logout"), destroy_user_session_path, method: :delete, class: "navbar-link"
-                %li=# link_to I18n.t("account.twitter"), "/auth/twitter"
+                %li= link_to t("account.profile"), "#"
+            %li= link_to t("actions.logout"), destroy_user_session_path, method: :delete
