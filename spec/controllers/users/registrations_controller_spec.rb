@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Users::SessionsController do
+describe Users::RegistrationsController do
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
@@ -45,15 +45,25 @@ describe Users::SessionsController do
     let(:user) { create(:original_user) }
 
     context "when data is normal." do
-      it "login." do
+      before do
         post :create, { user: {email: "abc@example.com", password: "password" }}
-        expect(response.status).to eq 200
+      end
+
+      it "sing up." do
+        expect(response.status).to eq 302
+      end
+
+      it "redirect to top page after sign up." do
+        expect(response).to redirect_to(root_path)
       end
     end
 
     context "when email is blank." do
-      it "don't login." do
+      before do
         post :create, { user: {email: "", password: "password" }}
+      end
+
+      it "don't sign up." do
         expect(response).to render_template(:new)
       end
     end

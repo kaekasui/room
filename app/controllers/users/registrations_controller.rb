@@ -12,12 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :nickname, :password, :password_confirmation) }
-    super
+    params = devise_parameter_sanitizer.sanitize(:sign_up)
+    params.store("type", "OriginalUser")
+    params
   end
 
   def account_update_params
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email,:nickname, :password, :current_password, :password_confirmation) }
     super
   end
 end
