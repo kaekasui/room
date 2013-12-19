@@ -1,5 +1,3 @@
-require 'rake'
-
 step 'there is non-logged-in user.' do
   # nothing
 end
