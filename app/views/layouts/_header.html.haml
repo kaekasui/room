@@ -22,7 +22,7 @@
 
         %ul.nav.pull-right
           - if current_user
-            %li.dropdown#dropdown_menu
+            %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#dropdown_menu"}
                 = I18n.t("account.my_account")
                 %span.caret

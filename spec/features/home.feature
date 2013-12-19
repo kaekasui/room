@@ -24,7 +24,7 @@ Feature: display the top page.
     Given there is logged-in administrator.
     When access the 'HOME' page.
     Then display the introduction.
-    And display the My Account on the navigation bar.
+    #And display the My Account on the navigation bar.
     And display the 'HOME' on the navigation bar.
     And display the 'BLOG' on the navigation bar.
-    And display the admin menu on the navigation bar.
+    #And display the admin menu on the navigation bar.
