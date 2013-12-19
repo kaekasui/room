@@ -16,6 +16,7 @@ ja:
     profile: "プロフィール"
     twitter: "Twitter"
     non_registered: "未登録"
+    registered: "登録解除"
   menu:
     home: "HOME"
     home_text: "このページです。"

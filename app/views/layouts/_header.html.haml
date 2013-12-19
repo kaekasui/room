@@ -28,4 +28,6 @@
                 %span.caret
               %ul.dropdown-menu
                 %li= link_to t("account.profile"), "#"
+                - status = current_user.registered_twitter? ? t("account.registered") : t("account.non_registered")
+                %li= link_to t("account.twitter") + " - " + status, "#"
             %li= link_to t("actions.logout"), destroy_user_session_path, method: :delete
