@@ -11,8 +11,8 @@ Feature: display the top page.
     And display the 'BLOG' on the navigation bar.
     And don't display the admin menu on the navigation bar.
 
-  Scenario: logged-in user display the top page.
-    Given there is logged-in user.
+  Scenario: logged-in original user display the top page.
+    Given there is logged-in original user.
     When access the 'HOME' page.
     Then display the introduction.
     And display the My Account on the navigation bar.
