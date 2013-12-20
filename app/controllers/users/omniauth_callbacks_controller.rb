@@ -6,6 +6,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def disconnect
+    case current_user.provider
+    when "twitter"
+      current_user.same_code_twitter.update_attributes(token: nil, secret: nil)
+    end
+  end
+
   private
   def authorize provider
     auth = request.env["omniauth.auth"]

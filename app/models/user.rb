@@ -9,8 +9,12 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: false, presence: false
 
   def registered_twitter?
-    user = User.where(access_code: self.access_code, provider: "twitter").first
+    user = self.same_code_twitter
     user.token.present? && user.secret.present? if user
+  end
+
+  def same_code_twitter
+    User.where(access_code: self.access_code, provider: "twitter").first
   end
 
   private
