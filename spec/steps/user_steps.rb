@@ -2,7 +2,7 @@ step 'there is non-logged-in user.' do
   # nothing
 end
 
-step 'there is logged-in user.' do
+step 'there is logged-in original user.' do
   visit new_user_registration_path
   fill_in 'user_email', with: 'abc@example.com'
   fill_in 'user_password', with: 'password'
