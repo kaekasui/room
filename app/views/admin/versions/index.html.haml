@@ -5,14 +5,14 @@
       %tr
         %th= model_class.human_attribute_name(:current)
         %th= model_class.human_attribute_name(:name)
+        %th= model_class.human_attribute_name(:release_at)
       - @versions.each do |version|
         %tr
           %td= radio_button :version, "current", version.id, checked: version.current
           = fields_for "version[]", version do |f|
             %td= f.text_field :name
+            %td= f.date_select :release_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
             %td.delete_version= link_to I18n.t("actions.destroy"), admin_version_path(version.id), method: :delete, class: "btn"
-  %table
-    %tr
-      %td.add_version= I18n.t("actions.add")
 
   = submit_tag I18n.t("actions.update"), class: "btn"
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_version_path, :class => 'btn btn-primary'
