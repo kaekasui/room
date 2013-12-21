@@ -39,7 +39,7 @@ Room::Application.routes.draw do
     resources :users do
       post "/update_all" => "users#update_all", on: :collection
     end
-    resources :versions, only: [:index, :destroy] do
+    resources :versions, only: [:index, :destroy, :new, :create] do
       post "/update_all" => "versions#update_all", on: :collection
     end
   end
