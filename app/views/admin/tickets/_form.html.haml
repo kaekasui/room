@@ -6,7 +6,7 @@
   .control-group
     = f.label :id, "#" + @ticket.id.to_s, class: 'control-label'
     .controls
-      = f.text_field :id, class: 'text_field' if @ticket.id
+      = f.text_field :id, class: 'text_field'
   .control-group
     = f.label :tracker_id, class: 'control-label'
     .controls
