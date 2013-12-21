@@ -9,8 +9,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def disconnect
     case current_user.provider
     when "twitter"
-      current_user.same_code_twitter.update_attributes(token: nil, secret: nil)
+      user = current_user.same_code_twitter
+      user.access_code = nil
+      user.save
     end
+    redirect_to root_path
   end
 
   private

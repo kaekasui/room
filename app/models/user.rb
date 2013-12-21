@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
-  before_create :set_access_code
+  before_save :set_access_code
   acts_as_paranoid
 
   validates :email, uniqueness: false, presence: false
