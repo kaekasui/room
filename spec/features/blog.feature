@@ -20,8 +20,8 @@ Feature: display the blogs list and detailed blogs.
       | 23          | 2    | 10          |
       | 23          | 3    | 3           |
    
-  Scenario Outline: logged-in user display blogs list.
-    Given there is logged-in user.
+  Scenario Outline: logged-in original user display blogs list.
+    Given there is logged-in original user.
     And there are <items_count> blogs.
     When access the 'HOME' page.
     And access the 'BLOG' menu.
@@ -63,8 +63,8 @@ Feature: display the blogs list and detailed blogs.
     And display the blog contents1.
     And display the blog contents2.
 
-  Scenario: logged-in user display the blog.
-    Given there is logged-in user.
+  Scenario: logged-in original user display the blog.
+    Given there is logged-in original user.
     And there is a blog.
     When access the 'BLOG' page.
     And access to the blog.

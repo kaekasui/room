@@ -20,12 +20,10 @@ step 'there is logged-in administrator.' do
   fill_in 'user_password_confirmation', with: 'password'
   click_button I18n.t("user.submit")
 
-  pending
-  # TODO: add function to add authorizations of administrator.
-  #user = User.find_by_email('abc@example.com')
-  #user.admin = true
-  #user.password = 'password'
-  #expect(user.save).to eq true
+  user = User.find_by_email('abc@example.com')
+  user.admin = true
+  user.password = 'password'
+  expect(user.save).to eq true
 end
 
 step 'display the signed up message.' do
