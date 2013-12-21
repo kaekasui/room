@@ -27,7 +27,6 @@
           - admin_menu_list(@admin_menu).each do |name, path|
             = render partial: "admin_menu", locals: { name: name, path: path }
       .row
-        = bootstrap_flash
         - if current_user and current_user.admin and @admin_menu
           .span12
             = yield

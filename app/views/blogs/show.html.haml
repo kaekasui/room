@@ -7,7 +7,7 @@
       %td.align_right{:colspan => 2}= link_to "Comments(" + @blog.blog_comments.count.to_s + ")", blog_path(id: @blog.id, anchor: "blog_comments")
 
 .well
-  .blog_comment_messages= bootstrap_flash
+  .blog_comment_messages
   = form_for @blog_comment, html: {class: "form-horizontal"}, url: blog_blog_comments_path(blog_id: @blog.id), remote: true do |f|
     = render partial: "blog_comments/form", locals: {f: f}
 
