@@ -1,11 +1,11 @@
 class Admin::PrioritiesController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_priority, only: [:show, :edit, :update, :destroy]
+  before_action :set_priorities, only: [:index, :update_all]
 
   # GET /priorities
   # GET /priorities.json
   def index
-    @priorities = Priority.all
   end
 
   # GET /priorities/1
@@ -70,6 +70,10 @@ class Admin::PrioritiesController < Admin::AdminBaseController
   private
   def set_priority
     @priority = Priority.find(params[:id])
+  end
+
+  def set_priorities
+    @priorities = Priority.all
   end
 
   def priority_params
