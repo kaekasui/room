@@ -6,7 +6,7 @@
   .control-group
     = f.label :id, "#" + @ticket.id.to_s, class: 'control-label'
     .controls
-      = f.text_field :id, class: 'text_field' if @ticket.id
+      = f.text_field :id, class: 'text_field'
   .control-group
     = f.label :tracker_id, class: 'control-label'
     .controls
@@ -34,7 +34,7 @@
   .control-group
     = f.label :version_id, :class => 'control-label'
     .controls
-      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}
+      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}, include_blank: true
   .control-group
     = f.label :user_id, :class => 'control-label'
     .controls
