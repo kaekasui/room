@@ -41,7 +41,7 @@ describe Blog do
         expect(blog).to have(1).errors_on(:contents1)
       end
 
-      it "contents2 is required." do
+      it "contents2 is not required." do
         blog = build(:blog_example, contents2: nil)
         expect(blog).to have(0).errors_on(:contents2)
       end
@@ -68,8 +68,8 @@ describe Blog do
   describe "scope" do
     describe "default scope" do
       it "display recent blogs." do
-        blog1 = create(:blog_example, created_at: "2013-08-01 09:00:00")
-	blog2 = create(:blog_example, created_at: "2013-09-01 09:00:00")
+        blog1 = create(:blog_example, posted_at: "2013-08-01 09:00:00")
+	blog2 = create(:blog_example, posted_at: "2013-09-01 09:00:00")
 	blogs = Blog.all.recent_blogs
 	expect(blogs).to eq [blog2, blog1]
       end

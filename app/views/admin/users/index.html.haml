@@ -3,11 +3,13 @@
   %table.table
     - unless @users.blank?
       %tr
+        %th= model_class.human_attribute_name(:admin)
         %th= model_class.human_attribute_name(:screen_name)
         %th= model_class.human_attribute_name(:provider)
       - @users.each do |user|
         %tr
           = fields_for "user[]", user do |f|
+            %td= f.check_box :admin
             %td= f.text_field :screen_name
             %td= f.text_field :provider
             %td.update_user=# link_to I18n.t("actions.edit_detail"), edit_admin_user_path(user.id), class: "btn"

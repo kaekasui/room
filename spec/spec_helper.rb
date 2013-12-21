@@ -1,5 +1,16 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start do
+  add_filter 'config'
+  add_filter 'factories'
+
+  add_group 'Models', 'models'
+  add_group 'Controllers', 'controllers'
+  add_group 'Helpers', 'helpers'
+  add_group 'Views', 'views'
+  add_group 'Mailers', 'mailers'
+  add_group 'Libraries', 'lib'
+  add_group 'Routing', 'routing'
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
@@ -12,10 +23,9 @@ require 'capybara/rspec'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-Dir.glob("spec/**/*steps.rb") { |f| load f, true }
-
 require 'turnip'
 require 'turnip/capybara'
+Dir.glob("spec/steps/*steps.rb") { |f| load f, true }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -69,4 +79,7 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
+
+  # for devise test helper
+  config.include Devise::TestHelpers, :type => :controller
 end

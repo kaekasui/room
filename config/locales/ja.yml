@@ -7,13 +7,16 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y.%m.%d"
       very_short: "%m/%d"
 
   brand: "ヵェの部屋♪"
   account:
-    my_account: "My Account"
-    twitter: "Twitterでログイン"
-    logout: "ログアウト"
+    my_account: "アカウント"
+    profile: "プロフィール"
+    twitter: "Twitter"
+    non_registered: "未登録"
+    registered: "登録解除"
   menu:
     home: "HOME"
     home_text: "このページです。"
@@ -70,6 +73,8 @@ ja:
   blog_comment:
     admin: "管理者のみが閲覧可能なコメントです。"
     url: "URL"
+  user:
+    submit: "登録する"
 
   views:
     pagination:
@@ -92,6 +97,7 @@ ja:
     draft: "下書きする"
     edit: "編集する"
     edit_detail: "詳細編集"
+    logout: "ログアウト"
     update: "更新する"
 
   flash:

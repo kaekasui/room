@@ -9,8 +9,8 @@ class Admin::TrackersController < Admin::AdminBaseController
   def update_all
     # 既存情報の更新
     if @trackers
-      @trackers.each do |trackers|
-        tracker_param = trackers_params[tracker.id.to_s]
+      @trackers.each do |tracker|
+        tracker_param = tracker_params[tracker.id.to_s]
         tracker.update_attributes(tracker_param.symbolize_keys)
       end
     end

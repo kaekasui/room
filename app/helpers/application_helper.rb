@@ -42,8 +42,7 @@ module ApplicationHelper
   end
 
   def current_version
-    version = Version.where(current: true).first
-    version.name unless version.blank?
+    Version.where(current: true).first
   end
 
   def markdown(text)

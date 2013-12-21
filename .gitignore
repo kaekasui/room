@@ -8,11 +8,14 @@
 /.bundle
 
 # Ignore file to set environment variable
+/.env.production
 /.env.development
+/.env.test
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/spec/tmp
 
 # Ignore database config.
 /config/database.yml

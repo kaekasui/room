@@ -3,6 +3,10 @@ class Admin::AdminBaseController < ApplicationController
 
   private
   def admin_required
-    redirect_to root_path unless current_user.admin
+    if current_user.nil?
+      redirect_to root_path
+    else
+      redirect_to root_path unless current_user.admin
+    end
   end
 end

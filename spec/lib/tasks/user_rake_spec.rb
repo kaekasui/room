@@ -1,4 +1,4 @@
-require_relative '../../spec_helper'
+require 'spec_helper'
 require 'rake'
 
 describe "set_admin" do
@@ -11,7 +11,7 @@ describe "set_admin" do
 
   describe "user:set_admin" do
     context "when execute the rake tasks." do
-      subject(:user) { create(:user) }
+      subject(:user) { create(:user_example) }
 
       context "without the option." do
         it "display error messages." do
