@@ -35,6 +35,7 @@ ja:
         progress: "進捗%"
         status_id: "ステータス"
         title: "タイトル"
+        tracker_id: "トラッカー"
         user_id: "担当者"
         version_id: "バージョン"
       user:
