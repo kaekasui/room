@@ -17,7 +17,7 @@
         %td= link_to ticket.title, admin_ticket_path(ticket)
         %td= ticket.priority.name
         %td= ticket.status.name
-        %td= ticket.version.name if ticket.version
+        %td= ticket.version.name
         %td= ticket.progress
 
 = link_to t('.new', :default => t("helpers.links.new")), new_admin_ticket_path, :class => 'btn btn-primary'
