@@ -8,6 +8,7 @@ $ ->
     add_count += 1
     $("table.table").append(
       "<tr>
+        <td><input type='checkbox' name='status[new][#{add_count}][finished]'></td>
         <td><input type='text' name='status[new][#{add_count}][name]'></td>
       </tr>"
     )

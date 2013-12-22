@@ -4,6 +4,7 @@
     - @statuses.each do |status|
       %tr
         = fields_for "status[]", status do |f|
+          %td= f.check_box :finished
           %td= f.text_field :name
           %td
             = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_status_path(status), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

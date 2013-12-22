@@ -50,7 +50,7 @@ class Admin::StatusesController < Admin::AdminBaseController
     # 新規ステータスの作成
     if status_params["new"]
       status_params["new"].each do |param_id, value|
-        Status.create(name: value["name"])
+        Status.create(name: value["name"], finished: value["finished"])
       end
     end
 
