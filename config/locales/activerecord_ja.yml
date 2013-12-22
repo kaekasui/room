@@ -28,11 +28,12 @@ ja:
         content: "説明"
         created_at: "作成日時"
       ticket:
-        id: "#"
         content: "説明"
         created_at: "作成日時"
+        id: "#"
         priority_id: "優先度"
         progress: "進捗%"
+        project_id: "プロジェクト"
         status_id: "ステータス"
         title: "タイトル"
         tracker_id: "トラッカー"
