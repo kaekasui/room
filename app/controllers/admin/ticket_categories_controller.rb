@@ -26,7 +26,7 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
   end
 
   def destroy
-    @ticket_categories.destroy
+    @ticket_category.destroy
     respond_to do |format|
       format.html { redirect_to admin_ticket_categories_path }
       format.json { head :no_content }
