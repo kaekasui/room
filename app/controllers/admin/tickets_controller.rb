@@ -28,14 +28,20 @@ class Admin::TicketsController < Admin::AdminBaseController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    TicketCategoryCase.transaction do
+      category_ids = ticket_category_params.nil? ? [] : ticket_category_params
+      category_ids.each do |category_id|
+        TicketCategoryCase.create(ticket_id: @ticket.id, ticket_category_id: category_id)
+      end
 
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ticket }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @ticket.save
+          format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @ticket }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -76,7 +82,7 @@ class Admin::TicketsController < Admin::AdminBaseController
     end
 
     def ticket_category_params
-      params.require(:ticket_categories)
+      params.require(:ticket_categories) unless params[:ticket_categories].nil?
     end
 
   def set_menu
