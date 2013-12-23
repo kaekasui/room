@@ -49,13 +49,28 @@ class Admin::TicketsController < Admin::AdminBaseController
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
-    respond_to do |format|
-      if @ticket.update(ticket_params)
-        format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    TicketCategoryCase.transaction do
+      category_ids = ticket_category_params.nil? ? [] : ticket_category_params
+      current_category_ids = @ticket.ticket_category_cases.map { |v| v.ticket_category_id.to_s }
+
+      adding_categories = category_ids - current_category_ids
+      deleting_categories = current_category_ids - category_ids
+      adding_categories.each do |category_id|
+        TicketCategoryCase.create(ticket_id: @ticket.id, ticket_category_id: category_id)
+      end
+      deleting_categories.each do |category_id|
+        deleting_category = TicketCategoryCase.find_by_ticket_id_and_ticket_category_id(@ticket.id, category_id)
+	deleting_category.destroy
+      end
+
+      respond_to do |format|
+        if @ticket.update(ticket_params)
+          format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
