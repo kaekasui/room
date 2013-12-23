@@ -1,5 +1,4 @@
 - model_class = Ticket
-
 %table.table
   %tr
     %th{colspan: "4"}
@@ -9,6 +8,11 @@
     %th= model_class.human_attribute_name(:project_id)
     %td= @ticket.project.title
   %tr
+    %th= model_class.human_attribute_name(:tracker_id)
+    %td= @ticket.tracker.name
+    %th
+    %td
+  %tr
     %th= model_class.human_attribute_name(:status_id)
     %td= @ticket.status.name
     %th= model_class.human_attribute_name(:progress)
@@ -17,15 +21,15 @@
     %th= model_class.human_attribute_name(:priority_id)
     %td= @ticket.priority.name
     %th= model_class.human_attribute_name(:user_id)
-    %td= @ticket.user_id
+    %td= @ticket.user.name
   %tr
     %th= model_class.human_attribute_name(:version_id)
     %td= @ticket.version.name
     %th= model_class.human_attribute_name(:created_at)
     %td= l @ticket.created_at
   %tr
-    %th{colspan: "4"}
-      = @ticket.content
+    %td{colspan: "4"}
+      = to_skip(@ticket.content).html_safe
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_tickets_path, :class => 'btn'

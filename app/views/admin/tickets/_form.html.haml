@@ -34,7 +34,7 @@
   .control-group
     = f.label :version_id, :class => 'control-label'
     .controls
-      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}, include_blank: true
+      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}
   .control-group
     = f.label :user_id, :class => 'control-label'
     .controls
