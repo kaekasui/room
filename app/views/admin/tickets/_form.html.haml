@@ -38,7 +38,7 @@
   .control-group
     = f.label :user_id, :class => 'control-label'
     .controls
-      = f.text_field :user_id, :class => 'text_field'
+      = f.select :user_id, User.all.map {|v| [v.name, v.id]}
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn'
