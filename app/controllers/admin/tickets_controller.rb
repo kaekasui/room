@@ -75,6 +75,10 @@ class Admin::TicketsController < Admin::AdminBaseController
       params.require(:ticket).permit(:id, :project_id, :title, :content, :progress, :status_id, :priority_id, :version_id, :user_id, :tracker_id, :created_by, :deleted_at)
     end
 
+    def ticket_category_params
+      params.require(:ticket_categories)
+    end
+
   def set_menu
     @admin_menu = "ticket"
   end
