@@ -6,6 +6,8 @@ class Admin::TicketsController < Admin::AdminBaseController
   # GET /tickets.json
   def index
     @tickets = Ticket.page(params[:page]).per(100)
+    @finished_tickets = Ticket.finished.page(params[:page]).per(100)
+    @unfinish_tickets = Ticket.unfinish.page(params[:page]).per(100)
   end
 
   # GET /tickets/1
