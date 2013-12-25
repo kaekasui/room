@@ -78,6 +78,8 @@ RSpec.configure do |config|
     FactoryGirl.reload
   end
 
+  config.include Capybara::DSL
+
   config.include FactoryGirl::Syntax::Methods
 
   # for devise test helper
