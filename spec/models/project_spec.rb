@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Project do
   describe "record" do
-    it "have 2 tickets." do
+    it "has 2 tickets." do
       project = create(:project_example)
       user = create(:user_example)
       version = create(:version_example)
