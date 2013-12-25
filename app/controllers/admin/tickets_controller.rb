@@ -8,6 +8,8 @@ class Admin::TicketsController < Admin::AdminBaseController
     @tickets = Ticket.page(params[:page]).per(100)
     @finished_tickets = Ticket.finished.page(params[:page]).per(100)
     @unfinish_tickets = Ticket.unfinish.page(params[:page]).per(100)
+    @before_release_tickets = Ticket.before_release.page(params[:page]).per(100)
+    @after_release_tickets = Ticket.after_release.page(params[:page]).per(100)
   end
 
   # GET /tickets/1

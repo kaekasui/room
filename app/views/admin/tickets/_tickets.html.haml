@@ -10,7 +10,7 @@
       %th= model_class.human_attribute_name(:version_id)
       %th= model_class.human_attribute_name(:progress)
   %tbody
-    - @tickets.each do |ticket|
+    - items.each do |ticket|
       %tr
         %td= link_to "#" + ticket.id.to_s, admin_ticket_path(ticket)
         %td= ticket.tracker.name
@@ -19,4 +19,4 @@
         %td= ticket.status.name
         %td= ticket.version.name
         %td= ticket.progress
-= paginate @tickets
+= paginate items
