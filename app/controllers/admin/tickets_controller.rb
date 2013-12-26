@@ -2,8 +2,6 @@ class Admin::TicketsController < Admin::AdminBaseController
   before_action :set_menu
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
-  # GET /tickets
-  # GET /tickets.json
   def index
     @tickets = Ticket.page(params[:page]).per(100)
     @finished_tickets = Ticket.finished.page(params[:page]).per(100)
@@ -12,22 +10,16 @@ class Admin::TicketsController < Admin::AdminBaseController
     @after_release_tickets = Ticket.after_release.page(params[:page]).per(100)
   end
 
-  # GET /tickets/1
-  # GET /tickets/1.json
   def show
   end
 
-  # GET /tickets/new
   def new
     @ticket = Ticket.new
   end
 
-  # GET /tickets/1/edit
   def edit
   end
 
-  # POST /tickets
-  # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
     TicketCategoryCase.transaction do
@@ -48,8 +40,6 @@ class Admin::TicketsController < Admin::AdminBaseController
     end
   end
 
-  # PATCH/PUT /tickets/1
-  # PATCH/PUT /tickets/1.json
   def update
     TicketCategoryCase.transaction do
       category_ids = ticket_category_params.nil? ? [] : ticket_category_params
@@ -77,8 +67,6 @@ class Admin::TicketsController < Admin::AdminBaseController
     end
   end
 
-  # DELETE /tickets/1
-  # DELETE /tickets/1.json
   def destroy
     @ticket.destroy
     respond_to do |format|
@@ -88,12 +76,10 @@ class Admin::TicketsController < Admin::AdminBaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_ticket
       @ticket = Ticket.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
       params.require(:ticket).permit(:id, :project_id, :title, :content, :progress, :status_id, :priority_id, :version_id, :user_id, :tracker_id, :created_by, :deleted_at)
     end
