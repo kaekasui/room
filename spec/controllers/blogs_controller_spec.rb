@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe BlogsController do
-
   describe "#index" do
     it "is success." do
       get :index
@@ -26,5 +25,5 @@ describe BlogsController do
       get :show, id: blog.id
       expect(response).to render_template(:show)
     end
- end
+  end
 end

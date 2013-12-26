@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe HomeController do
-
   describe "#index" do
     it "is success." do
       get :index
