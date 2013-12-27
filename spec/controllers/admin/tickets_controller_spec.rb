@@ -76,6 +76,23 @@ describe Admin::TicketsController do
         expect { post :create, { ticket: { title: "", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id } } }.to change(Ticket, :count).by(0)
       end
     end
+
+    context "when there is a ticket category" do
+      it "regist the ticket categories." do
+        ticket_category = create(:ticket_category_example)
+        expect { post :create, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category.id.to_s] } }.to change(Ticket, :count).by(1)
+        expect { post :create, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category.id.to_s] } }.to change(TicketCategoryCase, :count).by(1)
+      end
+    end
+
+    context "when there are two ticket categories" do
+      it "regist the ticket categories." do
+        ticket_category1 = create(:ticket_category_example)
+	ticket_category2 = create(:ticket_category_example, name: "Name")
+        expect { post :create, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category1.id.to_s, ticket_category2.id.to_s] } }.to change(Ticket, :count).by(1)
+        expect { post :create, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category1.id.to_s, ticket_category2.id.to_s] } }.to change(TicketCategoryCase, :count).by(2)
+      end
+    end
   end
 
   describe "#update" do
@@ -95,6 +112,42 @@ describe Admin::TicketsController do
         patch :update, { ticket: { title: "", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, id: ticket.id }
         expect(ticket.reload.title).to eq "MyString"
       end
+    end
+
+    context "when there is a ticket category" do
+      it "regist the ticket categories." do
+        ticket_category1 = create(:ticket_category_example)
+	ticket_category2 = create(:ticket_category_example, name: "Name")
+        ticket = create(:ticket_example, project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id)
+	ticket_category_case = create(:ticket_category_case_example, ticket_id: ticket.id, ticket_category_id: ticket_category1.id)
+
+        expect(ticket_category_case.ticket_category_id).to eq ticket_category1.id
+        expect { patch :update, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category2.id.to_s], id: ticket.id } }.to change(Ticket, :count).by(0)
+        expect { patch :update, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category2.id.to_s], id: ticket.id } }.to change(TicketCategoryCase, :count).by(0)
+	#expect(ticket_category_case.reload.ticket_category_id).to eq ticket_category2.id
+	expect(ticket.ticket_category_cases.reload.first.ticket_category.id).to eq ticket_category2.id
+      end
+    end
+
+    context "when there are two ticket categories" do
+      it "regist the ticket categories." do
+        ticket = create(:ticket_example, project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id)
+        ticket_category1 = create(:ticket_category_example)
+	ticket_category2 = create(:ticket_category_example, name: "Name")
+
+        expect { patch :update, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category1.id.to_s, ticket_category2.id.to_s], id: ticket.id } }.to change(TicketCategoryCase, :count).by(2)
+        expect { patch :update, { ticket: { title: "Title", project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id }, ticket_categories: [ticket_category1.id.to_s, ticket_category2.id.to_s], id: ticket.id } }.to change(Ticket, :count).by(0)
+	expect(ticket.ticket_category_cases.count).to eq 2
+      end
+    end
+  end
+
+  describe "#destroy" do
+    it "is success." do
+      ticket = create(:ticket_example, project_id: project.id, version_id: version.id, status_id: status.id, priority_id: priority.id, tracker_id: tracker.id, created_by: user.id)
+      expect(ticket.deleted_at).to eq nil
+      delete :destroy, { id: ticket.id }
+      expect(ticket.reload.deleted_at).not_to eq nil
     end
   end
 
