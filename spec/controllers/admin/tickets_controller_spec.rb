@@ -114,7 +114,7 @@ describe Admin::TicketsController do
 
       it "access the new ticket page." do
         get :new
-	expect(response).to eq render_template(:new)
+	expect(response).to render_template(:new)
       end
     end
 
@@ -126,7 +126,7 @@ describe Admin::TicketsController do
 
       it "access the edit ticket page." do
         get :edit, id: ticket.id
-	expect(response).to eq render_template(:edit)
+	expect(response).to render_template(:edit)
       end
     end
 
