@@ -33,6 +33,9 @@ Room::Application.routes.draw do
       post "/update_all" => "statuses#update_all", on: :collection
     end
     resources :tickets
+    resources :ticket_categories do
+      post "/update_all" => "ticket_categories#update_all", on: :collection
+    end
     resources :trackers do
       post "/update_all" => "trackers#update_all", on: :collection
     end

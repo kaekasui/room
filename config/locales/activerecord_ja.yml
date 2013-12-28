@@ -28,6 +28,7 @@ ja:
         content: "説明"
         created_at: "作成日時"
       ticket:
+        category: "カテゴリ"
         content: "説明"
         created_at: "作成日時"
         id: "#"

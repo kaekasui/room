@@ -10,8 +10,8 @@
   %tr
     %th= model_class.human_attribute_name(:tracker_id)
     %td= @ticket.tracker.name
-    %th
-    %td
+    %th= I18n.t("activerecord.attributes.ticket.category")
+    %td= @ticket.ticket_category_cases.map {|v| v.ticket_category.name }.join(", ")
   %tr
     %th= model_class.human_attribute_name(:status_id)
     %td= @ticket.status.name

@@ -105,10 +105,4 @@ describe BlogComment do
       end
     end
   end
-
-  describe "#blog_title" do
-    it "blog title" do
-      expect(blog_comment.blog_title).to eq blog.title
-    end
-  end
 end

@@ -5,4 +5,4 @@
   %ul.nav.nav-list.sidebar_blog_comments
     - @recent_blog_comments.each do |comment|
       - author = comment.admin ? "***" : comment.author
-      %li= link_to comment.blog_title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"
+      %li= link_to comment.blog.title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"
