@@ -22,6 +22,8 @@ class Admin::TicketsController < Admin::AdminBaseController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.created_by = current_user.id
+    @ticket.updated_by = current_user.id
     TicketCategoryCase.transaction do
       category_ids = ticket_category_params.nil? ? [] : ticket_category_params
       category_ids.each do |category_id|
@@ -57,8 +59,11 @@ class Admin::TicketsController < Admin::AdminBaseController
 
       respond_to do |format|
         if @ticket.update(ticket_params)
-          format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully updated.' }
-          format.json { head :no_content }
+          @ticket.updated_by = current_user.id
+	  if @ticket.save
+            format.html { redirect_to ['admin', @ticket], notice: 'Ticket was successfully updated.' }
+            format.json { head :no_content }
+	  end
         else
           format.html { render action: 'edit' }
           format.json { render json: @ticket.errors, status: :unprocessable_entity }
