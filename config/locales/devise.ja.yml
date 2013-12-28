@@ -25,8 +25,9 @@ ja:
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      failure: "%{kind}の認証に失敗しました。(\"%{reason}\")"
       success: "Successfully authenticated from %{kind} account."
+      signed_in: "%{kind}でログインしました。"
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
