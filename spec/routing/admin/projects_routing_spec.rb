@@ -2,34 +2,32 @@ require "spec_helper"
 
 describe Admin::ProjectsController do
   describe "routing" do
-=begin
-    it "routes to #index" do
-      get("/projects").should route_to("projects#index")
+    it "routes to #index." do
+      expect(get "admin/projects").to route_to("admin/projects#index")
     end
 
-    it "routes to #new" do
-      get("/projects/new").should route_to("projects#new")
+    it "no route matches #show." do
+      expect(get "admin/projects/1").not_to route_to("admin/projects#show")
     end
 
-    it "routes to #show" do
-      get("/projects/1").should route_to("projects#show", :id => "1")
+    it "routes to #new." do
+      expect(get "admin/projects/new").to route_to("admin/projects#new")
     end
 
-    it "routes to #edit" do
-      get("/projects/1/edit").should route_to("projects#edit", :id => "1")
+    it "routes to #create." do
+      expect(post "admin/projects").to route_to("admin/projects#create")
     end
 
-    it "routes to #create" do
-      post("/projects").should route_to("projects#create")
+    it "routes to #edit." do
+      expect(get "admin/projects/1/edit").to route_to("admin/projects#edit", id: "1")
     end
 
-    it "routes to #update" do
-      put("/projects/1").should route_to("projects#update", :id => "1")
+    it "routes to #update." do
+      expect(patch "admin/projects/1").to route_to("admin/projects#update", id: "1")
     end
 
-    it "routes to #destroy" do
-      delete("/projects/1").should route_to("projects#destroy", :id => "1")
+    it "routes to #destroy." do
+      expect(delete "admin/projects/1").to route_to("admin/projects#destroy", id: "1")
     end
-=end
   end
 end

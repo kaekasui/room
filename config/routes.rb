@@ -19,27 +19,26 @@ Room::Application.routes.draw do
 
   namespace :admin do
     resources :blogs
-    resources :blog_comments
-    resources :blog_links do
+    resources :blog_comments, only: [:index, :destroy]
+    resources :blog_links, only: [:index, :edit, :update, :destroy] do
       post "/update_all" => "blog_links#update_all", on: :collection
     end
-    resources :functions
-    resources :mail_forms
-    resources :priorities do
+    resources :mail_forms, only: [:index, :destroy]
+    resources :priorities, only: [:index, :destroy] do
       post "/update_all" => "priorities#update_all", on: :collection
     end
     resources :projects
-    resources :statuses do
+    resources :statuses, only: [:index, :destroy] do
       post "/update_all" => "statuses#update_all", on: :collection
     end
     resources :tickets
     resources :ticket_categories do
       post "/update_all" => "ticket_categories#update_all", on: :collection
     end
-    resources :trackers do
+    resources :trackers, only: [:index, :destroy] do
       post "/update_all" => "trackers#update_all", on: :collection
     end
-    resources :users do
+    resources :users, only: [:index, :destroy]  do
       post "/update_all" => "users#update_all", on: :collection
     end
     resources :versions, only: [:index, :destroy, :new, :create] do
