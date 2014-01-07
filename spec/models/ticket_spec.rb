@@ -38,12 +38,13 @@ describe Ticket do
       expect(ticket.version).to eq version
     end
 
-    it "has 2 ticket_category_cases." do
-      ticket_category1 = create(:ticket_category_example)
-      ticket_category2 = create(:ticket_category_example, name: "case")
-      case1 = create(:ticket_category_case_example, ticket_id: ticket.id, ticket_category_id: ticket_category1.id)
-      case2 = create(:ticket_category_case_example, ticket_id: ticket.id, ticket_category_id: ticket_category2.id)
-      expect(ticket.reload.ticket_category_cases).to eq([case1, case2])
+    it "has 2 categorizations." do
+      pending
+      category1 = create(:category_example)
+      category2 = create(:category_example, name: "case")
+      case1 = create(:categorization_example, registrable_id: ticket.id, category_id: category1.id)
+      case2 = create(:categorization_example, registrable_id: ticket.id, category_id: category2.id)
+      expect(ticket.reload.categorizations).to eq([case1, case2])
     end
 
     it "create a ticket." do

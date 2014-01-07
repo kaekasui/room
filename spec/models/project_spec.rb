@@ -16,9 +16,9 @@ describe Project do
     end
 
     it "has 2 ticket categories" do
-      ticket_categories1 = create(:ticket_category_example, project_id: project.id)
-      ticket_categories2 = create(:ticket_category_example, project_id: project.id)
-      expect(project.reload.ticket_categories).to eq([ticket_categories1, ticket_categories2])
+      categories1 = create(:category_example, project_id: project.id)
+      categories2 = create(:category_example, project_id: project.id)
+      expect(project.reload.categories).to eq([categories1, categories2])
     end
 
     it "create a project." do

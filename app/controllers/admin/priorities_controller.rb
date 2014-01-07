@@ -3,39 +3,7 @@ class Admin::PrioritiesController < Admin::AdminBaseController
   before_action :set_priority, only: [:show, :edit, :update, :destroy]
   before_action :set_priorities, only: [:index, :update_all]
 
-  # GET /priorities
-  # GET /priorities.json
   def index
-  end
-
-  # GET /priorities/1
-  # GET /priorities/1.json
-  def show
-  end
-
-  # GET /priorities/new
-  def new
-    @priority = Priority.new
-  end
-
-  # GET /priorities/1/edit
-  def edit
-  end
-
-  # POST /priorities
-  # POST /priorities.json
-  def create
-    @priority = Priority.new(priority_params)
-
-    respond_to do |format|
-      if @priority.save
-        format.html { redirect_to ['admin', @priority], notice: 'Priority was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @priority }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @priority.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update_all
@@ -57,8 +25,6 @@ class Admin::PrioritiesController < Admin::AdminBaseController
     redirect_to admin_priorities_path
   end
 
-  # DELETE /priorities/1
-  # DELETE /priorities/1.json
   def destroy
     @priority.destroy
     respond_to do |format|
