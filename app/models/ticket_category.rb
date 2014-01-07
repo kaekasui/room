@@ -1,8 +1,5 @@
-class TicketCategory < ActiveRecord::Base
-  acts_as_paranoid
-
+class TicketCategory < Category
   belongs_to :project
   has_many :ticket_category_cases
-
-  validates :name, presence: true, length: { maximum: MAX_TEXT_FIELD_LENGTH }
+  has_many :tickets, through: :ticket_category_cases
 end
