@@ -2,6 +2,7 @@ class Blog < ActiveRecord::Base
   acts_as_paranoid
 
   has_many :blog_comments
+  has_many :categories, through: :categorizations
 
   default_scope { order("posted_at DESC") }
 

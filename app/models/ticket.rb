@@ -8,8 +8,8 @@ class Ticket < ActiveRecord::Base
   belongs_to :tracker
   belongs_to :user
   belongs_to :version
-  has_many :ticket_category_cases
-  has_many :tickets, through: :ticket_category_cases
+  has_many :categorizations
+  has_many :categories, through: :categorizations
 
   scope :finished, -> { joins(:status).where(statuses: {finished: true}) }
   scope :unfinish, -> { joins(:status).where(statuses: {finished: false}) }

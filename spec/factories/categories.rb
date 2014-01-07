@@ -1,8 +1,5 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :category do
+  factory :category_example, class: Category do
     name "MyString"
-    type ""
   end
 end
