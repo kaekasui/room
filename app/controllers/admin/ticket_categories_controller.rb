@@ -7,11 +7,11 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
   end
 
   def new
-    @ticket_category = Category.new
+    @ticket_category = TicketCategory.new
   end
 
   def create
-    @ticket_category = Category.new(ticket_category_param)
+    @ticket_category = TicketCategory.new(ticket_category_param)
     respond_to do |format|
       if @ticket_category.save
         format.html { redirect_to admin_ticket_categories_path, notice: "created ticket category" }
@@ -33,7 +33,7 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
     # 新規優先度の作成
     if ticket_category_params["new"]
       ticket_category_params["new"].each do |param_id, value|
-        Category.create(name: value["name"])
+        TicketCategory.create(name: value["name"])
       end
     end
 
@@ -51,11 +51,11 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
   private
 
   def set_ticket_category
-    @ticket_category = Category.find(params[:id])
+    @ticket_category = TicketCategory.find(params[:id])
   end
 
   def set_ticket_categories
-    @ticket_categories = Category.all
+    @ticket_categories = TicketCategory.all
   end
 
   def ticket_category_param
