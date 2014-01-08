@@ -1,0 +1,14 @@
+= form_for ['admin', @blog_category], html: {class: "form-horizontal"} do |f|
+  .control-group
+    = f.label :project_id, class: "control-label"
+    = asterisk(@blog_category, :project_id)
+    .controls
+      = f.select :project_id, Project.all.map { |p| [p.title, p.id] }
+  .control-group
+    = f.label :name, class: "control-label"
+    = asterisk(@blog_category, :name)
+    .controls
+      = f.text_field :name
+  .control-group
+    .controls
+      = f.submit class: "btn"

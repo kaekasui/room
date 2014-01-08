@@ -3,6 +3,7 @@ class Blog < ActiveRecord::Base
 
   has_many :blog_comments
   has_many :categories, through: :categorizations
+  has_many :categorizations, as: :registrable, dependent: :destroy
 
   default_scope { order("posted_at DESC") }
 

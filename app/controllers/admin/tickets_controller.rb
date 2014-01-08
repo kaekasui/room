@@ -27,7 +27,7 @@ class Admin::TicketsController < Admin::AdminBaseController
     Categorization.transaction do
       category_ids = ticket_category_params.nil? ? [] : ticket_category_params
       category_ids.each do |category_id|
-        Categorization.create(ticket_id: @ticket.id, ticket_category_id: category_id)
+        @ticket.categorizations << Categorization.create(category_id: category_id)
       end
 
       respond_to do |format|
@@ -45,16 +45,15 @@ class Admin::TicketsController < Admin::AdminBaseController
   def update
     Categorization.transaction do
       category_ids = ticket_category_params.nil? ? [] : ticket_category_params
-      current_category_ids = @ticket.categorizations.map { |v| v.ticket_category_id.to_s }
+      current_category_ids = @ticket.categorizations.map { |v| v.category_id.to_s }
 
       adding_categories = category_ids - current_category_ids
       deleting_categories = current_category_ids - category_ids
       adding_categories.each do |category_id|
-        Categorization.create(ticket_id: @ticket.id, ticket_category_id: category_id)
+        @ticket.categorizations << Categorization.create(category_id: category_id)
       end
       deleting_categories.each do |category_id|
-        deleting_category = Categorization.find_by_ticket_id_and_ticket_category_id(@ticket.id, category_id)
-	deleting_category.destroy
+        @ticket.categorizations.delete(category_id)
       end
 
       respond_to do |format|
@@ -90,7 +89,7 @@ class Admin::TicketsController < Admin::AdminBaseController
     end
 
     def ticket_category_params
-      params.require(:ticket_categories) unless params[:ticket_categories].nil?
+      params.require(:categories) unless params[:categories].nil?
     end
 
   def set_menu

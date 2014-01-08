@@ -14,37 +14,47 @@ describe Ticket do
       expect(ticket.progress).to eq 0
     end
 
-    it "belongs to project." do
-      expect(ticket.project).to eq project
+    describe "belongs to" do
+      it "project." do
+        expect(ticket.project).to eq project
+      end
+
+      it "priority." do
+        expect(ticket.priority).to eq priority
+      end
+
+      it "status." do
+        expect(ticket.status).to eq status
+      end
+
+      it "tracker." do
+        expect(ticket.tracker).to eq tracker
+      end
+
+      it "user." do
+        expect(ticket.user).to eq user
+      end
+
+      it "version." do
+        expect(ticket.version).to eq version
+      end
     end
 
-    it "belongs to priority." do
-      expect(ticket.priority).to eq priority
-    end
+    describe "has many" do
+      before do
+        category1 = create(:ticket_category_example)
+        category2 = create(:ticket_category_example)
+        ticket.categorizations << create(:categorization_example, category_id: category1.id)
+        ticket.categorizations << create(:categorization_example, category_id: category2.id)
+      end
 
-    it "belongs to status." do
-      expect(ticket.status).to eq status
-    end
+      it "categorizations." do
+        expect(ticket.reload.categorizations.count).to eq 2
+      end
 
-    it "belongs to tracker." do
-      expect(ticket.tracker).to eq tracker
-    end
-
-    it "belongs to user." do
-      expect(ticket.user).to eq user
-    end
-
-    it "belongs to version." do
-      expect(ticket.version).to eq version
-    end
-
-    it "has 2 categorizations." do
-      pending
-      category1 = create(:category_example)
-      category2 = create(:category_example, name: "case")
-      case1 = create(:categorization_example, registrable_id: ticket.id, category_id: category1.id)
-      case2 = create(:categorization_example, registrable_id: ticket.id, category_id: category2.id)
-      expect(ticket.reload.categorizations).to eq([case1, case2])
+      it "categories." do
+        expect(ticket.categories.count).to eq 2
+      end
     end
 
     it "create a ticket." do

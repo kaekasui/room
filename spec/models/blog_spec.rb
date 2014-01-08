@@ -7,11 +7,29 @@ describe Blog do
       expect(blog.draft).to eq false
     end
 
-    it "have 2 comments." do
-      blog = create(:blog_example)
-      comments1 = create(:blog_comment_example, blog_id: blog.id)
-      comments2 = create(:blog_comment_example, blog_id: blog.id)
-      expect(blog.reload.blog_comments).to eq([comments1, comments2])
+    describe "has many" do
+      let(:blog) { create(:blog_example) }
+      before do
+        category1 = create(:blog_category_example)
+        category2 = create(:blog_category_example)
+        blog.categorizations << create(:categorization_example, category_id: category1.id)
+        blog.categorizations << create(:categorization_example, category_id: category2.id)
+      end
+
+      it "blog comments." do
+        comments1 = create(:blog_comment_example, blog_id: blog.id)
+        comments2 = create(:blog_comment_example, blog_id: blog.id)
+        expect(blog.reload.blog_comments).to eq([comments1, comments2])
+	expect(blog.reload.blog_comments.count).to eq 2
+      end
+
+      it "categorizations." do
+        expect(blog.reload.categorizations.count).to eq 2
+      end
+
+      it "categories." do
+        expect(blog.categories.count).to eq 2
+      end
     end
 
     it "create a blog." do

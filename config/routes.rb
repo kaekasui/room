@@ -19,6 +19,9 @@ Room::Application.routes.draw do
 
   namespace :admin do
     resources :blogs
+    resources :blog_categories, only: [:index, :destroy] do
+      post "/update_all" => "blog_categories#update_all", on: :collection
+    end
     resources :blog_comments, only: [:index, :destroy]
     resources :blog_links, only: [:index, :edit, :update, :destroy] do
       post "/update_all" => "blog_links#update_all", on: :collection
@@ -32,7 +35,7 @@ Room::Application.routes.draw do
       post "/update_all" => "statuses#update_all", on: :collection
     end
     resources :tickets
-    resources :ticket_categories do
+    resources :ticket_categories, only: [:index, :destroy] do
       post "/update_all" => "ticket_categories#update_all", on: :collection
     end
     resources :trackers, only: [:index, :destroy] do
