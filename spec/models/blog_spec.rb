@@ -10,8 +10,8 @@ describe Blog do
     describe "has many" do
       let(:blog) { create(:blog_example) }
       before do
-        category1 = create(:category_example)
-        category2 = create(:category_example)
+        category1 = create(:blog_category_example)
+        category2 = create(:blog_category_example)
         blog.categorizations << create(:categorization_example, category_id: category1.id)
         blog.categorizations << create(:categorization_example, category_id: category2.id)
       end

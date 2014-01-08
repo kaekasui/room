@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
   describe "record" do
     let(:project) { create(:project_example) }
-    let(:category) { create(:category_example, project_id: project.id) }
+    let(:category) { create(:ticket_category_example, project_id: project.id) }
 
     describe "belongs to" do
       it "a project." do
@@ -64,14 +64,14 @@ describe Category do
   describe "validation test" do
     context "when blank." do
       it "name is required." do
-        category = build(:category_example, name: nil)
+        category = build(:ticket_category_example, name: nil)
         expect(category).to have(1).errors_on(:name)
       end
     end
 
     context "when exceed max characters." do
       it "with name." do
-        category = build(:category_example, name: "a" * (MAX_TEXT_FIELD_LENGTH + 1))
+        category = build(:ticket_category_example, name: "a" * (MAX_TEXT_FIELD_LENGTH + 1))
         expect(category).to have(1).errors_on(:name)
       end
     end

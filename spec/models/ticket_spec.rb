@@ -42,8 +42,8 @@ describe Ticket do
 
     describe "has many" do
       before do
-        category1 = create(:category_example)
-        category2 = create(:category_example)
+        category1 = create(:ticket_category_example)
+        category2 = create(:ticket_category_example)
         ticket.categorizations << create(:categorization_example, category_id: category1.id)
         ticket.categorizations << create(:categorization_example, category_id: category2.id)
       end

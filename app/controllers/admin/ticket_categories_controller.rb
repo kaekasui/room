@@ -6,21 +6,6 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
   def index
   end
 
-  def new
-    @ticket_category = TicketCategory.new
-  end
-
-  def create
-    @ticket_category = TicketCategory.new(ticket_category_param)
-    respond_to do |format|
-      if @ticket_category.save
-        format.html { redirect_to admin_ticket_categories_path, notice: "created ticket category" }
-      else
-        format.html { render action: "new" }
-      end
-    end
-  end
-
   def update_all
     # 既存情報の更新
     if @ticket_categories
@@ -30,7 +15,7 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
       end
     end
 
-    # 新規優先度の作成
+    # 新規カテゴリの作成
     if ticket_category_params["new"]
       ticket_category_params["new"].each do |param_id, value|
         TicketCategory.create(name: value["name"])

@@ -1,5 +1,9 @@
 FactoryGirl.define do
-  factory :category_example, class: Category do
-    name "MyString"
+  factory :ticket_category_example, class: TicketCategory do
+    name "TicketName"
+  end
+
+  factory :blog_category_example, class: BlogCategory do
+    name "BlogName"
   end
 end
