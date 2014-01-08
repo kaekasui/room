@@ -42,7 +42,7 @@
   .control-group
     = f.label I18n.t("activerecord.attributes.ticket.category"), class: 'control-label'
     .controls
-      = select_tag "ticket_categories",options_from_collection_for_select(TicketCategory.all, :id, :name), multiple: true
+      = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name), multiple: true
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn'

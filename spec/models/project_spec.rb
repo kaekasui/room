@@ -2,17 +2,23 @@ require 'spec_helper'
 
 describe Project do
   describe "record" do
-    it "has 2 tickets." do
-      project = create(:project_example)
-      user = create(:user_example)
-      version = create(:version_example)
-      priority = create(:priority_example)
-      status = create(:status_example)
-      tracker = create(:tracker_example)
+    let(:project) { create(:project_example) }
+    let(:user) { create(:user_example) }
+    let(:version) { create(:version_example) }
+    let(:priority) { create(:priority_example) }
+    let(:status) { create(:status_example) }
+    let(:tracker) { create(:tracker_example) }
 
+    it "has 2 tickets." do
       tickets1 = create(:ticket_example, project_id: project.id, user_id: user.id, created_by: user.id, version_id: version.id, priority_id: priority.id, status_id: status.id, tracker_id: tracker.id)
       tickets2 = create(:ticket_example, project_id: project.id, user_id: user.id, created_by: user.id, version_id: version.id, priority_id: priority.id, status_id: status.id, tracker_id: tracker.id)
       expect(project.reload.tickets).to eq([tickets1, tickets2])
+    end
+
+    it "has 2 ticket categories" do
+      categories1 = create(:ticket_category_example, project_id: project.id)
+      categories2 = create(:ticket_category_example, project_id: project.id)
+      expect(project.reload.categories).to eq([categories1, categories2])
     end
 
     it "create a project." do

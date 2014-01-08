@@ -2,34 +2,36 @@ require "spec_helper"
 
 describe Admin::PrioritiesController do
   describe "routing" do
-=begin
-    it "routes to #index" do
-      get("/priorities").should route_to("priorities#index")
+    it "routes to #index." do
+      expect(get "admin/priorities").to route_to("admin/priorities#index")
     end
 
-    it "routes to #new" do
-      get("/priorities/new").should route_to("priorities#new")
+    it "no route matches #show." do
+      expect(get "admin/priorities/1").not_to route_to("admin/priorities#show")
     end
 
-    it "routes to #show" do
-      get("/priorities/1").should route_to("priorities#show", :id => "1")
+    it "no route matches #new." do
+      expect(get "admin/priorities/new").not_to route_to("admin/priorities#new")
     end
 
-    it "routes to #edit" do
-      get("/priorities/1/edit").should route_to("priorities#edit", :id => "1")
+    it "no route matches #create." do
+      expect(post "admin/priorities").not_to route_to("admin/priorities#create")
     end
 
-    it "routes to #create" do
-      post("/priorities").should route_to("priorities#create")
+    it "no route matches #edit." do
+      expect(get "admin/priorities/1/edit").not_to route_to("admin/priorities#edit", id: "1")
     end
 
-    it "routes to #update" do
-      put("/priorities/1").should route_to("priorities#update", :id => "1")
+    it "no route matches #update." do
+      expect(patch "admin/priorities/1").not_to route_to("admin/priorities#update", id: "1")
     end
 
-    it "routes to #destroy" do
-      delete("/priorities/1").should route_to("priorities#destroy", :id => "1")
+    it "routes to #destroy." do
+      expect(delete "admin/priorities/1").to route_to("admin/priorities#destroy", id: "1")
     end
-=end
+
+    it "routes to #update_all." do
+      expect(post "admin/priorities/update_all").to route_to("admin/priorities#update_all")
+    end
   end
 end

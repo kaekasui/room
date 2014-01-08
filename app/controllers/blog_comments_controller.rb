@@ -3,8 +3,8 @@ class BlogCommentsController < ApplicationController
   def create
     @blog_comment = BlogComment.new(blog_comment_params)
     @blog_comment.update_attributes(blog_id: blog_id_param, ip: request.remote_ip)
+    @blog_comment.update_attributes(created_by: current_user.id, updated_by: current_user.id) if current_user
     @blog = Blog.find(blog_id_param)
-
     respond_to do |format|
       if @blog_comment.save
         format.html { redirect_to @blog }
