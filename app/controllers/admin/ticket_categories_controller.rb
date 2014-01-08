@@ -6,6 +6,21 @@ class Admin::TicketCategoriesController < Admin::AdminBaseController
   def index
   end
 
+  def new
+    @ticket_category = TicketCategory.new
+  end
+
+  def create
+    @ticket_category = TicketCategory.new(ticket_category_param)
+    respond_to do |format|
+      if @ticket_category.save
+        format.html { redirect_to admin_ticket_categories_path, notice: 'Ticket category was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
+  end
+
   def update_all
     # 既存情報の更新
     if @ticket_categories
