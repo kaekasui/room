@@ -21,6 +21,7 @@ module ApplicationHelper
         {
           I18n.t('admin_menu.new_blog') => "new_admin_blog_path",
           I18n.t('admin_menu.blogs') => "admin_blogs_path",
+          I18n.t('admin_menu.blog_categories') => "admin_blog_categories_path",
           I18n.t('admin_menu.blog_comments') => "admin_blog_comments_path",
           I18n.t('admin_menu.blog_links') => "admin_blog_links_path",
           I18n.t('admin_menu.mail_forms') => "admin_mail_forms_path"
