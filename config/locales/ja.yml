@@ -28,6 +28,7 @@ ja:
     admin_setting: "設定"
   admin_menu:
     blogs: "ブログ一覧"
+    blog_categories: "カテゴリ一覧"
     blog_comments: "コメント一覧"
     blog_links: "リンク一覧"
     mail_forms: "メール一覧"
