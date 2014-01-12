@@ -1,6 +1,6 @@
 .well
   = paginate @blogs
-  %table.table
+  %table.table.nonborder
     = render partial: @blogs, spacer_template: "separator"
 
 - content_for :sidebar do

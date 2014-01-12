@@ -1,0 +1,39 @@
+body {
+  background-image: url("background_images/clover.jpg");
+}
+
+span.asterisk {
+  color: red;
+}
+
+.well {
+  h4 {
+    color: #234423;
+    font-weight: bold;
+  }
+  .blog_comment {
+    .well-comment {
+      background-color: rgba(225,245,225,0.6);
+    }
+  }
+}
+
+.pagination > li.active {
+  span.page {
+    border: 1px solid #dddddd;
+  }
+}
+
+.table.nonborder {
+  td, th {
+    border-top: 0px;
+  }
+  .text-align-right {
+    text-align: right;
+  }
+}
+
+.footer {
+  text-align: center;
+  color: #ccd9cc;
+}

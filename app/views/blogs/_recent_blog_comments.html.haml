@@ -1,8 +1,8 @@
-.well.sidebar-nav
-  %h4.sidebar_title
+.well
+  %h4
     = image_tag icon, class: "icon"
     = t("side_menu.recent_blog_comments")
-  %ul.nav.nav-list.sidebar_blog_comments
+  %ul.list-unstyled
     - @recent_blog_comments.each do |comment|
       - author = comment.admin ? "***" : comment.author
-      %li= link_to comment.blog.title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent_blog_comment"
+      %li= link_to comment.blog.title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)

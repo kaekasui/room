@@ -13,7 +13,8 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.0'
 
 # Use Twitter Bootstrap
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'therubyracer'
 gem 'less-rails'
 
