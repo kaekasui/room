@@ -1,27 +1,23 @@
 =# render partial: "error_messages", locals: {errors: @blog.errors} if @blog.errors.any?
 
-= form_for ['admin', @blog], html: {class: "form-horizontal"} do |f|
-  .control-group
+= form_for ['admin', @blog], html: { role: "form" } do |f|
+  .form-group
     = f.label :posted_at, class: "control-label"
     = asterisk(@blog, :posted_at)
-    .controls
+    .form-controls-datetime
       = f.datetime_select :posted_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
-  .control-group
+  .form-group
     = f.label :title, class: "control-label"
     = asterisk(@blog, :title)
-    .controls
-      = f.text_field :title
-  .control-group
+    = f.text_field :title, class: "form-control"
+  .form-group
     = f.label :contents1, class: "control-label"
     = asterisk(@blog, :contents1)
-    .controls
-      = f.text_area :contents1, class: "span5", rows: "4"
-  .control-group
+    = f.text_area :contents1, class: "form-control", rows: "8"
+  .form-group
     = f.label :contents2, class: "control-label"
     = asterisk(@blog, :contents2)
-    .controls
-      = f.text_area :contents2, class: "span5", rows: "8"
-  .control-group
-    .controls
-      = f.submit class: "btn"
-      = f.submit I18n.t("actions.draft"), class: "btn"
+    = f.text_area :contents2, class: "form-control", rows: "16"
+  .form-group
+    = f.submit class: "btn btn-default"
+    = f.submit I18n.t("actions.draft"), class: "btn btn-default"

@@ -5,20 +5,20 @@ describe "admin/blogs/new" do
     @blog = Blog.new
   end
 
-  describe "ブログの作成フォーム" do
-    it "タイトルが表示されること" do
+  describe "blog form" do
+    it "display the title." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: Blog.human_attribute_name(:title))
+      expect(rendered).to have_selector("form > div.form-group > label", content: Blog.human_attribute_name(:title))
     end
 
-    it "内容1が表示されること" do
+    it "display the content1." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: Blog.human_attribute_name(:contents1))
+      expect(rendered).to have_selector("form > div.form-group > label", content: Blog.human_attribute_name(:contents1))
     end
 
-    it "内容2が表示されること" do
+    it "display the content2." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: Blog.human_attribute_name(:contents2))
+      expect(rendered).to have_selector("form > div.form-group > label", content: Blog.human_attribute_name(:contents2))
     end
   end 
 end
