@@ -5,4 +5,4 @@
   %ul.list-unstyled
     - @recent_blog_comments.each do |comment|
       - author = comment.admin ? "***" : comment.author
-      %li= link_to comment.blog.title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id)
+      %li= link_to comment.blog.title + ": " + author + " (" + l(comment.created_at, format: :very_short) + ")", blog_path(comment.blog_id), class: "recent-blog-comment"

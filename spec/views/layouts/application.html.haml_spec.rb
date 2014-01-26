@@ -2,22 +2,21 @@ require 'spec_helper'
 
 describe "layouts/application" do
   before do
-    render
+    view.stub(:current_user) { build(:original_user_example) }
   end
 
-  #it "ブラウザのタイトルが表示されること" do
-    #assert_select("title", "ヵェの部屋♪")
-  #end
+  it "display the brand." do
+    render
+    expect(rendered).to have_selector("a.navbar-brand", content: I18n.t("brand"))
+  end
 
-  #it "サイト名が表示されること" do
-    #assert_select("a.brand", "ヵェの部屋♪")
-  #end
+  it "display the 'HOME'." do
+    render
+    expect(rendered).to have_selector(".header li > a", content: I18n.t("menu.home"))
+  end
 
-  #it "メインメニューにTOPが表示されること" do
-    #assert_select("ul.nav > li > a", "HOME")
-  #end
-
-  #it "メインメニューにBLOGが表示されること" do
-    #assert_select("ul.nav > li > a", "BLOG")
-  #end
+  it "display the 'BLOG'." do
+    render
+    expect(rendered).to have_selector(".header li > a", content: I18n.t("menu.blog"))
+  end
 end
