@@ -1,6 +1,6 @@
 - model_class = BlogComment.new.class
 = paginate @blog_comments
-%table.table
+%table.table.nonborder
   %tr
     %th= model_class.human_attribute_name(:created_at)
     %th= model_class.human_attribute_name(:title)
@@ -9,6 +9,6 @@
     %tr
       %td.post_at= l blog_comment.created_at
       %td= blog_comment.title
-      %td= link_to I18n.t("actions.edit"), edit_admin_blog_path(blog_comment), class: "btn"
-      %td= link_to I18n.t("actions.destroy"), admin_blog_path(blog_comment), class: "btn", method: :delete
+      %td= link_to I18n.t("actions.edit"), edit_admin_blog_path(blog_comment), class: "btn btn-default"
+      %td= link_to I18n.t("actions.destroy"), admin_blog_path(blog_comment), class: "btn btn-default", method: :delete
 = paginate @blog_comments
