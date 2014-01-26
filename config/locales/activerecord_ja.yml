@@ -40,6 +40,9 @@ ja:
         tracker_id: "トラッカー"
         user_id: "担当者"
         version_id: "バージョン"
+      ticket_category:
+        project_id: "プロジェクト"
+        name: "カテゴリ名"
       user:
         email: "メールアドレス"
         password: "パスワード"
