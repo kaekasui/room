@@ -1,48 +1,37 @@
 = form_for ['admin', @ticket], :html => { :class => 'form-horizontal' } do |f|
-  .control-group
+  .form-group
     = f.label :project_id, :class => 'control-label'
-    .controls
-      = f.select :project_id, Project.all.map {|p| [p.title, p.id]}
-  .control-group
+    = f.select :project_id, Project.all.map {|p| [p.title, p.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label :id, "#" + @ticket.id.to_s, class: 'control-label'
-    .controls
-      = f.text_field :id, class: 'text_field'
-  .control-group
+    = f.text_field :id, class: 'form-control'
+  .form-group
     = f.label :tracker_id, class: 'control-label'
-    .controls
-      = f.select :tracker_id, Tracker.all.map {|t| [t.name, t.id]}
-  .control-group
+    = f.select :tracker_id, Tracker.all.map {|t| [t.name, t.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label :title, :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
+    = f.text_field :title, :class => 'form-control'
+  .form-group
     = f.label :content, :class => 'control-label'
-    .controls
-      = f.text_area :content, class: "span5", rows: "4"
-  .control-group
+    = f.text_area :content, class: "form-control", rows: "8"
+  .form-group
     = f.label :progress, :class => 'control-label'
-    .controls
-      = f.text_field :progress, :class => 'text_field'
-  .control-group
+    = f.text_field :progress, :class => 'form-control'
+  .form-group
     = f.label :status_id, :class => 'control-label'
-    .controls
-      = f.select :status_id, Status.all.map {|t| [t.name, t.id]}
-  .control-group
+    = f.select :status_id, Status.all.map {|t| [t.name, t.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label :priority_id, :class => 'control-label'
-    .controls
-      = f.select :priority_id, Priority.all.map {|p| [p.name, p.id]}
-  .control-group
+    = f.select :priority_id, Priority.all.map {|p| [p.name, p.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label :version_id, :class => 'control-label'
-    .controls
-      = f.select :version_id, Version.all.map {|v| [v.name, v.id]}
-  .control-group
+    = f.select :version_id, Version.all.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label :user_id, :class => 'control-label'
-    .controls
-      = f.select :user_id, User.all.map {|v| [v.name, v.id]}
-  .control-group
+    = f.select :user_id, User.all.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
+  .form-group
     = f.label I18n.t("activerecord.attributes.ticket.category"), class: 'control-label'
-    .controls
-      = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name), multiple: true
+    = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name), multiple: true, class: "form-control"
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn'
+    = f.submit nil, :class => 'btn btn-default'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn btn-default'
