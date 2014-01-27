@@ -1,21 +1,6 @@
 - model_class = Ticket
-%ul.nav.nav-tabs#tickets_tab
-  %li= link_to "all", "#all", "data-toggle" => "tab"
-  %li= link_to "unfinish", "#unfinish", anchor: "unfinish", "data-toggle" => "tab"
-  %li= link_to "finished", "#finished", anchor: "finished", "data-toggle" => "tab"
-  %li= link_to "before release", "#before_release", anchor: "before_release", "data-toggle" => "tab"
-  %li= link_to "after release", "#after_release", anchor: "after_release", "data-toggle" => "tab"
 
-.tab-content
-  .tab-pane#all
-    = render partial: "tickets", locals: { items: @tickets } 
-  .tab-pane#unfinish
-    = render partial: "tickets", locals: { items: @unfinish_tickets }
-  .tab-pane#finished
-    = render partial: "tickets", locals: { items: @finished_tickets }
-  .tab-pane#before_release
-    = render partial: "tickets", locals: { items: @before_release_tickets }
-  .tab-pane#after_release
-    = render partial: "tickets", locals: { items: @after_release_tickets }
+= render "condition"
+#tickets_list= render partial: "tickets", locals: { items: @tickets }
 
-= link_to t('.new', :default => t("helpers.links.new")), new_admin_ticket_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_ticket_path, :class => 'btn btn-default'

@@ -1,11 +1,11 @@
-.well.sidebar-nav
-  %h4.sidebar_title
+.well
+  %h4
     = image_tag icon, class: "icon"
     = t("side_menu.profile")
-  %ul.nav.nav-list.sidebar_profile
+  %ul.list-unstyled
     %li= image_tag "kae.jpg"
     %li= t("profile.author") + t("profile.author_text")
-    %li.inline
+    %li
       = t("profile.twitter")
       = link_to t("profile.at") + t("profile.twitter_text"), t("profile.twitter_url") + t("profile.twitter_text")
     %li= t("profile.introduce")

@@ -1,11 +1,11 @@
 - model_class = MailForm.new.class
-%table.table
+%table.table.nonborder
   %tr
     %th= model_class.human_attribute_name(:created_at)
     %th= model_class.human_attribute_name(:content)
     %th= t "helpers.actions"
   - @mail_forms.each do |mail_form|
     %tr
-      %td.post_at= l mail_form.created_at
+      %td.posted-at= l mail_form.created_at
       %td= to_skip(mail_form.content).html_safe
-      %td= link_to t("actions.destroy"), admin_mail_form_path(mail_form.id), class: "btn btn-mini", method: :delete
+      %td= link_to t("actions.destroy"), admin_mail_form_path(mail_form.id), class: "btn btn-default", method: :delete

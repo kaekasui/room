@@ -13,7 +13,7 @@ step 'display the :page page of blogs list.' do |page|
 end
 
 step 'display the :blogs_count blogs on the list.' do |blogs_count|
-  expect(page).to have_selector("table.table > tr > th.post_at", count: blogs_count)
+  expect(page).to have_selector("table.table tr > td.blog-posted-at", count: blogs_count)
 end
 
 step 'access to the blog.' do

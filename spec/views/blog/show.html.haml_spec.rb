@@ -30,40 +30,40 @@ describe "blogs/show" do
 
     it "display the posted_at." do
       render
-      expect(rendered).to have_selector("table.table > tr > th.post_at", content: I18n.l(@blog.posted_at))
+      expect(rendered).to have_selector("table.table tr > td.blog-posted-at", content: I18n.l(@blog.posted_at))
     end
 
     it "display the comment count." do
       create(:blog_comment_example, blog_id: @blog.id)
       render
-      expect(rendered).to have_selector("table.table > tr > td.align_right > a", content: "Comments(#{@blog.blog_comments.count})")
+      expect(rendered).to have_selector("table.table > tr > td.text-align-right > a", content: "Comments(#{@blog.blog_comments.count})")
     end
   end
 
   describe "the blog comment form" do
     it "display the title." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: BlogComment.human_attribute_name(:title))
+      expect(rendered).to have_selector("form > div.form-group > label", content: BlogComment.human_attribute_name(:title))
     end
 
     it "display the url." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: BlogComment.human_attribute_name(:url))
+      expect(rendered).to have_selector("form > div.form-group > label", content: BlogComment.human_attribute_name(:url))
     end
 
     it "display the mail." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: BlogComment.human_attribute_name(:mail))
+      expect(rendered).to have_selector("form > div.form-group > label", content: BlogComment.human_attribute_name(:mail))
     end
 
     it "display the author." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: BlogComment.human_attribute_name(:author))
+      expect(rendered).to have_selector("form > div.form-group > label", content: BlogComment.human_attribute_name(:author))
     end
 
     it "display the content." do
       render
-      expect(rendered).to have_selector("form > div.control-group > label", content: BlogComment.human_attribute_name(:content))
+      expect(rendered).to have_selector("form > div.form-group > label", content: BlogComment.human_attribute_name(:content))
     end
   end
 
@@ -71,27 +71,27 @@ describe "blogs/show" do
 
     it "display the profile." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.profile"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.profile"))
     end
 
     it "display the recent blogs." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blogs"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.recent_blogs"))
     end
 
     it "display the recent blog comments." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blog_comments"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.recent_blog_comments"))
     end
 
     it "display the blog links." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.blog_links"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.blog_links"))
     end
 
     it "display the mail form." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.mail_form"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.mail_form"))
     end
   end
 
@@ -109,7 +109,7 @@ describe "blogs/show" do
 
       it "display the blog comments on the side menu." do
         render
-        expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog_comment", count: 3)
+        expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog-comment", count: 3)
       end
     end
   end

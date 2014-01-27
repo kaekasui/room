@@ -2,8 +2,8 @@
   %th
     = image_tag icon, class: "icon"
     = link_to blog.title, blog
-  %th.post_at= l blog.posted_at
+  %td.text-align-right.blog-posted-at= l blog.posted_at
 
 %tr
-  %td.contents1{colspan: 2}= to_skip(blog.contents1).html_safe
+  %td.contents1(colspan="2")= to_skip(blog.contents1).html_safe
 

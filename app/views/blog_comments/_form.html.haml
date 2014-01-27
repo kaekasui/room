@@ -1,39 +1,41 @@
 #messages
-.control-group
-  = f.label :title, class: "control-label"
+.form-group
+  = f.label :title, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :title)
-  .controls
-    = f.text_field :title
-.control-group
-  = f.label :url, class: "control-label"
+  .col-sm-8
+    = f.text_field :title, class: "form-control"
+.form-group
+  = f.label :url, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :url)
-  .controls
-    = f.text_field :url
-.control-group
-  = f.label :mail, class: "control-label"
+  .col-sm-8
+    = f.text_field :url, class: "form-control"
+.form-group
+  = f.label :mail, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :mail)
-  .controls
-    = f.text_field :mail
-.control-group
-  = f.label :author, class: "control-label"
+  .col-sm-8
+    = f.text_field :mail, class: "form-control"
+.form-group
+  = f.label :author, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :author)
-  .controls
-    = f.text_field :author
-.control-group
-  = f.label :content, class: "control-label"
+  .col-sm-8
+    = f.text_field :author, class: "form-control"
+.form-group
+  = f.label :content, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :content)
-  .controls
-    = f.text_area :content, class: "span4", rows: "5"
-.control-group
-  = f.label :password, class: "control-label"
+  .col-sm-8
+    = f.text_area :content, class: "form-control", rows: "5"
+.form-group
+  = f.label :password, class: "control-label col-sm-2"
   = asterisk(@blog_comment, :password)
-  .controls
-    = f.password_field :password
-.control-group
-  = f.label :admin, class: "control-label"
-  = asterisk(@blog_comment, :admin)
-  .controls
+  .col-sm-8
+    = f.password_field :password, class: "form-control"
+.form-group
+  .col-sm-2
+    = asterisk(@blog_comment, :admin)
+  .col-sm-8
     = f.check_box :admin
-.control-group
-  .controls
-    = f.submit class: "btn", data: {:disable_with => "Sending..."}
+    = f.label :admin
+.form-group
+  .col-sm-2
+  .col-sm-8
+    = f.submit class: "btn btn-default", data: {:disable_with => "Sending..."}

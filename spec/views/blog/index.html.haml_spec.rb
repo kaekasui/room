@@ -16,19 +16,19 @@ describe "blogs/index" do
 
       it "display 3 blogs on the list." do
         render
-        expect(rendered).to have_selector("table.table > tr > th.post_at", count: 3)
+        expect(rendered).to have_selector("table.table tr > td.blog-posted-at", count: 3)
       end
 
       it "display 3 blogs on the side menu." do
         render
-        expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog", count: 3)
+        expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog", count: 3)
       end
 
       it "don't display the draft blogs." do
         create(:blog_example, draft: true)
         render
-        expect(rendered).to have_selector("table.table > tr > th.post_at", count: 3)
-        expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog", count: 3)
+        expect(rendered).to have_selector("table.table tr > td.blog-posted-at", count: 3)
+        expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog", count: 3)
       end
     end
 
@@ -39,11 +39,11 @@ describe "blogs/index" do
       end
 
       it "display 6 blogs on the list." do
-        expect(rendered).to have_selector("table.table > tr > th.post_at", count: 6)
+        expect(rendered).to have_selector("table.table tr > td.blog-posted-at", count: 6)
       end
 
       it "display 5 blogs on the side menu." do
-        expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog", count: 5)
+        expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog", count: 5)
       end
     end
 
@@ -54,11 +54,11 @@ describe "blogs/index" do
       end
       context "on the first page." do
         it "display 10 blogs on the list." do
-          expect(rendered).to have_selector("table.table > tr > th.post_at", count: 10)
+          expect(rendered).to have_selector("table.table tr > td.blog-posted-at", count: 10)
         end
 
         it "display 5 blogs on the side menu." do
-          expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog", count: 5)
+          expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog", count: 5)
         end
       end
 
@@ -69,7 +69,7 @@ describe "blogs/index" do
         end
 
         it "display 5 blogs on the side menu." do
-          expect(view.content_for(:sidebar)).to have_selector("ul.nav > li > a.recent_blog", count: 5)
+          expect(view.content_for(:sidebar)).to have_selector("ul.list-unstyled > li > a.recent-blog", count: 5)
         end
       end
     end
@@ -77,32 +77,32 @@ describe "blogs/index" do
 
   describe "side menu" do
     before do
-      #3.times { create(:blog) }
+      3.times { create(:blog_example) }
     end
 
     it "display the profile." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.profile"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.profile"))
     end
 
     it "display the recent blogs." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blogs"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.recent_blogs"))
     end
 
     it "display the recent blog comments." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.recent_blog_comments"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.recent_blog_comments"))
     end
 
     it "display the blog links." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.blog_links"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.blog_links"))
     end
 
     it "display the mail form." do
       render
-      expect(view.content_for(:sidebar)).to have_selector("div.sidebar-nav > h4", content: I18n.t("side_menu.mail_form"))
+      expect(view.content_for(:sidebar)).to have_selector(".well > h4", content: I18n.t("side_menu.mail_form"))
     end
   end
 end

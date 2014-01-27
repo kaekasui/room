@@ -34,7 +34,9 @@ Room::Application.routes.draw do
     resources :statuses, only: [:index, :destroy] do
       post "/update_all" => "statuses#update_all", on: :collection
     end
-    resources :tickets
+    resources :tickets do
+      post "/set_tickets" => "tickets#set_tickets", on: :collection
+    end
     resources :ticket_categories, only: [:index, :new, :create, :destroy] do
       post "/update_all" => "ticket_categories#update_all", on: :collection
     end

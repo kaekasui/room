@@ -1,8 +1,8 @@
-.well.sidebar-nav
-  %h4.sidebar_title
+.well
+  %h4
     = image_tag icon, class: "icon"
     = t("side_menu.blog_links")
-  %ul.nav.nav-list.sidebar_blog_links
+  %ul.list-unstyled
     - @blog_links.each do |link|
       %li
         %a{href: "#{link.url}", target: "_blank", rel: "tooltip", "data-original-title" => "#{link.author}#{I18n.t("blog_link.prefix")}：#{link.introduction}", "data-placement" => "left"}= link.title

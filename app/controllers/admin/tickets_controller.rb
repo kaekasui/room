@@ -3,11 +3,12 @@ class Admin::TicketsController < Admin::AdminBaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tickets = Ticket.page(params[:page]).per(100)
-    @finished_tickets = Ticket.finished.page(params[:page]).per(100)
-    @unfinish_tickets = Ticket.unfinish.page(params[:page]).per(100)
-    @before_release_tickets = Ticket.before_release.page(params[:page]).per(100)
-    @after_release_tickets = Ticket.after_release.page(params[:page]).per(100)
+    @tickets = Ticket.all.page(params[:page]).per(100)
+    @projects = Project.all
+    @statuses = Status.all
+    @priorities = Priority.all
+    @trackers = Tracker.all
+    @versions = Version.all
   end
 
   def show
@@ -76,6 +77,17 @@ class Admin::TicketsController < Admin::AdminBaseController
     respond_to do |format|
       format.html { redirect_to admin_tickets_path }
       format.json { head :no_content }
+    end
+  end
+
+  def set_tickets
+    conditions = params
+    conditions.delete("controller")
+    conditions.delete("action")
+    conditions.delete("page")
+    @tickets = conditions.count == 0 ? Ticket.all.page(params[:page]).per(100) : Ticket.where(conditions).page(params[:page]).per(100)
+    respond_to do |format|
+      format.js
     end
   end
 
