@@ -28,3 +28,9 @@
         = label_tag :tracker_id, Ticket.human_attribute_name(:tracker_id), for: "tracker_id"
       .col-sm-4
         = select_tag :tracker_id, options_from_collection_for_select(@trackers, :id, :name), class: "form-control"
+    .form-group
+      .col-sm-2
+        = check_box_tag :version_id
+        = label_tag :version_id, Ticket.human_attribute_name(:version_id), for: "version_id"
+      .col-sm-4
+        = select_tag :version_id, options_from_collection_for_select(@versions, :id, :name), class: "form-control"

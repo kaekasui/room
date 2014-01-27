@@ -3,11 +3,12 @@ class Admin::TicketsController < Admin::AdminBaseController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
+    @tickets = Ticket.all.page(params[:page]).per(100)
     @projects = Project.all
     @statuses = Status.all
     @priorities = Priority.all
     @trackers = Tracker.all
-    @tickets = Ticket.all.page(params[:page]).per(100)
+    @versions = Version.all
   end
 
   def show
