@@ -77,6 +77,8 @@ ja:
     url: "URL"
   user:
     submit: "登録する"
+  admin_ticket:
+    condition: "条件"
 
   views:
     pagination:

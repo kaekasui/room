@@ -29,5 +29,9 @@ describe Admin::TicketsController do
     it "routes to #destroy." do
       expect(delete "admin/tickets/1").to route_to("admin/tickets#destroy", id: "1")
     end
+
+    it "routes to #set_tickets." do
+      expect(post "admin/tickets/set_tickets").to route_to("admin/tickets#set_tickets")
+    end
   end
 end
