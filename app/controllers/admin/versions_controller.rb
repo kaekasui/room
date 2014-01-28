@@ -72,7 +72,8 @@ class Admin::VersionsController < Admin::AdminBaseController
   end
 
   def find_versions
-    @versions = Version.all
+    project = Project.find_by_main(true)
+    @versions = Version.where(project_id: project.id)
   end
 
   def set_menu
