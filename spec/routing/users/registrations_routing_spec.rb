@@ -6,12 +6,8 @@ describe Users::RegistrationsController do
       expect(get "/users/sign_up").to route_to("users/registrations#new")
     end
 
-=begin
-    it "display the edit profile page." do
-      pending
-      user = create(:user_example)
-      expect(get("/users/#{user.id}/edit")).to route_to("users/registrations#edit", id: user.id.to_s)
+    it "routes to #show." do
+      expect(get '/users/profile').to route_to('users/registrations#show')
     end
-=end
   end
 end

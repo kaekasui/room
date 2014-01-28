@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
   has_many :tickets
-  before_save :set_access_code
+  before_save :set_code
   acts_as_paranoid
 
   validates :email, uniqueness: false, presence: false
@@ -15,17 +15,17 @@ class User < ActiveRecord::Base
   end
 
   def same_code_twitter
-    User.where(access_code: self.access_code, provider: "twitter").first
+    User.where(code: self.code, provider: "twitter").first
   end
 
   private
 
-  def set_access_code
-    self.access_code = self.access_code.blank? ? generate_access_code : self.access_code
+  def set_code
+    self.code = self.code.blank? ? generate_code : self.code
   end
 
-  def generate_access_code
+  def generate_code
     code = SecureRandom.urlsafe_base64(6)
-    self.class.where(access_code: code).blank? ? code : generate_access_code
+    self.class.where(code: code).blank? ? code : generate_code
   end
 end
