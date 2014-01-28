@@ -6,10 +6,10 @@ class MailFormsController < ApplicationController
     respond_to do |format|
       if @mail_form.save
         format.html { redirect_to blogs_path(anchor: "mail_form"), notice: I18n.t("flash.create_mail_form")}
-        format.json { render json: @mail_form, status: :created, location: @mail_form }
+        format.js
       else
         format.html { redirect_to blogs_path(anchor: "mail_form"), notice: I18n.t("flash.cannot_create_mail_form") }
-        format.json { render json: @mail_form.errors, status: :unprocessable_entity }
+        format.js { render action: "failure" }
       end
     end
   end

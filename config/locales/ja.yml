@@ -111,7 +111,7 @@ ja:
     create_blog: "ブログを作成しました。"
     create_blog_comment: "コメントを投稿しました。"
     create_draft_blog: "下書きのブログを作成しました。"
-    create_mail_form: "メールを送信しました。"
+    send_mail: "メールを送信しました。"
     create_user: "ユーザー登録が完了しました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"
     logged_in: "ログインに成功しました。"
