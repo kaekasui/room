@@ -47,6 +47,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
+      version:
+        current: "現行バージョン"
+        name: "バージョン名"
+        release_at: "リリース日"
     errors:
       template:
         header:
