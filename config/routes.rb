@@ -30,7 +30,9 @@ Room::Application.routes.draw do
     resources :priorities, only: [:index, :destroy] do
       post "/update_all" => "priorities#update_all", on: :collection
     end
-    resources :projects
+    resources :projects do
+      post "/update_all" => "projects#update_all", on: :collection
+    end
     resources :statuses, only: [:index, :destroy] do
       post "/update_all" => "statuses#update_all", on: :collection
     end
