@@ -14,12 +14,17 @@ ja:
   buttons:
     config: "設定"
   account:
+    email: "メールアドレスの設定"
     my_account: "アカウント"
+    name: "名前の設定"
+    new: "新規登録"
     profile: "プロフィール"
     registered: "登録解除"
     social_media: "ソーシャル連携"
     twitter: "Twitter"
+    twitter_login: "Twitterでログイン"
     unregistered: "(未設定)"
+    waiting_list: "登録待ち:"
   menu:
     home: "HOME"
     home_text: "このページです。"
@@ -105,6 +110,7 @@ ja:
     draft: "下書きする"
     edit: "編集する"
     edit_detail: "詳細編集"
+    mail: "送信する"
     logout: "ログアウト"
     unregist_twitter: "Twitter連携を解除する"
     update: "更新する"
