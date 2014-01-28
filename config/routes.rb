@@ -8,6 +8,8 @@ Room::Application.routes.draw do
 
   devise_scope :user do
     get 'users/profile' => 'users/registrations#show'
+    get 'users/name' => 'users/registrations#name'
+    get 'users/email' => 'users/registrations#email'
     delete 'users/disconnect/:provider' => 'users/omniauth_callbacks#disconnect', as: 'disconnect_omniauth_provider'
   end
 

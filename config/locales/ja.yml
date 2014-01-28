@@ -11,12 +11,15 @@ ja:
       very_short: "%m/%d"
 
   brand: "ヵェの部屋♪"
+  buttons:
+    config: "設定"
   account:
     my_account: "アカウント"
     profile: "プロフィール"
-    twitter: "Twitter"
-    non_registered: "未登録"
     registered: "登録解除"
+    social_media: "ソーシャル連携"
+    twitter: "Twitter"
+    unregistered: "(未設定)"
   menu:
     home: "HOME"
     home_text: "このページです。"
@@ -103,6 +106,7 @@ ja:
     edit: "編集する"
     edit_detail: "詳細編集"
     logout: "ログアウト"
+    unregist_twitter: "Twitter連携を解除する"
     update: "更新する"
 
   flash:

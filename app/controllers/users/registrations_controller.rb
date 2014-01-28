@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :set_layout
+
   def new
     super
   end
@@ -17,5 +19,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params = devise_parameter_sanitizer.sanitize(:sign_up)
     params.store("type", "OriginalUser")
     params
+  end
+
+  def set_layout
+    @control_users = true
   end
 end
