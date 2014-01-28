@@ -22,9 +22,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = provider_class(provider).find_for_oauth(auth)
     if @user
       provider_class(provider).update_with_oauth(auth, @user)
-      #sign_in_and_redirect @user, :event => :authentication
     else
-      provider_class(provider).create_with_oauth(auth)
+      @user = provider_class(provider).create_with_oauth(auth)
     end
     set_flash_message(:notice, :signed_in, kind: provider) if is_flashing_format?
     sign_in_and_redirect @user, event: :authentication
