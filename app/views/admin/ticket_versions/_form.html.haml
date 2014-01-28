@@ -1,4 +1,8 @@
-= form_for ['admin', @version], html: {class: "form-horizontal"} do |f|
+= form_for ['admin', @version], url: {controller: 'admin/ticket_versions'}, html: {class: "form-horizontal"} do |f|
+  .form-group
+    = f.label :project_id, class: "control-label"
+    = asterisk(@version, :project_id)
+    = f.select :project_id, Project.all.map { |p| [p.title, p.id] }, {}, { class: "form-control" }
   .form-group
     = f.label :release_at, class: "control-label"
     = asterisk(@version, :release_at)

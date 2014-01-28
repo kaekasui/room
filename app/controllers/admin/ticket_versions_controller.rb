@@ -13,7 +13,7 @@ class Admin::TicketVersionsController < Admin::AdminBaseController
     @version = Version.new(version_params)
     respond_to do |format|
       if @version.save
-        format.html { redirect_to admin_versions_path, notice: "created version" }
+        format.html { redirect_to admin_ticket_versions_path, notice: "created version" }
       else
         format.html { render action: "new" }
       end
@@ -45,7 +45,7 @@ class Admin::TicketVersionsController < Admin::AdminBaseController
     record = Version.find(version_id_param)
     record.destroy
 
-    redirect_to admin_versions_path
+    redirect_to admin_ticket_versions_path
   end
 
   private

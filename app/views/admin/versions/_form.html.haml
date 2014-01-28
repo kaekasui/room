@@ -1,14 +1,11 @@
 = form_for ['admin', @version], html: {class: "form-horizontal"} do |f|
-  .control-group
+  .form-group
     = f.label :release_at, class: "control-label"
     = asterisk(@version, :release_at)
-    .controls
-      = f.date_select :release_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
-  .control-group
+    .form-controls-datetime= f.date_select :release_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
+  .form-group
     = f.label :name, class: "control-label"
     = asterisk(@version, :name)
-    .controls
-      = f.text_field :name
-  .control-group
-    .controls
-      = f.submit class: "btn"
+    = f.text_field :name, class: "form-control"
+  .form-group
+    = f.submit class: "btn btn-default"
