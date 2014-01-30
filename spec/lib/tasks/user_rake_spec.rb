@@ -32,7 +32,7 @@ describe "set_admin" do
 	context "when there is user." do
           before do
             Rake::Task["user:set_admin"].reenable
-            ENV['USER_CODE'] = user.access_code
+            ENV['USER_CODE'] = user.code
           end
 
           it "don't display error messages." do
@@ -41,7 +41,7 @@ describe "set_admin" do
 
           it "become the administrator." do
             @rake.invoke_task "user:set_admin"
-            expect(User.where(access_code: user.access_code).first.admin).to be_true
+            expect(User.where(code: user.code).first.admin).to be_true
           end
         end
       end

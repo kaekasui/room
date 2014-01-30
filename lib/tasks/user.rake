@@ -9,7 +9,7 @@ namespace :user do
     begin
       raise "ENV['USER_CODE'] is not found." unless ENV['USER_CODE']
       code = ENV['USER_CODE']
-      user = User.where(access_code: code).first
+      user = User.where(code: code).first
       raise "user is not found." if user.blank?
       user.admin = true
       user.save
