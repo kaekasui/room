@@ -13,11 +13,15 @@ ja:
   brand: "ヵェの部屋♪"
   buttons:
     config: "設定"
+    edit_password: "パスワードの変更"
   account:
+    edit_password: "パスワードの変更"
     email: "メールアドレスの設定"
     my_account: "アカウント"
     name: "名前の設定"
     new: "新規登録"
+    new_password: "新しいパスワード"
+    new_password_confirmation: "新しいパスワード（確認）"
     profile: "プロフィール"
     registered: "登録解除"
     social_media: "ソーシャル連携"
@@ -121,9 +125,11 @@ ja:
     create_blog: "ブログを作成しました。"
     create_blog_comment: "コメントを投稿しました。"
     create_draft_blog: "下書きのブログを作成しました。"
-    send_mail: "メールを送信しました。"
     create_user: "ユーザー登録が完了しました。"
     cannot_create_mail_form: "メールの送信に失敗しました。"
     logged_in: "ログインに成功しました。"
     logged_out: "ログアウトしました。"
     update_blog: "ブログを更新しました。"
+  messages:
+    send_mail: "メールを送信しました。"
+    update_user_email: "メールアドレスを変更しました。"

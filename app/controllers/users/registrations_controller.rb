@@ -15,6 +15,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @twitter_user = TwitterUser.find_by_code(current_user.code) || TwitterUser.new 
   end
 
+  def edit
+    send(:"authenticate_#{resource_name}!", force: true)
+    self.resource = OriginalUser.find_by_code(current_user.code)
+    render :edit
+  end
+
+  def update
+    self.resource = resource_class.to_adapter.get!(OriginalUser.find_by_code(current_user.code).to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    updated_password = if resource.encrypted_password.blank?
+      resource.update(account_update_params)
+    else
+      resource.update_with_password(account_update_params)
+    end
+    if updated_password
+      yield resource if block_given?
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      sign_in resource_name, resource, bypass: true
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      respond_with resource
+    end
+  end
+
   def email
     @user = VirtualUser.find_by_code(current_user.code) || VirtualUser.new
   end
