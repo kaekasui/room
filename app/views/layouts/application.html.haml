@@ -28,7 +28,7 @@
             = render partial: "admin_menu", locals: { name: name, path: path }
       .row
         = bootstrap_flash
-        - if current_user and current_user.admin and @admin_menu || @control_users
+        - if (current_user and current_user.admin and @admin_menu) || @control_users
           .col-md-12
             = yield
         - else

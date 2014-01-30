@@ -133,3 +133,4 @@ ja:
   messages:
     send_mail: "メールを送信しました。"
     update_user_email: "メールアドレスを変更しました。"
+    update_user_name: "名前を変更しました。"
