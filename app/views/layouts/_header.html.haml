@@ -31,5 +31,5 @@
               - if current_user.registered_twitter?
                 %li= link_to t("account.twitter") + " - " + t("account.registered"), disconnect_omniauth_provider_path(provider: "twitter"), method: :delete
               - else
-                %li= link_to t("account.twitter") + " - " + t("account.non_registered"), "#"
+                %li= link_to t("account.twitter") + " - " + t("account.non_registered"), user_omniauth_authorize_path(provider: "twitter")
         %li= link_to t("actions.logout"), destroy_user_session_path, method: :delete

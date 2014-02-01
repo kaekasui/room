@@ -22,6 +22,7 @@ ja:
     new: "新規登録"
     new_password: "新しいパスワード"
     new_password_confirmation: "新しいパスワード（確認）"
+    non_registered: "登録"
     profile: "プロフィール"
     registered: "登録解除"
     social_media: "ソーシャル連携"
@@ -117,6 +118,7 @@ ja:
     mail: "送信する"
     logout: "ログアウト"
     unregist_twitter: "Twitter連携を解除する"
+    regist_twitter: "Twitterと連携する"
     update: "更新する"
 
   flash:
