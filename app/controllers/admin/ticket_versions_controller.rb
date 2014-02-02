@@ -1,4 +1,4 @@
-class Admin::VersionsController < Admin::AdminBaseController
+class Admin::TicketVersionsController < Admin::AdminBaseController
   before_action :set_menu
   before_action :find_versions, only: [:index, :update_all]
   before_action :set_version, only: [:new]
@@ -13,7 +13,7 @@ class Admin::VersionsController < Admin::AdminBaseController
     @version = Version.new(version_params)
     respond_to do |format|
       if @version.save
-        format.html { redirect_to admin_versions_path, notice: "created version" }
+        format.html { redirect_to admin_ticket_versions_path, notice: "created version" }
       else
         format.html { render action: "new" }
       end
@@ -38,15 +38,14 @@ class Admin::VersionsController < Admin::AdminBaseController
         end
       end
     end
-
-    redirect_to admin_versions_path
+    redirect_to admin_ticket_versions_path
   end
 
   def destroy
     record = Version.find(version_id_param)
     record.destroy
 
-    redirect_to admin_versions_path
+    redirect_to admin_ticket_versions_path
   end
 
   private
@@ -72,11 +71,10 @@ class Admin::VersionsController < Admin::AdminBaseController
   end
 
   def find_versions
-    project = Project.find_by_main(true)
-    @versions = Version.where(project_id: project.id)
+    @versions = Version.all
   end
 
   def set_menu
-    @admin_menu = "setting"
+    @admin_menu = "ticket"
   end
 end

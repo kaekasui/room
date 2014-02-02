@@ -7,6 +7,12 @@ Room::Application.routes.draw do
   }
 
   devise_scope :user do
+    get 'users/profile' => 'users/registrations#show'
+    get 'users/email' => 'users/registrations#email'
+    post 'users/send_email' => 'users/registrations#send_email'
+    get 'users/name' => 'users/registrations#name'
+    post 'users/update_name' => 'users/registrations#update_name'
+    get 'users/code-:code' => 'users/registrations#update_email', as: "update_users_email"
     delete 'users/disconnect/:provider' => 'users/omniauth_callbacks#disconnect', as: 'disconnect_omniauth_provider'
   end
 
@@ -30,7 +36,9 @@ Room::Application.routes.draw do
     resources :priorities, only: [:index, :destroy] do
       post "/update_all" => "priorities#update_all", on: :collection
     end
-    resources :projects
+    resources :projects do
+      post "/update_all" => "projects#update_all", on: :collection
+    end
     resources :statuses, only: [:index, :destroy] do
       post "/update_all" => "statuses#update_all", on: :collection
     end
@@ -39,6 +47,9 @@ Room::Application.routes.draw do
     end
     resources :ticket_categories, only: [:index, :new, :create, :destroy] do
       post "/update_all" => "ticket_categories#update_all", on: :collection
+    end
+    resources :ticket_versions, only: [:index, :destroy, :new, :create] do
+      post "/update_all" => "ticket_versions#update_all", on: :collection
     end
     resources :trackers, only: [:index, :destroy] do
       post "/update_all" => "trackers#update_all", on: :collection

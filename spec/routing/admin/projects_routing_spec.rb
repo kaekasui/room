@@ -29,5 +29,9 @@ describe Admin::ProjectsController do
     it "routes to #destroy." do
       expect(delete "admin/projects/1").to route_to("admin/projects#destroy", id: "1")
     end
+
+    it "routes to #update_all." do
+      expect(post "admin/projects/update_all").to route_to("admin/projects#update_all")
+    end
   end
 end

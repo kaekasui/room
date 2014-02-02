@@ -3,16 +3,16 @@
   %table.table.nonborder
     - unless @versions.blank?
       %tr
-        %th= model_class.human_attribute_name(:current)
+        %th= model_class.human_attribute_name(:project_id)
         %th= model_class.human_attribute_name(:name)
         %th= model_class.human_attribute_name(:release_at)
       - @versions.each do |version|
         %tr
-          %td= radio_button :version, "current", version.id, checked: version.current
           = fields_for "version[]", version do |f|
+            %td= f.select :project_id, Project.all.map { |p| [p.title, p.id] }, {}, { class: "form-control" }
             %td= f.text_field :name, class: "form-control"
             %td.form-controls-datetime= f.date_select :release_at, datetime_separator: "　　", include_seconds: true, use_month_numbers: true
-            %td.delete_version= link_to I18n.t("actions.destroy"), admin_version_path(version.id), method: :delete, class: "btn btn-default"
+            %td.delete_version= link_to I18n.t("actions.destroy"), admin_ticket_version_path(version.id), method: :delete, class: "btn btn-default"
 
   = submit_tag I18n.t("actions.update"), class: "btn btn-default"
-  = link_to t('.new', :default => t("helpers.links.new")), new_admin_version_path, :class => 'btn btn-default'
+  = link_to t('.new', :default => t("helpers.links.new")), new_admin_ticket_version_path, :class => 'btn btn-default'

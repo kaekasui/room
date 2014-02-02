@@ -6,10 +6,10 @@ $(document).on('page:change', (e) ->
   $(".condition-toggle").click ->
     $(".condition-case").toggle()
 
-  $("select").change ->
+  $(".condition-case select").change ->
     set_condition()
 
-  $("[type='checkbox']").change ->
+  $(".condition-case [type='checkbox']").change ->
     set_condition()
 )
 

@@ -1,5 +1,5 @@
 class AddCodeToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :access_code, :string
+    add_column :users, :code, :string
   end
 end

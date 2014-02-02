@@ -50,13 +50,26 @@ class Admin::ProjectsController < Admin::AdminBaseController
     end
   end
 
+  def update_all
+   # @projects = Project.all
+    Project.where(main: true).each do |project|
+      project.main = false
+      project.save
+    end
+    @project = Project.find(project_params["main"])
+    @project.main = true
+    @project.save
+    
+    redirect_to admin_projects_path
+  end
+
   private
   def set_project
     @project = Project.find(params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:title, :content, :deleted_at)
+    params.require(:project).permit(:main, :title, :content, :deleted_at)
   end
 
   def set_menu
