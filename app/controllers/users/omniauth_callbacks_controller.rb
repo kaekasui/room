@@ -2,7 +2,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     authorize :twitter do
-p "OOO"
       session["devise.twitter_data"] = request.env["omniauth.auth"].except('extra')
     end
   end

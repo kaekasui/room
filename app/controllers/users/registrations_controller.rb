@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def show
     @original_user = OriginalUser.find_by_code(current_user.code) || OriginalUser.new
-    @virtual_user = VirtualUser.find_by_code(current_user.code)
+    @virtual_user = VirtualUser.where(code: current_user.code, created_at: Time.now.all_day).last
     @twitter_user = TwitterUser.find_by_code(current_user.code) || TwitterUser.new 
   end
 
@@ -45,11 +45,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def email
-    @user = VirtualUser.find_by_code(current_user.code) || VirtualUser.new
+    @user = VirtualUser.where(code: current_user.code, created_at: Time.now.all_day).last || VirtualUser.new
   end
 
   def send_email
-    @user = VirtualUser.find_by_code(current_user.code) || VirtualUser.new
+    @user = VirtualUser.where(code: current_user.code, created_at: Time.now.all_day).last || VirtualUser.new
     respond_to do |format|
       if @user.update_attributes(email: user_email_param["email"], code: current_user.code)
         NoticeMailer.change_email(@user).deliver
@@ -77,7 +77,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_email
     @virtual_user = VirtualUser.where(code: current_user.code, created_at: Time.now.all_day).first
-    @original_user = OriginalUser.find_by_code(current_user.code)
+    @original_user = OriginalUser.find_by_code(current_user.code) || OriginalUser.new(code: current_user.code)
 
     respond_to do |format|
       if user_code_param == current_user.code
