@@ -31,7 +31,7 @@
     = f.select :user_id, User.all.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
   .form-group
     = f.label I18n.t("activerecord.attributes.ticket.category"), class: 'control-label'
-    = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name), multiple: true, class: "form-control"
+    = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name, @ticket.categories.map {|v| v.id}), multiple: true, class: "form-control"
   .form-actions
     = f.submit nil, :class => 'btn btn-default'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_tickets_path, :class => 'btn btn-default'
