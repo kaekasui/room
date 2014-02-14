@@ -8,6 +8,7 @@
       %th= model_class.human_attribute_name(:priority_id)
       %th= model_class.human_attribute_name(:status_id)
       %th= model_class.human_attribute_name(:version_id)
+      %th= model_class.human_attribute_name(:categories)
       %th= model_class.human_attribute_name(:progress)
   %tbody
     - items.each do |ticket|
@@ -18,5 +19,6 @@
         %td= ticket.priority.name
         %td= ticket.status.name
         %td= ticket.version.name
+        %td= ticket.categorizations.map {|v| v.category.name }.join(", ")
         %td= ticket.progress
 = paginate items
