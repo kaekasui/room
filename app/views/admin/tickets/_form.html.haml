@@ -28,7 +28,7 @@
     = f.select :version_id, Version.all.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
   .form-group
     = f.label :user_id, :class => 'control-label'
-    = f.select :user_id, User.all.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
+    = f.select :user_id, User.admins.map {|v| [v.name, v.id]}, {}, { class: "form-control" }
   .form-group
     = f.label I18n.t("activerecord.attributes.ticket.category"), class: 'control-label'
     = select_tag "categories", options_from_collection_for_select(TicketCategory.all, :id, :name, @ticket.categories.map {|v| v.id}), multiple: true, class: "form-control"

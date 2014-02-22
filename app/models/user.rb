@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   before_save :set_code
   acts_as_paranoid
 
+  scope :admins, -> { where(admin: true) }
   validates :email, uniqueness: false, presence: false
 
   def registered_twitter?
